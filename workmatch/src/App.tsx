@@ -1,13 +1,9 @@
-import Register from "./pages/register";
-import GlobalStyles from "./styles/globalStyles";
+import UserProvider from "./context/UserContext";
+import { AllRoutes } from "./routes/routes";
+import "./styles/globalStyles";
 
 function App() {
-  return (
-    <>
-      <GlobalStyles />
-      <Register />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
