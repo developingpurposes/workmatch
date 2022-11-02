@@ -5,7 +5,7 @@ import "./styles/globalStyles";
 function App() {
   return (
     <UserProvider>
-      <AllRoutes />;
+      <AllRoutes />
     </UserProvider>
   );
 }
