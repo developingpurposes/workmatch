@@ -3,7 +3,11 @@ import { AllRoutes } from "./routes/routes";
 import "./styles/globalStyles";
 
 function App() {
-  return <></>;
+  return (
+    <UserProvider>
+      <AllRoutes />
+    </UserProvider>
+  );
 }
 
 export default App;
