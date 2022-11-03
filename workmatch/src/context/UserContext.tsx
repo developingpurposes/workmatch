@@ -2,12 +2,17 @@ import { createContext, useState, useEffect, ReactNode } from "react";
 import api from "../services";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
 export interface iUserProfile {
   name: string;
   avatar_url: string;
+  bio: string;
+  level: string;
+  contact: string;
+  techs: any;
 }
 
 export interface iUserLogin {
@@ -30,15 +35,19 @@ interface iUserProviderChildren {
 interface iUserContext {
   userLogin: (info: iUserLogin) => void;
   userRegister: (info: iRegisterUser) => void;
+  editProfile: (info: iUserProfile) => void;
   profile: iUserProfile | null;
-  ToastSuccess: typeof Swal;
-  ToastError: typeof Swal;
+  setModalProfile: React.Dispatch<React.SetStateAction<boolean>>;
+  modalProfile: boolean;
+  logout: () => void;
 }
 
 export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState(null);
+  const [modalProfile, setModalProfile] = useState(false);
+  const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({
     toast: true,
@@ -75,8 +84,7 @@ function UserProvider({ children }: iUserProviderChildren) {
 
       if (token) {
         try {
-          api.defaults.headers.common["Userorization"] = `Bearer ${token}`;
-
+          api.defaults.headers.authorization = `Bearer ${token}`;
           const { data } = await api.get(`/users/${userId}`);
           setProfile(data);
         } catch (error) {
@@ -92,13 +100,18 @@ function UserProvider({ children }: iUserProviderChildren) {
     loadUser();
   }, [ToastError]);
 
+  function logout() {
+    localStorage.clear();
+    navigate("/");
+  }
+
   async function userLogin(info: iUserLogin) {
     try {
       const response = await api.post("/login", info);
 
       localStorage.setItem("WorkMatch:token", response.data.accessToken);
       localStorage.setItem("WorkMatch:userId", response.data.user.id);
-      window.location.replace("./home");
+      navigate("./home");
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
@@ -115,13 +128,15 @@ function UserProvider({ children }: iUserProviderChildren) {
 
   async function userRegister(info: iRegisterUser) {
     try {
-      await api.post("/register", info);
+      const response = await api.post("/register", info);
 
-      window.location.replace("./login");
+      localStorage.setItem("WorkMatch:token", response.data.accessToken);
+      localStorage.setItem("WorkMatch:userId", response.data.user.id);
+      navigate("./home");
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
-        title: `Conta criada com sucesso`,
+        title: `Conta criada com sucesso!`,
       });
     } catch (error) {
       ToastError.fire({
@@ -132,14 +147,38 @@ function UserProvider({ children }: iUserProviderChildren) {
     }
   }
 
+  async function editProfile(info: iUserProfile) {
+    const token = localStorage.getItem("WorkMatch:Token");
+    const userId = localStorage.getItem("WorkMatch:userId");
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      await api.patch(`/users/${userId}`, info);
+
+      setModalProfile(false);
+      ToastSuccess.fire({
+        icon: "success",
+        iconColor: "#168821",
+        title: `Usuario modificado com sucesso!`,
+      });
+    } catch (error) {
+      ToastError.fire({
+        icon: "error",
+        iconColor: "#EC8697",
+        title: `Não foi possivel atualizar seu perfil`,
+      });
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
-        ToastSuccess,
-        ToastError,
         profile,
+        modalProfile,
         userLogin,
         userRegister,
+        editProfile,
+        setModalProfile,
+        logout,
       }}
     >
       {children}

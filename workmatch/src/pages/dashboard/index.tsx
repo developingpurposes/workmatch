@@ -1,7 +1,7 @@
 function Dashboard() {
   return (
     <>
-      <h1>ola mundo</h1>
+      <h1></h1>
     </>
   );
 }
