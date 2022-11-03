@@ -4,28 +4,29 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  width: 450px;
-  height: 450px;
+  align-self: center;
+  align-items: center;
 
-  padding-top: 5px;
+  gap: 5px;
+
 
   label {
     color: var(--color-6);
-    margin: 0 0 7px 15px;
+    align-self: baseline;
   }
 
   input {
-    margin: 0 0 10px 10px;
 
     height: 35px;
-    width: 90%;
+    width: 100%;
 
     color: var(--color-6);
-    background-color: var(--color-3);
-    border: 1.5px solid var(--color-6);
-    border-radius: 15px;
+    background-color: transparent;
 
-    padding-left: 15px;
+    border: 2.5px solid var(--color-6);
+    border-radius: 15px;
+    margin-bottom: 3px;
+
   }
 
   button {
@@ -33,7 +34,7 @@ const Form = styled.form`
     color: var(--color-6);
 
     height: 40px;
-    width: 300px;
+    width: 100%;
 
     border: none;
     border-bottom-left-radius: 20px;
@@ -41,7 +42,8 @@ const Form = styled.form`
 
     font-size: 20px;
 
-    margin: 15px auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 
   button:hover {
@@ -49,6 +51,7 @@ const Form = styled.form`
     background-color: var(--color-5);
     color: var(--color-4);
   }
+
 `;
 
 export default Form;
