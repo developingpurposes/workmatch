@@ -7,9 +7,17 @@ const RegisterStyle = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   background-image: url(${backgroundImage});
-  background-size: 110% 120%;
+  background-repeat: no-repeat;
+  background-size: 950px 100%;
+  background-position: right;
+
+  object-fit: cover;
+  object-position: right;
+
+  font-family: var(--font-df);
 
   img {
     width: 60px;
@@ -19,32 +27,48 @@ const RegisterStyle = styled.div`
   }
 
   section {
-    background-color: var(--color-1);
-    width: 450px;
-    height: 500px;
-
-    margin: 0 0 40px 80px;
+    background-color: var(--color-3);
+    width: 90%;
+    height: fit-content;
 
     div {
-      display: flex;
-      justify-content: space-between;
+      width: 100%;
+      height: 50px;
 
-      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       h3 {
         color: var(--color-6);
-        font-weight: 800;
-        font-size: 25px;
-
-        margin: 10px 0 0 20px;
+        margin-left: 15px;
+        font-size: 1.5rem;
       }
 
       a {
-        margin: 10px 20px 0 0;
-
         text-decoration: none;
+        font-size: 0.8rem;
+
         color: var(--color-6);
+
+        margin-right: 10px;
       }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media (min-width: 767px) {
+    background-size: 100% 100%;
+
+    align-items: flex-start;
+
+    section {
+      margin-left: 100px;
+      width: 500px;
     }
   }
 `;
