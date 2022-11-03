@@ -66,6 +66,7 @@ const LoginStyle = styled.div`
     }
 
     h4{
+    color: white;
     font-weight: 800;
     font-size: 25px;
     margin-bottom: 3px;
