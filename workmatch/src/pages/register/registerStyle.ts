@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/register.png";
+import 'animate.css';
 
 const RegisterStyle = styled.div`
   width: 100vw;
@@ -11,13 +12,14 @@ const RegisterStyle = styled.div`
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  object-fit: contain;
 
-  img {
+  .logo {
     width: 60px;
     height: 60px;
     align-self: center;
     margin-top: 25px;
+
+    animation: pulse 2s infinite;
   }
 
   section {
@@ -27,6 +29,7 @@ const RegisterStyle = styled.div`
     border-radius: 3px;
     margin-bottom: 100px;
     background-color: var(--color-bg-form);
+    animation: bounceInLeft 1.5s ease-out;
 
     div {
       width: 100%;
@@ -39,28 +42,35 @@ const RegisterStyle = styled.div`
 
       h3 {
         color: var(--color-6);
-        font-weight: 800;
-        font-size: 25px;
+        font-weight: bold;
+        font-size: var(--font-size-3);
         margin-bottom: 3px;
+        font-family: var(--font-df);
       }
 
       a {
         align-self: center;
         text-decoration: none;
-        color: var(--color-6);
-
-        margin-right: 10px;
+        color: var(--gray-0);
+        font-family: var(--font-df);
+        font-weight: bold;
       }
     }
 
     form {
       display: flex;
       flex-direction: column;
+
+        button{
+          animation: fadeInUp 1.5s ease-out;
+          animation-delay: 1s;
+          animation-fill-mode: backwards;
+        }
     }
   }
 
   @media (min-width: 767px) {
-    img {
+    .logo {
       width: 100px;
       height: 100px;
       margin-bottom: 30px;

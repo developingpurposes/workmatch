@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import LoginStyle from './styles'
+import LoginStyle from './loginStyle'
 import { Link } from "react-router-dom";
 import Form from "../../styles/form";
 import logo from "../../assets/logo.png";
