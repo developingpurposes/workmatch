@@ -119,7 +119,7 @@ function UserProvider({ children }: iUserProviderChildren) {
   }
 
   async function userRegister(info: iRegisterUser) {
-    console.log("oi");
+    
     try {
       await api.post("/register", info);
 
