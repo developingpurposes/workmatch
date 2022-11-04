@@ -1,3 +1,4 @@
+import ProjectProvider from "./context/ProjectContext";
 import UserProvider from "./context/UserContext";
 import { AllRoutes } from "./routes/routes";
 import GlobalStyles from "./styles/globalStyles";
@@ -5,10 +6,12 @@ import GlobalStyles from "./styles/globalStyles";
 function App() {
   return (
     <>
-      <GlobalStyles />
       <UserProvider>
-        <AllRoutes />
+        <ProjectProvider>
+          <AllRoutes />
+        </ProjectProvider>
       </UserProvider>
+      <GlobalStyles />
     </>
   );
 }
