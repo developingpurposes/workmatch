@@ -9,7 +9,6 @@ const RegisterStyle = styled.div`
   display: flex;
   flex-direction: column;
   object-fit: contain;
- 
 
   img {
     width: 60px;
@@ -26,6 +25,9 @@ const RegisterStyle = styled.div`
     margin-bottom: 100px;
 
     div {
+      width: 100%;
+      height: 50px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,31 +44,47 @@ const RegisterStyle = styled.div`
         align-self: center;
         text-decoration: none;
         color: var(--color-6);
+
+        margin-right: 10px;
       }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
     }
   }
 
-  @media (min-width: 700px){
-    
-    img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 30px;
-        }
+  @media (min-width: 767px) {
+    background-size: 100% 100%;
+
+    align-items: flex-start;
 
     section {
-        width: 400px;
-        align-self: baseline;
-        margin-left: 10%;
-        background-color: var(--color-2);
-
-        div{
-            flex-direction: row;
-            justify-content: space-between;
-        }
+      margin-left: 100px;
+      width: 500px;
+    }
   }
-}
 
+  @media (min-width: 700px) {
+    img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 30px;
+    }
+
+    section {
+      width: 400px;
+      align-self: baseline;
+      margin-left: 10%;
+      background-color: var(--color-2);
+
+      div {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
 `;
 
 export default RegisterStyle;

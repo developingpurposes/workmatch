@@ -21,6 +21,11 @@ export interface iRegisterUser {
   email: string;
   password: string;
   verification: string;
+  bio: null;
+  contact: null;
+  level: null;
+  techs: [];
+  avatar_url: null;
 }
 
 interface iUserProviderChildren {
@@ -114,6 +119,7 @@ function UserProvider({ children }: iUserProviderChildren) {
   }
 
   async function userRegister(info: iRegisterUser) {
+    console.log("oi");
     try {
       await api.post("/register", info);
 
@@ -127,7 +133,7 @@ function UserProvider({ children }: iUserProviderChildren) {
       ToastError.fire({
         icon: "error",
         iconColor: "#EC8697",
-        title: `Ops, alguam coisa esta errada`,
+        title: `Ops, alguma coisa esta errada`,
       });
     }
   }

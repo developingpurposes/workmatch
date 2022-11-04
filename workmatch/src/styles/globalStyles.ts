@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -17,8 +17,8 @@ const GlobalStyles = createGlobalStyle`
 	--gray-1: #212529;
 
      /* fonts */
-     --font   : 'Teko', sans-serif;
-     --font-df: 'Roboto', sans-serif;
+  --font   : 'Teko', sans-serif;
+  --font-df: 'Roboto', sans-serif;
 
      /* font size */
 	--font-size-1: 128px;
@@ -92,7 +92,6 @@ table {
 	border-spacing: 0;
 }
 
-`
+`;
 
-
-export default GlobalStyles
+export default GlobalStyles;
