@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Header = styled.header`
   background-color: #080017;
   width: 100%;
-  height: 60px;
   border-bottom: 2px solid var(--color-5);
 
   div {
@@ -17,8 +16,6 @@ const Header = styled.header`
     display: flex;
 
     img {
-      width: 30px;
-      border-radius: 50%;
     }
 
     .containerUser {
@@ -37,7 +34,7 @@ const Header = styled.header`
   }
 
   div > img {
-    max-width: 40px;
+    max-width: 55px;
   }
 
   .divIcons {
@@ -54,8 +51,91 @@ export const BodyDiv = styled.div`
 `;
 
 export const CardProjects = styled.div`
-  background-color: #3a008b;
-  opacity: 0.5;
-  width: 300px;
-  height: 250px;
+  padding: 20px;
+
+  .userInfos {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-4);
+    margin-bottom: 10px;
+
+    img {
+      align-self: flex-start;
+    }
+
+    .containerUser {
+      h2 {
+        color: var(--color-6);
+      }
+      p {
+        font-size: 12px;
+        color: var(--color-6);
+      }
+    }
+  }
+  .containerDate {
+    p {
+      font-size: 14px;
+      color: var(--color-6);
+    }
+
+    span {
+      font-size: 12px;
+      color: var(--color-6);
+    }
+  }
+
+  .containerProjects {
+    li {
+      background-color: #3a008b;
+    }
+  }
+
+  .containerMain {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+
+    .containerImgTechs {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        max-width: 180px;
+      }
+
+      span {
+        margin-top: 5px;
+        font-size: 12px;
+        color: var(--color-6);
+      }
+    }
+
+    .containerTextBtn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 150px;
+
+      p {
+        font-size: 14px;
+        color: var(--color-6);
+      }
+
+      button {
+        background-color: var(--color-4);
+        color: var(--color-6);
+        height: 40px;
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+
+        font-size: 14px;
+        font-family: var(--font-df);
+        font-weight: var(--font-weigth-1);
+      }
+    }
+  }
 `;
