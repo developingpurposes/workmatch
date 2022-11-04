@@ -2,12 +2,21 @@ import { createContext, useState, useEffect, ReactNode } from "react";
 import api from "../services";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
 export interface iUserProfile {
   name: string;
   avatar_url: string;
+  email: string;
+  password: string;
+  userName: string;
+  bio: string | null;
+  contact: string | null;
+  level: string | null;
+  techs: [] | null;
+  id: number;
 }
 
 export interface iUserLogin {
@@ -44,6 +53,7 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState(null);
+  const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({
     toast: true,
@@ -75,15 +85,14 @@ function UserProvider({ children }: iUserProviderChildren) {
 
   useEffect(() => {
     async function loadUser() {
-      const token = localStorage.getItem("WorkMatch:Token");
+      const token = localStorage.getItem("WorkMatch:token");
       const userId = localStorage.getItem("WorkMatch:userId");
-
       if (token) {
         try {
-          api.defaults.headers.common["Userorization"] = `Bearer ${token}`;
+          api.defaults.headers.authorization = `Bearer ${token}`;
 
-          const { data } = await api.get(`/users/${userId}`);
-          setProfile(data);
+          const response = await api.get(`/users/${userId}`);
+          setProfile(response.data);
         } catch (error) {
           console.error(error);
           ToastError.fire({
@@ -100,10 +109,9 @@ function UserProvider({ children }: iUserProviderChildren) {
   async function userLogin(info: iUserLogin) {
     try {
       const response = await api.post("/login", info);
-
       localStorage.setItem("WorkMatch:token", response.data.accessToken);
       localStorage.setItem("WorkMatch:userId", response.data.user.id);
-      window.location.replace("./home");
+      navigate("/home");
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
@@ -119,7 +127,6 @@ function UserProvider({ children }: iUserProviderChildren) {
   }
 
   async function userRegister(info: iRegisterUser) {
-    
     try {
       await api.post("/register", info);
 
