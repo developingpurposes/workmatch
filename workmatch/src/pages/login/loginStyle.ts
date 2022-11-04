@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import ImgBackground from "../../assets/login.png";
 
+
 const LoginStyle = styled.div`
   background-image: url(${ImgBackground});
   width: 100vw;
-  height: 100%;
-  background-size: 100% 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position-x: 50%;
+  background-position-y: 50%;
   display: flex;
   flex-direction: column;
-  object-fit: contain;
+  
 
   img {
     width: 60px;
