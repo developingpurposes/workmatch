@@ -13,6 +13,7 @@ const Form = styled.form`
   label {
     color: var(--color-6);
     align-self: baseline;
+    font-family: var(--font-df);
   }
 
   input {
@@ -41,6 +42,8 @@ const Form = styled.form`
     border-top-right-radius: 20px;
 
     font-size: 20px;
+    font-family: var(--font-df);
+    font-weight: var(--font-weigth-1);
 
     margin-top: 30px;
     margin-bottom: 20px;
