@@ -39,6 +39,9 @@ const GlobalStyles = createGlobalStyle`
 	margin: 0 auto;
 }
 
+
+
+
 /* Reset CSS */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
