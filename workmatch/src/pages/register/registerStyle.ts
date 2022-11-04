@@ -42,17 +42,18 @@ const RegisterStyle = styled.div`
 
       h3 {
         color: var(--color-6);
-        font-weight: 800;
-        font-size: 25px;
+        font-weight: bold;
+        font-size: var(--font-size-3);
         margin-bottom: 3px;
+        font-family: var(--font-df);
       }
 
       a {
         align-self: center;
         text-decoration: none;
-        color: var(--color-6);
-
-        margin-right: 10px;
+        color: var(--gray-0);
+        font-family: var(--font-df);
+        font-weight: bold;
       }
     }
 

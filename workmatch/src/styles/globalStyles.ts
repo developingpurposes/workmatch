@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
   	--font-df: 'Roboto', sans-serif;
 
      /* font size */
-	--font-size-1: 128px;
+	--font-size-1: 46px;
 	--font-size-2:  28px;
 	--font-size-3:  20px;
 	--font-size-4:  15px;
