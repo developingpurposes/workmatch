@@ -12,7 +12,7 @@ export interface iUserProfile {
   bio: string;
   level: string;
   contact: string;
-  techs: any;
+  techs: [];
 }
 
 export interface iUserLogin {
@@ -137,6 +137,7 @@ function UserProvider({ children }: iUserProviderChildren) {
       techs: [],
       avatar_url: null,
     };
+
     try {
       const response = await api.post("/register", newInfo);
 
@@ -152,7 +153,7 @@ function UserProvider({ children }: iUserProviderChildren) {
       ToastError.fire({
         icon: "error",
         iconColor: "#EC8697",
-        title: `Ops, alguam coisa esta errada`,
+        title: `Ops, alguma coisa esta errada`,
       });
     }
   }

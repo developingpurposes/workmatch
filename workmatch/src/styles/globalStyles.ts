@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -10,18 +10,18 @@ const GlobalStyles = createGlobalStyle`
 	--color-4: #00B3C1;
 	--color-5: #C0EEF7;
 	--color-6: #F8F8F8;
-
+	--color-bg-form: #23005B60;
 
 	/* shades of gray */
 	--gray-0: #868E96;
 	--gray-1: #212529;
 
      /* fonts */
-     --font   : 'Teko', sans-serif;
-     --font-df: 'Roboto', sans-serif;
+  	--font   : 'Teko', sans-serif;
+  	--font-df: 'Roboto', sans-serif;
 
      /* font size */
-	--font-size-1: 128px;
+	--font-size-1: 46px;
 	--font-size-2:  28px;
 	--font-size-3:  20px;
 	--font-size-4:  15px;
@@ -38,6 +38,9 @@ const GlobalStyles = createGlobalStyle`
 	max-width:1200px;
 	margin: 0 auto;
 }
+
+
+
 
 /* Reset CSS */
 
@@ -92,7 +95,6 @@ table {
 	border-spacing: 0;
 }
 
-`
+`;
 
-
-export default GlobalStyles
+export default GlobalStyles;

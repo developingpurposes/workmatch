@@ -8,10 +8,10 @@ export function AllRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Dashboard />} />
+          <Route path="/" element={<LandPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Dashboard />} />
       </Routes>
     </>
   );
