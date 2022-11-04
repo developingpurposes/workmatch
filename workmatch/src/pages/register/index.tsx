@@ -2,45 +2,24 @@ import { Link } from "react-router-dom";
 import RegisterStyle from "./registerStyle";
 import logo from "../../assets/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useContext } from "react";
 import { iRegisterUser, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import Form from "../../styles/form";
+import schemaRegister from "./registerSchema";
 
 function Register() {
   const { userRegister } = useContext(UserContext);
-
-  const yupSchema = yup.object({
-    userName: yup.string().required("É obrigatório preencher o campo nome"),
-    name: yup.string().required("É obrigatório preencher o campo de nome"),
-    email: yup
-      .string()
-      .email("Este e-mail não parece válido, tente outro!")
-      .required("É obrigatório preencher o campo email"),
-    password: yup
-      .string()
-      .matches(/[A-Z]/, "Sua senha deve ter ao menos uma letra maiúscula")
-      .matches(/[a-z]/, "Sua senha deve ter ao menos uma letra minúscula")
-      .matches(/(\d)/, "Sua senha deve ter ao menos um número")
-      .matches(/(\W)|_/, "Sua senha deve ter ao menos um caracter especial")
-      .matches(/.{6,}/, "Sua senha deve ter ao menos seis digitos")
-      .required("É obrigatório escolher uma senha para sua conta"),
-    verification: yup
-      .string()
-      .required()
-      .oneOf([yup.ref("password"), null], "As senhas não são identicas"),
-  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iRegisterUser>({ resolver: yupResolver(yupSchema) });
+  } = useForm<iRegisterUser>({ resolver: yupResolver(schemaRegister) });
 
   return (
     <RegisterStyle>
-      <img src={logo} alt="WorkMatch Logo" />
+      <img className="logo" src={logo} alt="WorkMatch Logo" />
 
       <section>
         <div>
