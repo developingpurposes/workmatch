@@ -9,6 +9,8 @@ import "./bodyDash.css";
 import api from "../../services";
 import imgDefault from "../../assets/default.png";
 
+import { AiFillLike } from "react-icons/ai";
+
 interface iProject {
   description: string;
   techs: [];
@@ -87,7 +89,10 @@ function Dashboard() {
                   <div className="containerTextBtn">
                     <p>{project.description}</p>
 
-                    <button>Quero Ajudar</button>
+                    <button>
+                      Quero Ajudar
+                      <AiFillLike />
+                    </button>
                   </div>
                 </div>
               </li>

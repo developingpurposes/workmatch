@@ -9,7 +9,6 @@ const Form = styled.form`
 
   gap: 5px;
 
-
   label {
     color: var(--color-6);
     align-self: baseline;
@@ -17,7 +16,6 @@ const Form = styled.form`
   }
 
   input {
-
     height: 35px;
     width: 100%;
 
@@ -27,7 +25,6 @@ const Form = styled.form`
     border: 2.5px solid var(--color-6);
     border-radius: 15px;
     margin-bottom: 3px;
-
   }
 
   button {
@@ -54,7 +51,6 @@ const Form = styled.form`
     background-color: var(--color-5);
     color: var(--color-4);
   }
-
 `;
 
 export default Form;

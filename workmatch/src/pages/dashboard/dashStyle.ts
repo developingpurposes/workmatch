@@ -88,6 +88,13 @@ export const CardProjects = styled.div`
   }
 
   .containerProjects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px;
+    margin: 0 auto;
+    gap: 20px;
+
     li {
       background-color: #3a008b;
     }
@@ -128,13 +135,16 @@ export const CardProjects = styled.div`
         background-color: var(--color-4);
         color: var(--color-6);
         height: 40px;
-        width: 100%;
         border: none;
         border-radius: 10px;
 
         font-size: 14px;
         font-family: var(--font-df);
         font-weight: var(--font-weigth-1);
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }
