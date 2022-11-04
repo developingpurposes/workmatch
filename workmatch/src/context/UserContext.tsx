@@ -79,26 +79,25 @@ function UserProvider({ children }: iUserProviderChildren) {
 
   useEffect(() => {
     async function loadUser() {
-      const token = localStorage.getItem("WorkMatch:Token");
+      const token = localStorage.getItem("WorkMatch:token");
       const userId = localStorage.getItem("WorkMatch:userId");
-
       if (token) {
         try {
           api.defaults.headers.authorization = `Bearer ${token}`;
-          const { data } = await api.get(`/users/${userId}`);
-          setProfile(data);
+          const response = await api.get(`/users/${userId}`);
+          setProfile(response.data);
         } catch (error) {
-          console.error(error);
           ToastError.fire({
             icon: "error",
             iconColor: "#EC8697",
             title: `Seu token expirou logue novamente`,
           });
+          localStorage.clear();
         }
       }
     }
     loadUser();
-  }, [ToastError]);
+  }, [ToastError, navigate]);
 
   function logout() {
     localStorage.clear();
@@ -127,8 +126,19 @@ function UserProvider({ children }: iUserProviderChildren) {
   }
 
   async function userRegister(info: iRegisterUser) {
+    const newInfo = {
+      email: info.email,
+      password: info.password,
+      userName: info.userName,
+      name: info.name,
+      bio: null,
+      contact: null,
+      level: null,
+      techs: [],
+      avatar_url: null,
+    };
     try {
-      const response = await api.post("/register", info);
+      const response = await api.post("/register", newInfo);
 
       localStorage.setItem("WorkMatch:token", response.data.accessToken);
       localStorage.setItem("WorkMatch:userId", response.data.user.id);
