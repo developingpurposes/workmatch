@@ -2,10 +2,13 @@ import styled from "styled-components";
 import backgroundImage from "../../assets/register.png";
 
 const RegisterStyle = styled.div`
-  background-image: url(${backgroundImage});
   width: 100vw;
-  height: 100%;
-  background-size: 100% 100%;
+  height: 100vh;
+  background-color: var(--color-2);
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   object-fit: contain;
@@ -23,6 +26,7 @@ const RegisterStyle = styled.div`
     align-self: center;
     border-radius: 3px;
     margin-bottom: 100px;
+    background-color: var(--color-bg-form);
 
     div {
       width: 100%;
@@ -56,17 +60,6 @@ const RegisterStyle = styled.div`
   }
 
   @media (min-width: 767px) {
-    background-size: 100% 100%;
-
-    align-items: flex-start;
-
-    section {
-      margin-left: 100px;
-      width: 500px;
-    }
-  }
-
-  @media (min-width: 700px) {
     img {
       width: 100px;
       height: 100px;
@@ -77,7 +70,7 @@ const RegisterStyle = styled.div`
       width: 400px;
       align-self: baseline;
       margin-left: 10%;
-      background-color: var(--color-2);
+      
 
       div {
         flex-direction: row;

@@ -10,15 +10,15 @@ const GlobalStyles = createGlobalStyle`
 	--color-4: #00B3C1;
 	--color-5: #C0EEF7;
 	--color-6: #F8F8F8;
-
+	--color-bg-form: #23005B60;
 
 	/* shades of gray */
 	--gray-0: #868E96;
 	--gray-1: #212529;
 
      /* fonts */
-  --font   : 'Teko', sans-serif;
-  --font-df: 'Roboto', sans-serif;
+  	--font   : 'Teko', sans-serif;
+  	--font-df: 'Roboto', sans-serif;
 
      /* font size */
 	--font-size-1: 128px;
