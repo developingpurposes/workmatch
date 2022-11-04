@@ -6,11 +6,12 @@ import * as yup from "yup";
 import { useContext } from "react";
 import { iRegisterUser, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
+import Form from "../../styles/form";
 
 function Register() {
   const { userRegister } = useContext(UserContext);
 
-  const schema = yup.object({
+  const yupSchema = yup.object({
     userName: yup.string().required("É obrigatório preencher o campo nome"),
     name: yup.string().required("É obrigatório preencher o campo de nome"),
     email: yup
@@ -25,7 +26,7 @@ function Register() {
       .matches(/(\W)|_/, "Sua senha deve ter ao menos um caracter especial")
       .matches(/.{6,}/, "Sua senha deve ter ao menos seis digitos")
       .required("É obrigatório escolher uma senha para sua conta"),
-    confirmPassword: yup
+    verification: yup
       .string()
       .required()
       .oneOf([yup.ref("password"), null], "As senhas não são identicas"),
@@ -35,9 +36,7 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iRegisterUser>({
-    resolver: yupResolver(schema),
-  });
+  } = useForm<iRegisterUser>({ resolver: yupResolver(yupSchema) });
 
   return (
     <RegisterStyle>
@@ -49,7 +48,7 @@ function Register() {
           <Link to={"/login"}>Voltar ao login</Link>
         </div>
 
-        <form>
+        <Form onSubmit={handleSubmit(userRegister)}>
           <label htmlFor="userName">Nome de usuário: </label>
           <input
             id="userName"
@@ -95,8 +94,8 @@ function Register() {
           />
           <span>{errors.verification?.message}</span>
 
-          <button type="button">Cadastrar</button>
-        </form>
+          <button type="submit">Cadastrar</button>
+        </Form>
       </section>
     </RegisterStyle>
   );
