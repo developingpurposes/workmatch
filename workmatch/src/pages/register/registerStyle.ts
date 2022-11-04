@@ -1,21 +1,25 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/register.png";
+import 'animate.css';
 
 const RegisterStyle = styled.div`
-  background-image: url(${backgroundImage});
   width: 100vw;
-  height: 100%;
-  background-size: 100% 100%;
+  height: 100vh;
+  background-color: var(--color-2);
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  object-fit: contain;
- 
 
-  img {
+  .logo {
     width: 60px;
     height: 60px;
     align-self: center;
     margin-top: 25px;
+
+    animation: pulse 2s infinite;
   }
 
   section {
@@ -24,8 +28,13 @@ const RegisterStyle = styled.div`
     align-self: center;
     border-radius: 3px;
     margin-bottom: 100px;
+    background-color: var(--color-bg-form);
+    animation: bounceInLeft 1.5s ease-out;
 
     div {
+      width: 100%;
+      height: 50px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,31 +56,38 @@ const RegisterStyle = styled.div`
         font-weight: bold;
       }
     }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+        button{
+          animation: fadeInUp 1.5s ease-out;
+          animation-delay: 1s;
+          animation-fill-mode: backwards;
+        }
+    }
   }
 
-  @media (min-width: 700px){
-
-    background-size: 103% 103%;
-    
-    img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 30px;
-        }
+  @media (min-width: 767px) {
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 30px;
+    }
 
     section {
-        width: 400px;
-        align-self: baseline;
-        margin-left: 10%;
-        background-color: var(--color-2);
+      width: 400px;
+      align-self: baseline;
+      margin-left: 10%;
+      
 
-        div{
-            flex-direction: row;
-            justify-content: space-between;
-        }
+      div {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
   }
-}
-
 `;
 
 export default RegisterStyle;
