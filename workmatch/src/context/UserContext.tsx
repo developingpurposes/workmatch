@@ -46,7 +46,6 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState(null);
-  const [modalProfile, setModalProfile] = useState(false);
   const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({
@@ -107,10 +106,9 @@ function UserProvider({ children }: iUserProviderChildren) {
   async function userLogin(info: iUserLogin) {
     try {
       const response = await api.post("/login", info);
-
       localStorage.setItem("WorkMatch:token", response.data.accessToken);
       localStorage.setItem("WorkMatch:userId", response.data.user.id);
-      navigate("./home");
+      navigate("/home");
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
@@ -137,7 +135,6 @@ function UserProvider({ children }: iUserProviderChildren) {
       techs: [],
       avatar_url: null,
     };
-
     try {
       const response = await api.post("/register", newInfo);
 
