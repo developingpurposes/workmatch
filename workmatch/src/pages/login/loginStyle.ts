@@ -31,7 +31,7 @@ const LoginStyle = styled.div`
 
       h3 {
         color: var(--color-6);
-        font: var(--text-subTitle);
+        font: var(--text-subTitle-login);
         text-align: center;
       }
 
@@ -66,9 +66,11 @@ const LoginStyle = styled.div`
       font:var(--text-button);
       color: var(--color-6);
 
-      animation: flipInY 1.2s ease-out;
+
+     
+      animation: zoomIn 1.2s ease-out;
       animation-delay: 1.5s;
-      animation-fill-mode: both;
+      animation-fill-mode: both; 
     }
 
     .otherButton:hover, .otherButton:active {
