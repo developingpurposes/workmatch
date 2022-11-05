@@ -13,14 +13,7 @@ const RegisterStyle = styled.div`
   display: flex;
   flex-direction: column;
 
-  .logo {
-    width: 60px;
-    height: 60px;
-    align-self: center;
-    margin-top: 25px;
-
-    animation: pulse 2s infinite;
-  }
+ 
 
   section {
     width: 90%;
