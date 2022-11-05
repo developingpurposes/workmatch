@@ -6,18 +6,6 @@ import { UserContext } from "./UserContext";
 
 const MySwal = withReactContent(Swal);
 
-interface iQueue {
-  email: string;
-  userName: string;
-  name: string;
-  bio: string;
-  contact: string;
-  level: string;
-  techs: [];
-  avatar_url: string;
-  id: string;
-}
-
 export interface iProject {
   description: string;
   techs: [];
@@ -28,12 +16,15 @@ export interface iProject {
 }
 
 interface iProjectContext {
+
   projects: iProject[];
   setProjects: any;
+
   createProject: (info: iProject) => void;
   joinProject: (info: string) => void;
   getProjects: () => void;
   deleteProject: (info: string) => void;
+  acceptParticipant: (projectId: string, participantId: string) => void;
 }
 
 interface iProjectProviderChildren {
@@ -166,8 +157,10 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   return (
     <ProjectContext.Provider
       value={{
+
         projects,
         setProjects,
+
         createProject,
         joinProject,
         getProjects,

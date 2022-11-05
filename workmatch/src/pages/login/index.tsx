@@ -6,43 +6,35 @@ import logo from "../../assets/logo.png";
 import { useForm } from 'react-hook-form';
 import { iUserLogin, UserContext } from '../../context/UserContext';
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import schemaLogin from './loginSchema';
 
 function Login() {
 
   const {userLogin} = useContext(UserContext)
 
-  const yupSchema = yup.object().shape({
-    email: yup
-      .string()
-      .email("Email inválido")
-      .required("Preencha o campo de email."),
-    password: yup.string().required("Preencha o campo com uma senha."),
-  });
-
-  const{register, handleSubmit, formState: {errors}}=useForm<iUserLogin>({resolver: yupResolver(yupSchema)})
+  const{register, handleSubmit, formState: {errors}}=useForm<iUserLogin>({resolver: yupResolver(schemaLogin)})
   return (
    <LoginStyle> 
 
-     <section>
+     <section className="container">
         <div>
-          <img src={logo} alt="WorkMatch Logo" />
+          <img className="logo" src={logo} alt="WorkMatch Logo" />
           <h3>Seja Bem-vindo!</h3>
-          <Link to={"/login"}>Login</Link>
+          <span>Login</span>
         </div>
-
         <Form onSubmit={handleSubmit(userLogin)}>
+
           <label htmlFor="email">Email: </label>
           <input id="email" type="text" placeholder="Digite seu email" {...register("email")}/>
           {errors.email ? (
-          <p>{errors.email.message}</p>
+          <p className="error">{errors.email.message}</p>
         ) : (
           ""
         )}
           <label htmlFor="password">Senha: </label>
           <input id="password" type="text" placeholder="Digite sua senha" {...register("password")}/>
           {errors.password ? (
-          <p>{errors.password.message}</p>
+          <p className="error">{errors.password.message}</p>
         ) : (
           ""
         )}
