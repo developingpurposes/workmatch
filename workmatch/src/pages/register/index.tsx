@@ -10,11 +10,11 @@ import schemaRegister from "./registerSchema";
 
 function Register() {
   const { userRegister } = useContext(UserContext);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+
   } = useForm<iRegisterUser>({ resolver: yupResolver(schemaRegister) });
 
   return (
@@ -46,6 +46,7 @@ function Register() {
           />
           <span>{errors.name?.message}</span>
 
+
           <label htmlFor="email">Email: </label>
           <input
             id="email"
@@ -65,12 +66,14 @@ function Register() {
           <span>{errors.password?.message}</span>
 
           <label htmlFor="verification">Confirmar senha: </label>
+
           <input
             id="verification"
             type="text"
             placeholder="Confirme sua senha"
             {...register("verification")}
           />
+
           <span>{errors.verification?.message}</span>
 
           <button type="submit">Cadastrar</button>
@@ -79,5 +82,4 @@ function Register() {
     </RegisterStyle>
   );
 }
-
 export default Register;
