@@ -12,9 +12,14 @@ export interface iProject {
   amount: string;
   date: string;
   avatar_url: string;
+  id: number;
 }
 
 interface iProjectContext {
+
+  projects: iProject[];
+  setProjects: any;
+
   createProject: (info: iProject) => void;
   joinProject: (info: string) => void;
   getProjects: () => void;
@@ -62,7 +67,7 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
     },
   });
 
-  const token = localStorage.getItem("WorkMatch:Token");
+  const token = localStorage.getItem("WorkMatch:token");
   const userId = localStorage.getItem("WorkMatch:userId");
 
   async function getProjects() {
@@ -77,7 +82,12 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   async function createProject(info: iProject) {
     const newInfo = {
       ...info,
-      adminId: userId,
+      admin: {
+        adminId: userId,
+        adminName: profile?.name,
+        adminLevel: profile?.level,
+        adminAvatar: profile?.avatar_url,
+      },
       listParticipants: [],
       queueParticipants: [],
     };
@@ -147,11 +157,14 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   return (
     <ProjectContext.Provider
       value={{
+
+        projects,
+        setProjects,
+
         createProject,
         joinProject,
         getProjects,
         deleteProject,
-        acceptParticipant,
       }}
     >
       {children}
