@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/register.png";
-import 'animate.css';
+import "animate.css";
 
 const RegisterStyle = styled.div`
   width: 100vw;
@@ -61,11 +61,11 @@ const RegisterStyle = styled.div`
       display: flex;
       flex-direction: column;
 
-        button{
-          animation: fadeInUp 1.5s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: backwards;
-        }
+      button {
+        animation: fadeInUp 1.5s ease-out;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+      }
     }
   }
 
@@ -80,7 +80,6 @@ const RegisterStyle = styled.div`
       width: 400px;
       align-self: baseline;
       margin-left: 10%;
-      
 
       div {
         flex-direction: row;
