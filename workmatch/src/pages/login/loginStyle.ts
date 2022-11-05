@@ -5,28 +5,23 @@ import ImgBackground from "../../assets/login.png";
 const LoginStyle = styled.div`
   background-image: url(${ImgBackground});
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position-x: 50%;
   background-position-y: 50%;
   display: flex;
   flex-direction: column;
+  padding: 16px;
   
 
-  img {
-    width: 60px;
-    height: 60px;
-    align-self: center;
-    margin-bottom: 5px;
-  }
-
   section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 50px;
-    width: 90%;
     padding: 20px;
-    align-self: center;
     border-radius: 3px;
-    margin-bottom: 100px;
+    
 
     div {
       display: flex;
@@ -35,17 +30,15 @@ const LoginStyle = styled.div`
       margin-bottom: 20px;
 
       h3 {
-        font-family: var(--font);
         color: var(--color-6);
-        font-weight: var(--font-weigth-3);
-        font-size: var(--font-size-1);
-        margin-bottom: 5px;
+        font: var(--text-subTitle);
+        text-align: center;
       }
 
-      a {
+      span {
         font-family: var(--font-df);
         color: var(--color-4);
-        font-size: var(--font-size-3);
+        font-size: var(--font-size-4);
         font-weight: bolder;
         align-self: center;
         text-decoration: none;
@@ -53,32 +46,34 @@ const LoginStyle = styled.div`
     }
 
     .otherButton {
-      display: flex;
       width: 100%;
-      background-color: #343a40;
-      border: none;
+      max-width:500px;
+      background-color:var(--gray-1);
       border-radius: 5px;
-      color: white;
-      justify-content: center;
-      text-decoration: none;
-      align-items: center;
+      text-decoration:none;
       text-align: center;
-      font-size: 22px;
       padding: 8px 0px 8px 0px;
       margin-top: 15px;
+      font:var(--text-button);
+      color: var(--color-6);
     }
 
+    .otherButton:hover, .otherButton:active {
+      filter: brightness(1.5);
+     
+    }
+
+   
+
     h4 {
-      color: white;
-      font-weight: 800;
+      color: var(--color-6);
+      font-weight: var(--font-weight-3);
       font-size: 20px;
-      margin-bottom: 3px;
-      margin-top: 25px;
-      text-align: center;
+      margin-top: 16px;
     }
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 767px) {
     img {
       width: 100px;
       height: 100px;

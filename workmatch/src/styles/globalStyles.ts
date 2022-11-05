@@ -10,26 +10,40 @@ const GlobalStyles = createGlobalStyle`
 	--color-4: #00B3C1;
 	--color-5: #C0EEF7;
 	--color-6: #F8F8F8;
-	--color-bg-form: #23005B60;
+
+	/* other colors */
+	--color-bg-form       : #23005B60;
+	--color-bg-input      : #F8F8F815;
+	--color-bg-focus-input: #496f95;
+	--color-error         : #F46467;
 
 	/* shades of gray */
 	--gray-0: #868E96;
-	--gray-1: #212529;
+	--gray-1: #343a40;
 
      /* fonts */
   	--font   : 'Teko', sans-serif;
   	--font-df: 'Roboto', sans-serif;
 
      /* font size */
-	--font-size-1: 46px;
-	--font-size-2:  28px;
-	--font-size-3:  20px;
-	--font-size-4:  15px;
+	--font-size-1:  46px;
+	--font-size-2:  38px;
+	--font-size-3:  28px;
+	--font-size-4:  20px;
+	--font-size-5:  15px;
 
 	/* font weigth */
 	--font-weigth-1: 800px;
 	--font-weigth-2: 700px;
-	--font-weigth-3: 400px;
+	--font-weigth-3: 500px;
+	--font-weigth-4: 400px;
+
+	/* font config */
+	--text-subTitle:600 38px 'Roboto', sans-serif;
+	--label        :400 15px 'Roboto', sans-serif;
+	--text-button  :500 20px 'Roboto', sans-serif;
+
+
 }
 
 
@@ -39,6 +53,19 @@ const GlobalStyles = createGlobalStyle`
 	margin: 0 auto;
 }
 
+.logo{
+
+	width: 100px;
+     height: 100px;
+	margin-bottom: 20px;
+
+     animation: pulse 2s infinite;
+}
+
+.error{
+	color:var(--color-error);
+	font-weight: var(--font-weigth-2);
+}
 
 
 
@@ -61,7 +88,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video, main {
+time, mark, audio, video, main,button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -78,6 +105,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	max-width: 100vw;
   	height: 100vh;
+	font-family: var(--font-df);
 }
 ol, ul {
 	list-style: none;
@@ -93,6 +121,15 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+button{
+	cursor: pointer;
+}
+
+button, input {
+	border-style: none;
+	outline: none;
 }
 
 `;
