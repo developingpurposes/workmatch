@@ -7,6 +7,7 @@ import { iRegisterUser, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import Form from "../../styles/form";
 import schemaRegister from "./registerSchema";
+import { RiLoginBoxFill as IconLogin} from 'react-icons/ri';
 
 function Register() {
   const { userRegister } = useContext(UserContext);
@@ -24,7 +25,7 @@ function Register() {
       <section>
         <div>
           <h3>Crie sua conta</h3>
-          <Link to={"/login"}>Voltar ao login</Link>
+          <Link className="btnBackLogin" to={"/login"}> Ir ao login <IconLogin/></Link>
         </div>
 
         <Form onSubmit={handleSubmit(userRegister)}>
@@ -35,7 +36,7 @@ function Register() {
             placeholder="Digite seu apelido"
             {...register("userName")}
           />
-          <span>{errors.userName?.message}</span>
+          <p className="error">{errors.userName?.message}</p>
 
           <label htmlFor="name">Nome completo: </label>
           <input
@@ -44,7 +45,7 @@ function Register() {
             placeholder="Digite seu nome"
             {...register("name")}
           />
-          <span>{errors.name?.message}</span>
+          <p className="error">{errors.name?.message}</p>
 
 
           <label htmlFor="email">Email: </label>
@@ -54,7 +55,7 @@ function Register() {
             placeholder="Digite seu melhor e-mail"
             {...register("email")}
           />
-          <span>{errors.email?.message}</span>
+          <p className="error">{errors.email?.message}</p>
 
           <label htmlFor="password">Senha: </label>
           <input
@@ -63,7 +64,7 @@ function Register() {
             placeholder="Digite sua senha"
             {...register("password")}
           />
-          <span>{errors.password?.message}</span>
+          <p className="error">{errors.password?.message}</p>
 
           <label htmlFor="verification">Confirmar senha: </label>
 
@@ -74,11 +75,12 @@ function Register() {
             {...register("verification")}
           />
 
-          <span>{errors.verification?.message}</span>
+          <p className="error">{errors.verification?.message}</p>
 
           <button type="submit">Cadastrar</button>
         </Form>
       </section>
+
     </RegisterStyle>
   );
 }

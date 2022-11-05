@@ -39,9 +39,10 @@ const GlobalStyles = createGlobalStyle`
 	--font-weigth-4: 400px;
 
 	/* font config */
-	--text-subTitle:600 38px 'Roboto', sans-serif;
-	--label        :400 15px 'Roboto', sans-serif;
-	--text-button  :500 20px 'Roboto', sans-serif;
+	--text-subTitle-login   :500 38px 'Roboto', sans-serif;
+	--text-subTitle-register:500 28px 'Roboto', sans-serif;
+	--label                 :400 15px 'Roboto', sans-serif;
+	--text-button           :500 20px 'Roboto', sans-serif;
 
 
 }

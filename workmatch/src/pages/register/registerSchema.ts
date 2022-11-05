@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 const schemaRegister = yup.object({
-     userName: yup.string().required("É obrigatório preencher o campo nome"),
+     userName: yup.string().required("É obrigatório preencher o nickname"),
      name: yup.string().required("É obrigatório preencher o campo de nome"),
      email: yup
        .string()
@@ -13,12 +13,12 @@ const schemaRegister = yup.object({
        .matches(/[a-z]/, "Sua senha deve ter ao menos uma letra minúscula")
        .matches(/(\d)/, "Sua senha deve ter ao menos um número")
        .matches(/(\W)|_/, "Sua senha deve ter ao menos um caracter especial")
-       .matches(/.{6,}/, "Sua senha deve ter ao menos seis digitos")
-       .required("É obrigatório escolher uma senha para sua conta"),
+       .matches(/.{6}/, "Sua senha deve ter ao menos seis digitos")
+       .required("Senha obrigatório"),
      verification: yup
        .string()
-       .required()
-       .oneOf([yup.ref("password"), null], "As senhas não são identicas"),
+       .required("As senhas não são identicas")
+       .oneOf([yup.ref("password")]),
 });
    
 export default schemaRegister;

@@ -9,9 +9,11 @@ const Form = styled.form`
   align-items: center;
   gap: 5px;
 
+
   &:focus-within{
     color: beige;
   }
+
 
   label {
     color: var(--color-6);
@@ -19,9 +21,11 @@ const Form = styled.form`
     font: var(--label);
   }
 
+
   label:focus-within{
     color: var(--color-4);
   }
+
 
   input {
     width: 95%;
@@ -31,6 +35,7 @@ const Form = styled.form`
     background-color: var(--color-bg-input);
 
     border: 2.5px solid var(--color-6);
+
     border-radius: 8px;
     
   }
@@ -43,6 +48,7 @@ const Form = styled.form`
     border: 2.5px solid var(--color-4);
     background-color: var(--color-bg-focus-input);
     font-weight: var(--font-weigth-1);
+
   }
 
   button {
@@ -63,10 +69,9 @@ const Form = styled.form`
   }
 
   button:hover , button:active {   
-    filter: brightness(1.2);
-    color: var(--color-5);
+    filter: brightness(0.9);
+    color: var(--color-6); 
   }
-
 `;
 
 export default Form;

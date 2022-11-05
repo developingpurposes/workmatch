@@ -37,8 +37,6 @@ interface iUserContext {
   userRegister: (info: iRegisterUser) => void;
   editProfile: (info: iUserProfile) => void;
   profile: iUserProfile | null;
-  setModalProfile: React.Dispatch<React.SetStateAction<boolean>>;
-  modalProfile: boolean;
   logout: () => void;
 }
 
@@ -46,7 +44,7 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState(null);
-  const [modalProfile, setModalProfile] = useState(false)
+  const [modalProfile, setModalProfile] = useState(false);
   const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({
@@ -162,8 +160,6 @@ function UserProvider({ children }: iUserProviderChildren) {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       await api.patch(`/users/${userId}`, info);
-
-      setModalProfile(false);
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
@@ -182,11 +178,9 @@ function UserProvider({ children }: iUserProviderChildren) {
     <UserContext.Provider
       value={{
         profile,
-        modalProfile,
         userLogin,
         userRegister,
         editProfile,
-        setModalProfile,
         logout,
       }}
     >
