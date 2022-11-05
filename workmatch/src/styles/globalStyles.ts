@@ -78,6 +78,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	max-width: 100vw;
   	height: 100vh;
+	overflow-x: hidden;
 }
 ol, ul {
 	list-style: none;

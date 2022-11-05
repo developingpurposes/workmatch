@@ -19,7 +19,7 @@ const LandpageStyle = styled.div`
     margin: 0 auto;
 
     justify-content: center;
-    width: 80%;
+    width: 75%;
     height: 100%;
     h2,
     h3 {
@@ -33,7 +33,7 @@ const LandpageStyle = styled.div`
     }
     a {
       margin-top: 80px;
-      margin-left: 10px;
+
       width: 100%;
       max-width: 400px;
       height: 67px;
@@ -61,7 +61,7 @@ const LandpageStyle = styled.div`
           font-size: 68px;
         }
         h2 {
-          margin-left: -300px;
+          margin-left: -250px;
         }
         a {
           margin-right: -40px;
@@ -75,5 +75,4 @@ const LandpageStyle = styled.div`
     }
   }
 `;
-
 export default LandpageStyle;
