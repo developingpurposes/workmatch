@@ -45,7 +45,6 @@ function Dashboard() {
   }, []);
 
   return (
-    <>
       <Header>
         <div>
           <img src={Logo} alt="logo" />
@@ -101,9 +100,8 @@ function Dashboard() {
             ))}
           </ul>
         </CardProjects>
-      </BodyDiv>
-    </>
-  );
+      </BodyDiv> 
+    );
 }
 
 export default Dashboard;
