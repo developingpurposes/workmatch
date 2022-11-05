@@ -4,15 +4,17 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useContext } from "react";
+import ModalCards from "../../components/modalCards";
 
 
 
 function Dashboard() {
-  const { profile } = useContext(UserContext);
+  // const { profile } = useContext(UserContext);
 
   return (
-    <>
-      <Header>
+    <ModalCards/>
+    );
+      /* <Header>
         <div>
           <img src={Logo} alt="logo" />
           <IconContext.Provider
@@ -43,9 +45,9 @@ function Dashboard() {
             <p>Data de criação:</p>
           </div>
         </CardProjects>
-      </BodyDiv>
-    </>
-  );
+      </BodyDiv> */
+    
+
 }
 
 export default Dashboard;
