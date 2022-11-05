@@ -9,12 +9,10 @@ import ModalCards from "../../components/modalCards";
 
 
 function Dashboard() {
-  // const { profile } = useContext(UserContext);
+  const { profile } = useContext(UserContext);
 
   return (
-    <ModalCards/>
-    );
-      /* <Header>
+      <Header>
         <div>
           <img src={Logo} alt="logo" />
           <IconContext.Provider
@@ -45,9 +43,8 @@ function Dashboard() {
             <p>Data de criação:</p>
           </div>
         </CardProjects>
-      </BodyDiv> */
-    
-
+      </BodyDiv> 
+    );
 }
 
 export default Dashboard;
