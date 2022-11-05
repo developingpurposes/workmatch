@@ -63,8 +63,8 @@ const Form = styled.form`
   }
 
   button:hover , button:active {   
-    filter: brightness(1.2);
-    color: var(--color-5);
+    filter: brightness(0.9);
+    color: var(--color-6); 
   }
 
 `;
