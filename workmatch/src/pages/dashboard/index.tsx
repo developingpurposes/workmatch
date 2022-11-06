@@ -1,17 +1,21 @@
-import Header, { BodyDiv, CardProjects } from "./dashStyle";
+import DashboardStyle from "./dashStyle";
+import { CgFileAdd as AddPost, CgBell as BellNotificatin } from "react-icons/cg";
+
+import  { BodyDiv, CardProjects } from "./dashStyle";
 import Logo from "../../assets/logo.png";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { IconContext } from "react-icons";
-import { AiOutlinePlus } from "react-icons/ai";
+
+
 
 import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
-import "./bodyDash.css";
+
 import api from "../../services";
 import imgDefault from "../../assets/default.png";
 
 
 import { AiFillLike } from "react-icons/ai";
+
+import SearchProject from "../../components/search";
 
 interface iProject {
   description: string;
@@ -30,8 +34,8 @@ interface iProject {
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
-  const token = localStorage.getItem("WorkMatch:token");
   const [projects, setProjects] = useState<iProject[]>([]);
+  const token = localStorage.getItem("WorkMatch:token");
 
   useEffect(() => {
     async function getProjects() {
@@ -45,27 +49,27 @@ function Dashboard() {
   }, []);
 
   return (
-      <Header>
-        <div>
-          <img src={Logo} alt="logo" />
-          <IconContext.Provider
-            value={{ color: "white", className: "iconSearch" }}
-          >
-            <div className="divIcons">
-              <AiOutlinePlus />
-              <BiSearchAlt2 />
-            </div>
-          </IconContext.Provider>
-          <div className="userInfos">
+    <DashboardStyle>
+      <header>
+      
+        <img src={Logo} alt="logo da workMatch" />
+      
+        <div className="userActionIconsField">
+          <AddPost />
+          <SearchProject/>
+        </div>
+        
+          <div className="">
             <img src={profile?.avatar_url} alt="" />
             <div className="containerUser">
               <h2>{profile?.name}</h2>
               <p>{profile?.level}</p>
             </div>
           </div>
-        </div>
-      </Header>
+      </header>
+
       <BodyDiv>
+        
         <CardProjects>
           <ul className="containerProjects">
             {projects.map((project) => (
@@ -101,6 +105,7 @@ function Dashboard() {
           </ul>
         </CardProjects>
       </BodyDiv> 
+    </DashboardStyle>
     );
 }
 
