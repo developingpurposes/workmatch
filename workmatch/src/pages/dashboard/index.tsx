@@ -4,8 +4,7 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useContext } from "react";
-
-
+import { UserContext } from "../../context/UserContext";
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
@@ -36,8 +35,8 @@ function Dashboard() {
         <CardProjects>
           <div className="userInfos">
             <img src="" alt="" />
-            <h2></h2>
-            <p></p>
+            <h2>a</h2>
+            <p>b</p>
           </div>
           <div className="creationDate">
             <p>Data de criação:</p>
