@@ -46,6 +46,9 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState(null);
+
+  const [modalProfile, setModalProfile] = useState(false);
+
   const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({
@@ -163,7 +166,6 @@ function UserProvider({ children }: iUserProviderChildren) {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       await api.patch(`/users/${userId}`, info);
-
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
@@ -185,7 +187,6 @@ function UserProvider({ children }: iUserProviderChildren) {
         userLogin,
         userRegister,
         editProfile,
-
         logout,
       }}
     >
