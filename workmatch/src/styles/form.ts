@@ -13,10 +13,16 @@ const Form = styled.form`
     color: beige;
   }
 
+  &:focus-within{
+    color: beige;
+  }
+
+
   label {
     color: var(--color-6);
     align-self: baseline;
     font: var(--label);
+
     margin-left: 10px;
   }
 
@@ -28,10 +34,29 @@ const Form = styled.form`
     width: 90%;
     padding: 12px;
 
+
+
+  input {
+    width: 95%;
+    padding: 12px;
+    
     color: var(--color-6);
     background-color: var(--color-bg-input);
 
     border: 2.5px solid var(--color-6);
+
+    border-radius: 8px;
+    
+  }
+
+  input::placeholder{
+    color: aliceblue;
+  }
+
+  input:focus{
+    border: 2.5px solid var(--color-4);
+    background-color: var(--color-bg-focus-input);
+    font-weight: var(--font-weigth-1);
 
     border-radius: 8px;
   }
@@ -49,7 +74,6 @@ const Form = styled.form`
   button {
     background-color: var(--color-4);
     color: var(--color-6);
-
     width: 90%;
     height: 40px;
 
@@ -58,9 +82,11 @@ const Form = styled.form`
 
     font: var(--text-button);
 
+
     margin-top: 30px;
     margin-bottom: 20px;
   }
+
 
   button:hover,
   button:active {
