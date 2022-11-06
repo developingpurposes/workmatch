@@ -5,6 +5,7 @@ import { BsCloudArrowUp } from "react-icons/bs";
 import { FaPeopleCarry } from "react-icons/fa";
 import { IoIosPeople } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import Footer from "../Footer";
 
 function LandpagThird() {
   return (
@@ -60,6 +61,7 @@ function LandpagThird() {
           </p>
         </li>
       </ul>
+      <Footer />
     </LandpageThirdStyle>
   );
 }

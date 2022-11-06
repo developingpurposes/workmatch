@@ -58,7 +58,7 @@ const LandpageStyle = styled.div`
         display: flex;
         h2,
         h3 {
-          font-size: 68px;
+          font-size: 88px;
         }
         h2 {
           margin-left: -250px;

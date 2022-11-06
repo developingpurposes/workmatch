@@ -2,6 +2,7 @@ import styled from "styled-components";
 import backgroundImage from "../../assets/land3.png";
 import "animate.css";
 const LandpageThirdStyle = styled.div`
+  position: relative;
   width: 100vw;
   height: 280vh;
   background-color: var(--color-2);
