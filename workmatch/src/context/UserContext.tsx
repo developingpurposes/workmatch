@@ -36,17 +36,14 @@ interface iUserContext {
   userLogin: (info: iUserLogin) => void;
   userRegister: (info: iRegisterUser) => void;
   editProfile: (info: iUserProfile) => void;
-  profile: iUserProfile | null;
+  profile: iUserProfile;
   logout: () => void;
 }
 
 export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
-  const [profile, setProfile] = useState(null);
-
-  const [modalProfile, setModalProfile] = useState(false);
-
+  const [profile, setProfile] = useState<iUserProfile>({} as iUserProfile);
   const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({
