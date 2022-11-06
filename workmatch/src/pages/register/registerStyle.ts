@@ -4,22 +4,20 @@ import "animate.css";
 
 const RegisterStyle = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--color-2);
   background-image: url(${backgroundImage});
   background-size: cover;
   background-position-x: 50%;
   background-repeat: no-repeat;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  padding: 16px;
+ 
 
-  .logo {
-    width: 60px;
-    height: 60px;
-    align-self: center;
-    margin-top: 25px;
-
-    animation: pulse 2s infinite;
+  img{
+    margin-top: 30px;
   }
 
   section {
@@ -34,7 +32,6 @@ const RegisterStyle = styled.div`
     div {
       width: 100%;
       height: 50px;
-
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,18 +39,24 @@ const RegisterStyle = styled.div`
 
       h3 {
         color: var(--color-6);
-        font-weight: bold;
-        font-size: var(--font-size-3);
-        margin-bottom: 3px;
-        font-family: var(--font-df);
+        font: var(--text-subTitle-register);
+        text-align: center;
       }
 
       a {
-        align-self: center;
+        display: flex;
+        align-items: center;
+        gap: 6px;
         text-decoration: none;
         color: var(--gray-0);
-        font-family: var(--font-df);
         font-weight: bold;
+      }
+
+      a:hover, a:active{
+        color: var(--color-6);
+        text-decoration: underline;
+        transition: 0.3s ease-in;
+        font-style: italic;
       }
     }
 
