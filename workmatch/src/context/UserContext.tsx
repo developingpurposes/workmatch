@@ -44,7 +44,9 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState(null);
+
   const [modalProfile, setModalProfile] = useState(false);
+
   const navigate = useNavigate();
 
   const ToastSuccess = MySwal.mixin({

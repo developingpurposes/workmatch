@@ -55,12 +55,10 @@ const GlobalStyles = createGlobalStyle`
 }
 
 .logo{
-
 	width: 100px;
-     height: 100px;
+    height: 100px;
 	margin-bottom: 20px;
-
-     animation: pulse 2s infinite;
+	animation: pulse 2s infinite;
 }
 
 .error{
@@ -106,6 +104,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	max-width: 100vw;
   	height: 100vh;
+	overflow-x: hidden;
 	font-family: var(--font-df);
 }
 ol, ul {
