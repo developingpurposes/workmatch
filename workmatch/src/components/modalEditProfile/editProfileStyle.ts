@@ -4,7 +4,12 @@ const EditProfileStyle = styled.div`
   min-height: 100vh;
   position: absolute;
   top: 0;
-  background-color: rgb(0,0,0,0.5);
+
+  background-color: rgb(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
 
   display: flex;
   align-items: center;
@@ -17,9 +22,8 @@ const EditProfileStyle = styled.div`
   section {
     background-color: #100325;
     position: absolute;
-    z-index: 1;
-    top: 0;
-
+    z-index: 2;
+    top: 1px;
     margin: 10px 0;
     padding: 20px;
     border-radius: 5px;
@@ -51,6 +55,7 @@ const EditProfileStyle = styled.div`
         font-size: var(--font-size-4);
         margin-right: 5px;
         font-family: var(--font-df);
+        cursor: pointer;
       }
     }
 
