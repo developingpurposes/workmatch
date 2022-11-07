@@ -1,3 +1,4 @@
+import Select from "react-select/dist/declarations/src/Select";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -88,11 +89,18 @@ const Form = styled.form`
   }
 
 
-  button:hover,
+  button:hover
   button:active {
     filter: brightness(0.9);
     color: var(--color-6);
   }
-`
+
+  .selectForm{
+    width: 100%;
+  }
+
+
+`;
 
 export default Form;
+
