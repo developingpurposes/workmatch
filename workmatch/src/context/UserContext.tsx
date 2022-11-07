@@ -3,6 +3,7 @@ import api from "../services";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
+import profilePic from "../assets/account.png";
 
 const MySwal = withReactContent(Swal);
 
@@ -40,6 +41,8 @@ interface iUserContext {
   editProfile: (info: iUserProfile) => void;
   profile: iUserProfile;
   logout: () => void;
+  image: string;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const UserContext = createContext<iUserContext>({} as iUserContext);
@@ -47,6 +50,7 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState<iUserProfile>({} as iUserProfile);
   const navigate = useNavigate();
+  const [image, setImage] = useState(profilePic);
 
   const ToastSuccess = MySwal.mixin({
     toast: true,
@@ -156,13 +160,12 @@ function UserProvider({ children }: iUserProviderChildren) {
   }
 
   async function editProfile(info: iUserProfile) {
-    const token = localStorage.getItem("WorkMatch:Token");
+    const token = localStorage.getItem("WorkMatch:token");
     const userId = localStorage.getItem("WorkMatch:userId");
-
-    console.log(info);
+    const dataEditProfile = { ...info, avatar_url: image };
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
-      await api.patch(`/users/${userId}`, info);
+      await api.patch(`/users/${userId}`, dataEditProfile);
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
@@ -185,6 +188,8 @@ function UserProvider({ children }: iUserProviderChildren) {
         userRegister,
         editProfile,
         logout,
+        image,
+        setImage,
       }}
     >
       {children}

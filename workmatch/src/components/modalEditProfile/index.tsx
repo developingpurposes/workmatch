@@ -5,12 +5,14 @@ import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { ProjectContext } from "../../context/ProjectContext";
 
 function EditProfile() {
   const { editProfile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
   const [image, setImage] = useState(profilePic);
   const [infoC, setInfo] = useState({});
+  const { setShowEditModal } = useContext(ProjectContext);
 
   function infoChanges(data: iUserProfile) {
     if (data.userName !== "") {
@@ -56,7 +58,7 @@ function EditProfile() {
       <section>
         <div>
           <h3>Editar Perfil</h3>
-          <span>X</span>
+          <span onClick={() => setShowEditModal(false)}>X</span>
         </div>
         <img
           onClick={() => setProfilePic()}

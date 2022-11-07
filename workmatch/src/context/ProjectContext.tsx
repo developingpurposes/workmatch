@@ -30,6 +30,14 @@ interface iProjectContext {
   getProjects: () => void;
   deleteProject: (info: string) => void;
   acceptParticipant: (projectId: string, participantId: string) => void;
+  showCreateModal: boolean;
+  setShowCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
+  showEditModal: boolean;
+  setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  myProjectsModal: boolean;
+  setMyProjectsModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface iProjectProviderChildren {
@@ -43,6 +51,10 @@ export const ProjectContext = createContext<iProjectContext>(
 function ProjectProvider({ children }: iProjectProviderChildren) {
   const { profile } = useContext(UserContext);
   const [projects, setProjects] = useState<iProject[]>([]);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [myProjectsModal, setMyProjectsModal] = useState(false);
 
   const ToastSuccess = MySwal.mixin({
     toast: true,
@@ -185,6 +197,14 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
         joinProject,
         getProjects,
         deleteProject,
+        showCreateModal,
+        setShowCreateModal,
+        showEditModal,
+        setShowEditModal,
+        menuOpen,
+        setMenuOpen,
+        myProjectsModal,
+        setMyProjectsModal,
       }}
     >
       {children}

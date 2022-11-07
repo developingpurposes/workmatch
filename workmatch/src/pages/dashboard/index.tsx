@@ -1,18 +1,22 @@
 import { DashboardStyle, HeaderDashboard } from "./dashStyle";
-import { CgFileAdd as AddPost, CgBell as BellNotificatin } from "react-icons/cg";
+import {
+  CgFileAdd as AddPost,
+  CgBell as BellNotificatin,
+} from "react-icons/cg";
 import Logo from "../../assets/logo.png";
 
-import imgUserDf from "../../assets/account.png"
+import imgUserDf from "../../assets/account.png";
 import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
 import Post from "../../components/post";
-
-
+import ModalCreateProjects from "../../components/modalCreateProjects";
+import { ProjectContext } from "../../context/ProjectContext";
+import EditProfile from "../../components/modalEditProfile";
+import ModalCards from "../../components/modalCards";
 
 export interface iProject {
-
   description: string;
   techs: [];
   amount: string;
@@ -25,16 +29,20 @@ export interface iProject {
     adminLevel: string;
     adminAvatar: string | null;
   };
-
 }
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
-
+  const {
+    showCreateModal,
+    setShowCreateModal,
+    showEditModal,
+    menuOpen,
+    setMenuOpen,
+    myProjectsModal,
+  } = useContext(ProjectContext);
   const [projects, setProjects] = useState<iProject[]>([] as iProject[]);
   const token = localStorage.getItem("WorkMatch:token");
-  const [menuOpen, setMenuOpen] = useState(false)
-
 
   useEffect(() => {
     async function getProjects() {
@@ -45,53 +53,62 @@ function Dashboard() {
       } catch (error) {}
     }
     getProjects();
-
   }, []);
+
+  function openOrClose() {
+    if (menuOpen) {
+      setMenuOpen(false);
+    } else {
+      setMenuOpen(true);
+    }
+  }
 
   return (
     <DashboardStyle>
+      {showEditModal ? <EditProfile /> : null}
+      {showCreateModal ? <ModalCreateProjects handleModal techs /> : null}
+      {myProjectsModal ? <ModalCards /> : null}
       <HeaderDashboard>
         <div className="container containerHeader">
-          <img  src={Logo} alt="logo da workMatch" />
-        
-          <div className="userActionIconsField ">
-            <AddPost className="svgHover" />
-            <BellNotificatin className="svgHover"/>
-          </div>
-        
-          <div className="userProfile" onClick={()=>setMenuOpen(true)}>
-            {
-              profile?.avatar_url?
-                <img src={profile?.avatar_url} alt={profile?.userName}/>
-                :
-                <img src={imgUserDf} alt="ilustração de usuario" />
-            }
-            {
-              menuOpen? <Menu/> : false
-            }
+          <img src={Logo} alt="logo da workMatch" />
 
-            
+          <div className="userActionIconsField ">
+            <button onClick={() => setShowCreateModal(true)}>
+              <AddPost className="svgHover" />
+            </button>
+            <button>
+              <BellNotificatin className="svgHover" />
+            </button>
+          </div>
+
+          <div className="userProfile">
+            {profile?.avatar_url ? (
+              <img
+                src={profile?.avatar_url}
+                alt={profile?.userName}
+                onClick={() => openOrClose()}
+              />
+            ) : (
+              <img
+                src={imgUserDf}
+                alt="ilustração de usuario"
+                onClick={() => openOrClose()}
+              />
+            )}
+            {menuOpen ? <Menu /> : null}
+
             <div className="infoUser">
-            
               <h2>{profile?.userName}</h2>
 
-              {
-              profile?.level? <p>{profile?.level}</p> : <p>Está sem nivel</p>
-              } 
+              {profile?.level ? <p>{profile?.level}</p> : <p>Está sem nivel</p>}
             </div>
-
           </div>
-        </div> 
-        
-        
-        
+        </div>
       </HeaderDashboard>
 
-      <Post projects={projects} />        
-        
+      <Post projects={projects} />
     </DashboardStyle>
-    );
-
+  );
 }
 
 export default Dashboard;
