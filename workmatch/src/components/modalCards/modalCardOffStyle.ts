@@ -11,17 +11,25 @@ export const ContainerModal = styled.div `
   `;
 
 export const DivModal = styled.div`
-    width: 30%;
+    width: 80%;
     height: min-content;
     background-color: var(--color-1);
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    padding: 20px;
+    padding: 25px;
     height: min-content;
     flex-direction: column;
     align-self: center;
     border-radius: 5px;
+
+    @media (min-width: 700px){
+        width: 50%;
+    }
+
+    @media (min-width: 1100px){
+        width: 35%;
+    }
 
     .container{
         background-color: var(--color-6);
@@ -30,7 +38,7 @@ export const DivModal = styled.div`
         justify-content: space-between;
         width: 80%;
         align-items: center;
-        padding: 10px;
+        padding: 20px;
         gap: 5px;
         border-radius: 5px;
 

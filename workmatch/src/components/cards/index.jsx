@@ -6,7 +6,7 @@ function Card({tech, onDelete, onEdit}) {
 
   return (
     <C.Card>
-    <img src={imgLand} alt="teste"></img>
+    <img src={imgLand} alt="teste"/>
     <div className="containerText">
         <h2>Novos negócios digitais</h2>
         <h3>Vivamus rhoncus tellus et nunc vestibulum, in sollicitudin nisl fermentum. Donec in est posuere, maximus lorem interdum, tristique ex. Nunc eget velit sodales ligula rhoncus convallis. Quisque sit amet leo nec est sagittis mattis. Morbi faucibus dui blandit ullamcorper pharetra. Donec at blandit enim, nec tincidunt orci. Nam vehicula faucibus lacus ut egestas. Morbi eget lacus vel dolor dictum vulputate.</h3>
@@ -15,13 +15,13 @@ function Card({tech, onDelete, onEdit}) {
         {/* {tech.participantes?.img.map((img) => { */}
             {/* return ( */}
               <li className="imgTeam">
-              <img src={imgLand} alt="teste"></img>
+              <img src={imgLand} alt="teste"/>
               </li>
               <li className="imgTeam">
-              <img src={imgLand} alt="teste"></img>
+              <img src={imgLand} alt="teste"/>
               </li>
               <li className="imgTeam">
-              <img src={imgLand} alt="teste"></img>
+              <img src={imgLand} alt="teste"/>
               </li>
             {/* ); */}
           {/* })} */}
@@ -37,7 +37,7 @@ function Card({tech, onDelete, onEdit}) {
             );
           })} */}
           <li>
-              <img src={logo} alt="teste"></img>
+              <img src={logo} alt="teste"/>
               </li>
               <li>
               <img src={logo} alt="teste"></img>
