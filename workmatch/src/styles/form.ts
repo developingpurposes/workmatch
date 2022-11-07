@@ -33,7 +33,7 @@ const Form = styled.form`
   input {
     width: 90%;
     padding: 12px;
-
+  }
 
 
   input {
@@ -93,6 +93,6 @@ const Form = styled.form`
     filter: brightness(0.9);
     color: var(--color-6);
   }
-`;
+`
 
 export default Form;
