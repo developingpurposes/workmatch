@@ -35,8 +35,8 @@ function Dashboard() {
         <CardProjects>
           <div className="userInfos">
             <img src="" alt="" />
-            <h2></h2>
-            <p></p>
+            <h2>a</h2>
+            <p>b</p>
           </div>
           <div className="creationDate">
             <p>Data de criação:</p>
