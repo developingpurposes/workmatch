@@ -1,6 +1,7 @@
 import { DashboardStyle, HeaderDashboard } from "./dashStyle";
 import { CgFileAdd as AddPost, CgBell as BellNotificatin } from "react-icons/cg";
 import Logo from "../../assets/logo.png";
+
 import imgUserDf from "../../assets/account.png"
 import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
@@ -11,6 +12,7 @@ import Post from "../../components/post";
 
 
 export interface iProject {
+
   description: string;
   techs: [];
   amount: string;
@@ -23,14 +25,16 @@ export interface iProject {
     adminLevel: string;
     adminAvatar: string | null;
   };
-  
+
 }
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
+
   const [projects, setProjects] = useState<iProject[]>([] as iProject[]);
   const token = localStorage.getItem("WorkMatch:token");
   const [menuOpen, setMenuOpen] = useState(false)
+
 
   useEffect(() => {
     async function getProjects() {
@@ -41,6 +45,7 @@ function Dashboard() {
       } catch (error) {}
     }
     getProjects();
+
   }, []);
 
   return (
@@ -86,6 +91,7 @@ function Dashboard() {
         
     </DashboardStyle>
     );
+
 }
 
 export default Dashboard;
