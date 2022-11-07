@@ -10,14 +10,13 @@ import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
-import Post from "../../components/post";
+import Post from "../../components/Post";
 
 import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
 import EditProfile from "../../components/modalEditProfile";
 import ModalCards from "../../components/modalCards";
-
-
+import { useNavigate } from "react-router-dom";
 
 export interface iProject {
   description: string;
@@ -46,17 +45,20 @@ function Dashboard() {
   } = useContext(ProjectContext);
   const [projects, setProjects] = useState<iProject[]>([] as iProject[]);
   const token = localStorage.getItem("WorkMatch:token");
-
+  const navigate = useNavigate();
   useEffect(() => {
     async function getProjects() {
       try {
         api.defaults.headers.authorization = `Bearer ${token}`;
         const { data } = await api.get("/projects");
         setProjects(data);
-      } catch (error) {}
+      } catch (error) {
+        localStorage.clear();
+        navigate("/");
+      }
     }
     getProjects();
-  }, []);
+  }, [navigate]);
 
   function openOrClose() {
     if (menuOpen) {
@@ -64,6 +66,9 @@ function Dashboard() {
     } else {
       setMenuOpen(true);
     }
+  }
+  function teste() {
+    console.log(profile);
   }
 
   return (
@@ -79,7 +84,7 @@ function Dashboard() {
             <button onClick={() => setShowCreateModal(true)}>
               <AddPost className="svgHover" />
             </button>
-            <button>
+            <button onClick={teste}>
               <BellNotificatin className="svgHover" />
             </button>
           </div>
@@ -109,9 +114,7 @@ function Dashboard() {
         </div>
       </HeaderDashboard>
 
-
       <Post projects={projects} />
-
     </DashboardStyle>
   );
 }

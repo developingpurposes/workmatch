@@ -1,13 +1,8 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import api from "../services";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
-
-import profilePic from "../assets/account.png"
-
-
-const MySwal = withReactContent(Swal);
+import profilePic from "../assets/account.png";
+import { ToastError, ToastSuccess } from "../services/toast";
 
 export interface iUserProfile {
   userName?: string;
@@ -40,8 +35,8 @@ interface iUserProviderChildren {
 interface iUserContext {
   userLogin: (info: iUserLogin) => void;
   userRegister: (info: iRegisterUser) => void;
-  editProfile: (info: iUserProfile) => void;
   profile: iUserProfile;
+  setProfile: React.Dispatch<React.SetStateAction<iUserProfile>>;
   logout: () => void;
   image: string;
   setImage: React.Dispatch<React.SetStateAction<string>>;
@@ -53,34 +48,6 @@ function UserProvider({ children }: iUserProviderChildren) {
   const [profile, setProfile] = useState<iUserProfile>({} as iUserProfile);
   const navigate = useNavigate();
   const [image, setImage] = useState(profilePic);
-
-  const ToastSuccess = MySwal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 1500,
-    background: "#168821",
-    color: "#FFFFFF",
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", MySwal.stopTimer);
-      toast.addEventListener("mouseleave", MySwal.resumeTimer);
-    },
-  });
-
-  const ToastError = MySwal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 1500,
-    background: "#B53147",
-    color: "#FFFFFF",
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", MySwal.stopTimer);
-      toast.addEventListener("mouseleave", MySwal.resumeTimer);
-    },
-  });
 
   useEffect(() => {
     async function loadUser() {
@@ -97,12 +64,11 @@ function UserProvider({ children }: iUserProviderChildren) {
             iconColor: "#EC8697",
             title: `Seu token expirou logue novamente`,
           });
-          localStorage.clear();
         }
       }
     }
     loadUser();
-  }, [ToastError, navigate]);
+  }, [navigate]);
 
   function logout() {
     localStorage.clear();
@@ -161,43 +127,16 @@ function UserProvider({ children }: iUserProviderChildren) {
     }
   }
 
-  async function editProfile(info: iUserProfile) {
-    const token = localStorage.getItem("WorkMatch:token");
-    const userId = localStorage.getItem("WorkMatch:userId");
-
-    const dataEditProfile = { ...info, avatar_url: image };
-
-
-    
-
-    try {
-      api.defaults.headers.authorization = `Bearer ${token}`;
-      await api.patch(`/users/${userId}`, dataEditProfile);
-      ToastSuccess.fire({
-        icon: "success",
-        iconColor: "#168821",
-        title: `Usuario modificado com sucesso!`,
-      });
-    } catch (error) {
-      ToastError.fire({
-        icon: "error",
-        iconColor: "#EC8697",
-        title: `Não foi possivel atualizar seu perfil`,
-      });
-    }
-  }
-
   return (
     <UserContext.Provider
       value={{
         profile,
         userLogin,
         userRegister,
-        editProfile,
         logout,
+        setProfile,
         image,
         setImage,
-
       }}
     >
       {children}

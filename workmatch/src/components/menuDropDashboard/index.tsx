@@ -15,6 +15,7 @@ function Menu() {
   function logout() {
     localStorage.clear();
     navigate("/");
+    setMenuOpen(false);
   }
 
   return (
