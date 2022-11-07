@@ -9,12 +9,7 @@ import { ProjectContext } from "../../context/ProjectContext";
 function EditProfile() {
   const { editProfile, image, setImage } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
-
-  const [image, setImage] = useState(profilePic);
-  const [infoC, setInfo] = useState({});
   const { setShowEditModal } = useContext(ProjectContext);
-
-
 
   async function setProfilePic() {
     const { value: file } = await Swal.fire({
@@ -56,7 +51,7 @@ function EditProfile() {
             placeholder="Digite um novo apelido"
             {...register("userName")}
           />
-      
+
           <label htmlFor="bio">Editar bio: </label>
           <input
             id="bio"
@@ -85,7 +80,7 @@ function EditProfile() {
             <option value={"pleno"}>Pleno</option>
             <option value={"senior"}>Sênior</option>
           </select>
-        
+
           <button type="submit">Editar</button>
         </Form>
       </section>
