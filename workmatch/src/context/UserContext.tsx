@@ -4,8 +4,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
 
-import profilePic from "../assets/account.png"
-
+import profilePic from "../assets/account.png";
 
 const MySwal = withReactContent(Swal);
 
@@ -164,11 +163,7 @@ function UserProvider({ children }: iUserProviderChildren) {
   async function editProfile(info: iUserProfile) {
     const token = localStorage.getItem("WorkMatch:token");
     const userId = localStorage.getItem("WorkMatch:userId");
-
     const dataEditProfile = { ...info, avatar_url: image };
-
-
-    
 
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
@@ -197,7 +192,6 @@ function UserProvider({ children }: iUserProviderChildren) {
         logout,
         image,
         setImage,
-
       }}
     >
       {children}
