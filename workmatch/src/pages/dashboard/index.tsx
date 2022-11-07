@@ -8,6 +8,8 @@ import { useContext, useEffect, useState } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
 import Post from "../../components/post";
+import ModalCards from "../../components/modalCards";
+import ModalCreateProjects from "../../components/modalCreateProjects";
 
 
 
@@ -49,6 +51,7 @@ function Dashboard() {
   }, []);
 
   return (
+    <ModalCreateProjects/>
     <DashboardStyle>
       <HeaderDashboard>
         <div className="container containerHeader">

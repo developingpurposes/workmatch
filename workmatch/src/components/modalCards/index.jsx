@@ -32,7 +32,7 @@ function ModalCards({ handleModal, techs }) {
                   key={myProjects.id}
                   project={myProject}
                   onDelete={deleteProject}
-                  onEdit={onEdit}
+                  // onEdit={onEdit}
                 />
                 //  <Card
                 //    // key={tech}
