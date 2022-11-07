@@ -8,6 +8,7 @@ const MySwal = withReactContent(Swal);
 
 export interface iUserProfile {
   name: string;
+  userName: string;
   avatar_url: string;
   bio: string;
   level: string;

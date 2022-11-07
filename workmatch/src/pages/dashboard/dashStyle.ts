@@ -1,151 +1,97 @@
 import styled from "styled-components";
 
-const Header = styled.header`
-  background-color: #080017;
-  width: 100%;
-  border-bottom: 2px solid var(--color-5);
 
-  div {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-    padding: 5px;
-  }
 
-  .userInfos {
-    display: flex;
-
-    img {
-    }
-
-    .containerUser {
-      display: flex;
-      flex-direction: column;
-
-      h2 {
-        font-size: var(--font-size-4);
-        color: var(--color-6);
-      }
-      p {
-        font-size: 13px;
-        color: var(--color-6);
-      }
-    }
-  }
-
-  div > img {
-    max-width: 55px;
-  }
-
-  .divIcons {
-    align-items: center;
-  }
-`;
-
-export default Header;
-
-export const BodyDiv = styled.div`
+const DashboardStyle = styled.div`
+  background-color: var(--color-bg-dashboard);
   width: 100vw;
-  height: 100vh;
-  background-color: #080017;
+  min-height: 100vh;
 `;
 
-export const CardProjects = styled.div`
-  padding: 20px;
-
-  .userInfos {
-    padding: 5px;
+const HeaderDashboard = styled.header`
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 2px solid var(--color-4);
-    margin-bottom: 10px;
-
-    img {
-      align-self: flex-start;
-    }
-
-    .containerUser {
-      h2 {
-        color: var(--color-6);
-      }
-      p {
-        font-size: 12px;
-        color: var(--color-6);
-      }
-    }
-  }
-  .containerDate {
-    p {
-      font-size: 14px;
-      color: var(--color-6);
-    }
-
-    span {
-      font-size: 12px;
-      color: var(--color-6);
-    }
-  }
-
-  .containerProjects {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 450px;
-    margin: 0 auto;
-    gap: 20px;
-
-    li {
-      background-color: #3a008b;
-    }
-  }
-
-  .containerMain {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-
-    .containerImgTechs {
+    position: relative;
+    justify-content:center ;
+    width: 100%;
+    height: 100px;
+    background-color: var(--color-headerDashboard);
+    box-shadow: -1px -2px 9px 0px var(--color-6);
+    z-index: 101;
+    
+    .containerHeader{
       display: flex;
-      flex-direction: column;
-
-      img {
-        max-width: 180px;
-      }
-
-      span {
-        margin-top: 5px;
-        font-size: 12px;
-        color: var(--color-6);
-      }
-    }
-
-    .containerTextBtn {
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      height: 150px;
+      align-items: center;
+      max-width: 1400px;
+      padding: 16px;
 
-      p {
-        font-size: 14px;
-        color: var(--color-6);
+      img{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
       }
-
-      button {
-        background-color: var(--color-4);
-        color: var(--color-6);
-        height: 40px;
-        border: none;
-        border-radius: 10px;
-
-        font-size: 14px;
-        font-family: var(--font-df);
-        font-weight: var(--font-weigth-1);
+      .userActionIconsField{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+  
+          svg{
+            color: var(--color-6);
+            min-width: 30px;
+            min-height: 30px;
+          }
+  
+          .svgHover{
+            padding: 5px;
+            border-radius: 8px;
+            transition: 0.2s ease-in;
+          }
+  
+          .svgHover:hover{
+            background-color: #392D54;
+            transition: 0.2s ease-in;
+          }
+          
       }
+  
+      .userProfile{
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          cursor: pointer;
+        
+  
+          .infoUser{
+            display: none;
+          }
+      }
+    } 
 
-      &:hover {
-        cursor: pointer;
+@media(min-width: 767px){
+ 
+  .containerHeader{
+    .userProfile{
+      .infoUser{
+       display: flex;
+       flex-direction: column;
+       align-items: flex-end;
+       color: var(--color-6);
+       margin-right: 16px;
       }
     }
   }
-`;
+}
+
+      
+
+    
+    
+
+
+  
+
+  
+`
+export { DashboardStyle, HeaderDashboard };
+

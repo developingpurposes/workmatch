@@ -13,11 +13,11 @@ const Input = styled.input<IIpunt>`
      border: 2.5px solid var(--color-6);
      border-radius: 8px;
 
-     input::placeholder{
-          color: aliceblue;
+     &::placeholder{
+          color: var(--color-6);
      }
 
-     input:focus{
+     &:focus{
           border: 2.5px solid var(--color-4);
           background-color: var(--color-bg-focus-input);
           font-weight: var(--font-weigth-1);

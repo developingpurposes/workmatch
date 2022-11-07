@@ -1,23 +1,16 @@
-import DashboardStyle from "./dashStyle";
+import { DashboardStyle, HeaderDashboard } from "./dashStyle";
 import { CgFileAdd as AddPost, CgBell as BellNotificatin } from "react-icons/cg";
-
-import  { BodyDiv, CardProjects } from "./dashStyle";
 import Logo from "../../assets/logo.png";
-
-
-
+import imgUserDf from "../../assets/account.png"
 import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
-
 import api from "../../services";
-import imgDefault from "../../assets/default.png";
+import Menu from "../../components/menuDropDashboard";
+import Post from "../../components/post";
 
 
-import { AiFillLike } from "react-icons/ai";
 
-import SearchProject from "../../components/search";
-
-interface iProject {
+export interface iProject {
   description: string;
   techs: [];
   amount: string;
@@ -30,12 +23,14 @@ interface iProject {
     adminLevel: string;
     adminAvatar: string | null;
   };
+  
 }
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
-  const [projects, setProjects] = useState<iProject[]>([]);
+  const [projects, setProjects] = useState<iProject[]>([] as iProject[]);
   const token = localStorage.getItem("WorkMatch:token");
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     async function getProjects() {
@@ -50,61 +45,45 @@ function Dashboard() {
 
   return (
     <DashboardStyle>
-      <header>
-      
-        <img src={Logo} alt="logo da workMatch" />
-      
-        <div className="userActionIconsField">
-          <AddPost />
-          <SearchProject/>
-        </div>
+      <HeaderDashboard>
+        <div className="container containerHeader">
+          <img  src={Logo} alt="logo da workMatch" />
         
-          <div className="">
-            <img src={profile?.avatar_url} alt="" />
-            <div className="containerUser">
-              <h2>{profile?.name}</h2>
-              <p>{profile?.level}</p>
-            </div>
+          <div className="userActionIconsField ">
+            <AddPost className="svgHover" />
+            <BellNotificatin className="svgHover"/>
           </div>
-      </header>
-
-      <BodyDiv>
         
-        <CardProjects>
-          <ul className="containerProjects">
-            {projects.map((project) => (
-              <li key={project.id}>
-                <div className="userInfos">
-                  <img src="" alt="" />
-                  <div className="containerUser">
-                    <h2>{project.admin?.adminName}</h2>
-                    <p>{project.admin?.adminLevel}</p>
-                  </div>
-                  <div className="containerDate">
-                    <p>Data de criação:</p>
-                    <span>{project.date}</span>
-                  </div>
-                </div>
+          <div className="userProfile" onClick={()=>setMenuOpen(true)}>
+            {
+              profile?.avatar_url?
+                <img src={profile?.avatar_url} alt={profile?.userName}/>
+                :
+                <img src={imgUserDf} alt="ilustração de usuario" />
+            }
+            {
+              menuOpen? <Menu/> : false
+            }
 
-                <div className="containerMain">
-                  <div className="containerImgTechs">
-                    <img src={imgDefault} alt="imagem padrão" />
-                    <span>Techs: JS, ReactJS</span>
-                  </div>
-                  <div className="containerTextBtn">
-                    <p>{project.description}</p>
+            
+            <div className="infoUser">
+            
+              <h2>{profile?.userName}</h2>
 
-                    <button>
-                      Quero Ajudar
-                      <AiFillLike />
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </CardProjects>
-      </BodyDiv> 
+              {
+              profile?.level? <p>{profile?.level}</p> : <p>Está sem nivel</p>
+              } 
+            </div>
+
+          </div>
+        </div> 
+        
+        
+        
+      </HeaderDashboard>
+
+      <Post projects={projects} />        
+        
     </DashboardStyle>
     );
 }

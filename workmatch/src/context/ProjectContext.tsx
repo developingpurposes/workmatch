@@ -16,7 +16,6 @@ export interface iProject {
 }
 
 interface iProjectContext {
-
   projects: iProject[];
   setProjects: any;
 
@@ -24,7 +23,6 @@ interface iProjectContext {
   joinProject: (info: string) => void;
   getProjects: () => void;
   deleteProject: (info: string) => void;
-  acceptParticipant: (projectId: string, participantId: string) => void;
 }
 
 interface iProjectProviderChildren {
@@ -157,7 +155,6 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   return (
     <ProjectContext.Provider
       value={{
-
         projects,
         setProjects,
 
