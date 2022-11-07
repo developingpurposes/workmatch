@@ -13,6 +13,12 @@ export interface iProject {
   date: string;
   avatar_url: string;
   id: number;
+  admin: {
+    adminId: string;
+    adminName: string;
+    adminLevel: string;
+    adminAvatar: string;
+  };
 }
 
 interface iProjectContext {
@@ -23,6 +29,7 @@ interface iProjectContext {
   joinProject: (info: string) => void;
   getProjects: () => void;
   deleteProject: (info: string) => void;
+  acceptParticipant: (projectId: string, participantId: string) => void;
 }
 
 interface iProjectProviderChildren {
@@ -82,9 +89,9 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
       ...info,
       admin: {
         adminId: userId,
-        adminName: profile?.name,
-        adminLevel: profile?.level,
-        adminAvatar: profile?.avatar_url,
+        adminName: profile.name,
+        adminLevel: profile.level,
+        adminAvatar: profile.avatar_url,
       },
       listParticipants: [],
       queueParticipants: [],
@@ -151,13 +158,29 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
       });
     }
   }
+  //  async function editProject(projectId: string,info:iProject) {
+  //   try {
+  //     await api.patch(`/projects/${projectId}`,info);
+  //     ToastSuccess.fire({
+  //       icon: "success",
+  //       iconColor: "#168821",
+  //       title: `Projeto deletado com sucesso`,
+  //     });
+  //   } catch (error) {
+  //     ToastError.fire({
+  //       icon: "error",
+  //       iconColor: "#EC8697",
+  //       title: `Não foi possivel deletar o projeto`,
+  //     });
+  //   }
+  // }
 
   return (
     <ProjectContext.Provider
       value={{
         projects,
         setProjects,
-
+        acceptParticipant,
         createProject,
         joinProject,
         getProjects,
