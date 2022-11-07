@@ -3,24 +3,29 @@ import imgLand from "../../assets/backgroundLandPage1.png";
 import Card from "../cards";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 
 function ModalCreateProjects({ handleModal, techs }) {
   const animatedComponents = makeAnimated();
+  const [selectTechs, setSelectTechs] = useState([])
 
-  
   const schemaLogin = yup.object().shape({
-      description: yup.string(),
-      urlImg: yup.string(),
-      membersLength: yup.string(),
-      date: yup.string(),
-      techs: yup.string(),
-    });
+    description: yup.string(),
+    urlImg: yup.string(),
+    membersLength: yup.string(),
+    date: yup.string(),
+    techs: yup.string(),
+  });
 
-    const{register, handleSubmit, control,  formState: {errors}}=useForm({resolver: yupResolver(schemaLogin)})
-    
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schemaLogin) });
+
   const options = [
     { value: "react", label: "react" },
     { value: "typescript", label: "typescript" },
@@ -31,9 +36,21 @@ function ModalCreateProjects({ handleModal, techs }) {
     { value: "html", label: "html" },
   ];
 
-  function onSubmit(data){
-    console.log(data)
+  function onSubmit(data) {
+    console.log(data);
   }
+
+  const customStyles = {
+    menu: (provided, state) => ({
+    ...provided,
+    width: state.selectProps.width,
+    borderBottom: '1px dotted pink',
+    color: state.selectProps.menuColor,
+    padding: 20,
+  }),
+
+};
+
 
   return (
     <C.ContainerModal>
@@ -45,16 +62,13 @@ function ModalCreateProjects({ handleModal, techs }) {
         <C.Form onSubmit={handleSubmit(onSubmit)}>
           <img src={imgLand} alt="texto alternativo" />
           <label htmlFor="description">Descrição do projeto:</label>
-          <Controller
-           name="firstName"
-           control={control}
-           render={({ register }) => <input
-           id="description"
-           type="text"
-           placeholder="Digite a desrição do projeto"
-           {...register("description")} />}
+          <input
+            id="description"
+            type="text"
+            placeholder="Digite a desrição do projeto"
+            {...register("description")}
           />
-          {/* <label htmlFor="urlImg">Imagem do projeto:</label>
+          <label htmlFor="urlImg">Imagem do projeto:</label>
           <input
             id="urlImg"
             type="text"
@@ -75,24 +89,20 @@ function ModalCreateProjects({ handleModal, techs }) {
             placeholder="Digite a data de hoje"
             {...register("urlImg")}
           />
-
-            <Controller
-                as={
-                <Select
-                id="techs"
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                defaultValue={[options[4], options[5]]}
-                isMulti
-                options={options}
-                {...register("techs")}
-                />
-                  }
-                  name={options.name}
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: true }}
-                /> */}
+            <Select
+            styles={customStyles}
+            {...register("techs")}
+            className="selectForm"
+            value={selectTechs}
+            onChange={(selectValues) => {
+                setSelectTechs(selectValues);
+              }}
+            closeMenuOnSelect={false}
+            components={animatedComponents}
+            defaultValue={[options[4], options[5]]}
+            isMulti
+            options={options}
+          />
           <C.ButtonCreate>Criar</C.ButtonCreate>
         </C.Form>
       </C.DivModal>

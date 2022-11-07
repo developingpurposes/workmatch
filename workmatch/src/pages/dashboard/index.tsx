@@ -10,7 +10,10 @@ import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
-import Post from "../../components/Post";
+import Post from "../../components/post";
+import ModalCards from "../../components/modalCards";
+import ModalCreateProjects from "../../components/modalCreateProjects";
+
 
 import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
@@ -72,6 +75,7 @@ function Dashboard() {
   }
 
   return (
+    <ModalCreateProjects/>
     <DashboardStyle>
       {showEditModal ? <EditProfile /> : null}
       {showCreateModal ? <ModalCreateProjects handleModal techs /> : null}

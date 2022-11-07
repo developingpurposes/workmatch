@@ -4,10 +4,7 @@ import axios from "axios";
 //   baseURL: "http://localhost:3001",
 // });
 const api = axios.create({
-
-baseURL: "https://jsonwnorkmatch.herokuapp.com",
-
+  baseURL: "http://localhost:3001",
 });
-
 
 export default api;
