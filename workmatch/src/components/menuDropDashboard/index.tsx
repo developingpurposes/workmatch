@@ -15,6 +15,7 @@ function Menu() {
     localStorage.clear();
     setShowEditModal(false);
     navigate("/");
+    setMenuOpen(false);
   }
 
   return (

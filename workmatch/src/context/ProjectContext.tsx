@@ -1,10 +1,7 @@
 import { createContext, useState, ReactNode, useContext } from "react";
 import api from "../services";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import { ToastError, ToastSuccess } from "../services/toast";
 import { UserContext } from "./UserContext";
-
-const MySwal = withReactContent(Swal);
 
 export interface iProject {
   description: string;
@@ -23,8 +20,7 @@ export interface iProject {
 
 interface iProjectContext {
   projects: iProject[];
-  setProjects: any;
-
+  setProjects: React.Dispatch<React.SetStateAction<iProject[]>>;
   createProject: (info: iProject) => void;
   joinProject: (info: string) => void;
   getProjects: () => void;
@@ -55,34 +51,6 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [myProjectsModal, setMyProjectsModal] = useState(false);
-
-  const ToastSuccess = MySwal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 1500,
-    background: "#168821",
-    color: "#FFFFFF",
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", MySwal.stopTimer);
-      toast.addEventListener("mouseleave", MySwal.resumeTimer);
-    },
-  });
-
-  const ToastError = MySwal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 1500,
-    background: "#B53147",
-    color: "#FFFFFF",
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", MySwal.stopTimer);
-      toast.addEventListener("mouseleave", MySwal.resumeTimer);
-    },
-  });
 
   const token = localStorage.getItem("WorkMatch:token");
   const userId = localStorage.getItem("WorkMatch:userId");
@@ -127,6 +95,11 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
       const { data } = await api.get(`/projects/${projectId}`);
       const info = { queueParticipants: [...data.queueParticipants, profile] };
       await api.patch(`/projects/${projectId}`, info);
+      ToastSuccess.fire({
+        icon: "success",
+        iconColor: "#168821",
+        title: `você esta na lista de espera para aprovação`,
+      });
     } catch (error) {
       ToastError.fire({
         icon: "error",

@@ -2,15 +2,58 @@ import EditProfileStyle from "./editProfileStyle";
 import Form from "../../styles/form";
 import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { ProjectContext } from "../../context/ProjectContext";
+import api from "../../services";
+import { ToastError, ToastSuccess } from "../../services/toast";
 
 function EditProfile() {
-  const { editProfile, image, setImage } = useContext(UserContext);
+  const { image, setImage, setProfile, profile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
   const { setShowEditModal } = useContext(ProjectContext);
 
+  async function editProfile(info: iUserProfile) {
+    const token = localStorage.getItem("WorkMatch:token");
+    const userId = localStorage.getItem("WorkMatch:userId");
+
+    if (info.avatar_url === "") {
+      info.avatar_url = profile.avatar_url;
+    }
+    if (info.bio === "") {
+      info.bio = profile.bio;
+    }
+    if (info.contact === "") {
+      info.contact = profile.contact;
+    }
+
+    if (info.userName === "") {
+      info.userName = profile.userName;
+    }
+    if (info.level === "") {
+      info.level = profile.level;
+    }
+    
+    const dataEditProfile = { ...info, avatar_url: image };
+
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      await api.patch(`/users/${userId}`, dataEditProfile);
+      ToastSuccess.fire({
+        icon: "success",
+        iconColor: "#168821",
+        title: `Usuario modificado com sucesso!`,
+      });
+      setShowEditModal(false);
+      setProfile(dataEditProfile);
+    } catch (error) {
+      ToastError.fire({
+        icon: "error",
+        iconColor: "#EC8697",
+        title: `Não foi possivel atualizar seu perfil`,
+      });
+    }
+  }
   async function setProfilePic() {
     const { value: file } = await Swal.fire({
       title: "Select image",
@@ -76,9 +119,9 @@ function EditProfile() {
           <label htmlFor="level">Editar nível: </label>
           <select {...register("level")}>
             <option value={""}>Selecione um novo nível</option>
-            <option value={"junior"}>Júnior</option>
-            <option value={"pleno"}>Pleno</option>
-            <option value={"senior"}>Sênior</option>
+            <option value={"Júnior"}>Júnior</option>
+            <option value={"Pleno"}>Pleno</option>
+            <option value={"Sênior"}>Sênior</option>
           </select>
 
           <button type="submit">Editar</button>
