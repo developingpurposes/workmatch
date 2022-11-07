@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
 import Post from "../../components/post";
+import EditProfile from "../../components/modalEditProfile";
 
 
 
@@ -88,7 +89,7 @@ function Dashboard() {
       </HeaderDashboard>
 
       <Post projects={projects} />        
-        
+        <EditProfile/>
     </DashboardStyle>
     );
 

@@ -4,8 +4,12 @@ const EditProfileStyle = styled.div`
   min-height: 100vh;
   position: absolute;
   top: 0;
-  background-color: var(--color-bg-form);
+  background-color: rgb(0,0,0,0.5);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
   display: flex;
   align-items: center;
   justify-content: center;
