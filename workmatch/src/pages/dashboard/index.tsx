@@ -67,38 +67,17 @@ function Dashboard() {
       </Header>
       <BodyDiv>
         <CardProjects>
-          <ul className="containerProjects">
-            {projects.map((project) => (
-              <li key={project.id}>
-                <div className="userInfos">
-                  <img src="" alt="" />
-                  <div className="containerUser">
-                    <h2>{project.admin.adminName}</h2>
-                    <p>{project.admin.adminLevel}</p>
-                  </div>
-                  <div className="containerDate">
-                    <p>Data de criação:</p>
-                    <span>{project.date}</span>
-                  </div>
-                </div>
 
-                <div className="containerMain">
-                  <div className="containerImgTechs">
-                    <img src={imgDefault} alt="imagem padrão" />
-                    <span>Techs: JS, ReactJS</span>
-                  </div>
-                  <div className="containerTextBtn">
-                    <p>{project.description}</p>
 
-                    <button>
-                      Quero Ajudar
-                      <AiFillLike />
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="userInfos">
+            <img src="" alt="" />
+            <h2>a</h2>
+            <p>b</p>
+          </div>
+          <div className="creationDate">
+            <p>Data de criação:</p>
+          </div>
+
         </CardProjects>
       </BodyDiv>
     </>

@@ -9,6 +9,9 @@ const Form = styled.form`
   align-items: center;
   gap: 5px;
 
+  &:focus-within {
+    color: beige;
+  }
 
   &:focus-within{
     color: beige;
@@ -19,12 +22,18 @@ const Form = styled.form`
     color: var(--color-6);
     align-self: baseline;
     font: var(--label);
+
+    margin-left: 10px;
   }
 
-
-  label:focus-within{
+  label:focus-within {
     color: var(--color-4);
   }
+
+  input {
+    width: 90%;
+    padding: 12px;
+
 
 
   input {
@@ -49,28 +58,40 @@ const Form = styled.form`
     background-color: var(--color-bg-focus-input);
     font-weight: var(--font-weigth-1);
 
+    border-radius: 8px;
+  }
+
+  input::placeholder {
+    color: aliceblue;
+  }
+
+  input:focus {
+    border: 2.5px solid var(--color-4);
+    background-color: var(--color-bg-focus-input);
+    font-weight: var(--font-weigth-1);
   }
 
   button {
     background-color: var(--color-4);
     color: var(--color-6);
-
-    width: 100%;
+    width: 90%;
     height: 40px;
 
-   
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
 
-    font:var(--text-button);
-    
+    font: var(--text-button);
+
+
     margin-top: 30px;
     margin-bottom: 20px;
   }
 
-  button:hover , button:active {   
+
+  button:hover,
+  button:active {
     filter: brightness(0.9);
-    color: var(--color-6); 
+    color: var(--color-6);
   }
 `;
 
