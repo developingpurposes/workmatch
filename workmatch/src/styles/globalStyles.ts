@@ -12,10 +12,14 @@ const GlobalStyles = createGlobalStyle`
 	--color-6: #F8F8F8;
 
 	/* other colors */
-	--color-bg-form       : #23005B60;
-	--color-bg-input      : #F8F8F815;
-	--color-bg-focus-input: #496f95;
-	--color-error         : #F46467;
+	--color-bg-form        : #23005B60;
+	--color-bg-input       : #F8F8F815;
+	--color-bg-focus-input : #496f95;
+	--color-error          : #F46467;
+	--color-headerDashboard: #1B132C;
+	--color-bg-dashboard   : #080017;
+	--color-hoverIcons     : #392D54;
+	--color-bg-post        : #24242473;
 
 	/* shades of gray */
 	--gray-0: #868E96;

@@ -1,18 +1,18 @@
-import Header, { BodyDiv, CardProjects } from "./dashStyle";
+import { DashboardStyle, HeaderDashboard } from "./dashStyle";
+import { CgFileAdd as AddPost, CgBell as BellNotificatin } from "react-icons/cg";
 import Logo from "../../assets/logo.png";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { IconContext } from "react-icons";
-import { AiOutlinePlus } from "react-icons/ai";
 
+import imgUserDf from "../../assets/account.png"
 import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect, useState } from "react";
-import "./bodyDash.css";
 import api from "../../services";
-import imgDefault from "../../assets/default.png";
+import Menu from "../../components/menuDropDashboard";
+import Post from "../../components/post";
 
-import { AiFillLike } from "react-icons/ai";
 
-interface iProject {
+
+export interface iProject {
+
   description: string;
   techs: [];
   amount: string;
@@ -25,12 +25,16 @@ interface iProject {
     adminLevel: string;
     adminAvatar: string | null;
   };
+
 }
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
+
+  const [projects, setProjects] = useState<iProject[]>([] as iProject[]);
   const token = localStorage.getItem("WorkMatch:token");
-  const [projects, setProjects] = useState<iProject[]>([]);
+  const [menuOpen, setMenuOpen] = useState(false)
+
 
   useEffect(() => {
     async function getProjects() {
@@ -41,47 +45,53 @@ function Dashboard() {
       } catch (error) {}
     }
     getProjects();
-  }, [token]);
+
+  }, []);
 
   return (
-    <>
-      <Header>
-        <div>
-          <img src={Logo} alt="logo" />
-          <IconContext.Provider
-            value={{ color: "white", className: "iconSearch" }}
-          >
-            <div className="divIcons">
-              <AiOutlinePlus />
-              <BiSearchAlt2 />
+    <DashboardStyle>
+      <HeaderDashboard>
+        <div className="container containerHeader">
+          <img  src={Logo} alt="logo da workMatch" />
+        
+          <div className="userActionIconsField ">
+            <AddPost className="svgHover" />
+            <BellNotificatin className="svgHover"/>
+          </div>
+        
+          <div className="userProfile" onClick={()=>setMenuOpen(true)}>
+            {
+              profile?.avatar_url?
+                <img src={profile?.avatar_url} alt={profile?.userName}/>
+                :
+                <img src={imgUserDf} alt="ilustração de usuario" />
+            }
+            {
+              menuOpen? <Menu/> : false
+            }
+
+            
+            <div className="infoUser">
+            
+              <h2>{profile?.userName}</h2>
+
+              {
+              profile?.level? <p>{profile?.level}</p> : <p>Está sem nivel</p>
+              } 
             </div>
-          </IconContext.Provider>
-          <div className="userInfos">
-            <img src={profile.avatar_url} alt="" />
-            <div className="containerUser">
-              <h2>{profile.name}</h2>
-              <p>{profile.level}</p>
-            </div>
-          </div>
-        </div>
-      </Header>
-      <BodyDiv>
-        <CardProjects>
 
-
-          <div className="userInfos">
-            <img src="" alt="" />
-            <h2>a</h2>
-            <p>b</p>
           </div>
-          <div className="creationDate">
-            <p>Data de criação:</p>
-          </div>
+        </div> 
+        
+        
+        
+      </HeaderDashboard>
 
-        </CardProjects>
-      </BodyDiv>
-    </>
-  );
+      <Post projects={projects} />        
+        
+    </DashboardStyle>
+    );
+
 }
 
 export default Dashboard;
