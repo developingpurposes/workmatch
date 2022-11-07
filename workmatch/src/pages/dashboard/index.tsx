@@ -11,10 +11,13 @@ import { useContext, useEffect, useState } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
 import Post from "../../components/post";
+
 import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
 import EditProfile from "../../components/modalEditProfile";
 import ModalCards from "../../components/modalCards";
+
+
 
 export interface iProject {
   description: string;
@@ -106,7 +109,9 @@ function Dashboard() {
         </div>
       </HeaderDashboard>
 
+
       <Post projects={projects} />
+
     </DashboardStyle>
   );
 }
