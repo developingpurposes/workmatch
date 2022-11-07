@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom";
 const MySwal = withReactContent(Swal);
 
 export interface iUserProfile {
-  name: string;
-  userName: string;
-  avatar_url: string;
-  bio: string;
-  level: string;
-  contact: string;
-  techs: [];
+  userName?: string;
+  password?: string;
+  name?: string;
+  avatar_url?: string;
+  bio?: string;
+  level?: string;
+  contact?: string;
+  techs?: [];
 }
 
 export interface iUserLogin {
@@ -160,6 +161,8 @@ function UserProvider({ children }: iUserProviderChildren) {
   async function editProfile(info: iUserProfile) {
     const token = localStorage.getItem("WorkMatch:Token");
     const userId = localStorage.getItem("WorkMatch:userId");
+
+    console.log(info);
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       await api.patch(`/users/${userId}`, info);

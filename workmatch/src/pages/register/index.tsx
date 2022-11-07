@@ -5,9 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { iRegisterUser, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
-import Form from "../../styles/form";
 import schemaRegister from "./registerSchema";
-import { RiLoginBoxFill as IconLogin} from 'react-icons/ri';
+import { RiLoginBoxFill as IconLogin } from "react-icons/ri";
+import Form from "../../styles/form";
+
 
 function Register() {
   const { userRegister } = useContext(UserContext);
@@ -15,7 +16,6 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-
   } = useForm<iRegisterUser>({ resolver: yupResolver(schemaRegister) });
 
   return (
@@ -25,7 +25,10 @@ function Register() {
       <section>
         <div>
           <h3>Crie sua conta</h3>
-          <Link className="btnBackLogin" to={"/login"}> Ir ao login <IconLogin/></Link>
+          <Link className="btnBackLogin" to={"/login"}>
+            Ir ao login <IconLogin />
+          </Link>
+
         </div>
 
         <Form onSubmit={handleSubmit(userRegister)}>
@@ -46,8 +49,6 @@ function Register() {
             {...register("name")}
           />
           <p className="error">{errors.name?.message}</p>
-
-
           <label htmlFor="email">Email: </label>
           <input
             id="email"
