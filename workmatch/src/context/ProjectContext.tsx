@@ -24,7 +24,7 @@ interface iProjectContext {
   joinProject: (info: string) => void;
   getProjects: () => void;
   deleteProject: (info: string) => void;
-  acceptParticipant: (projectId: string, participantId: string) => void;
+  // acceptParticipant: (projectId: string, participantId: string) => void;
 }
 
 interface iProjectProviderChildren {
