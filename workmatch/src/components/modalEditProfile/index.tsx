@@ -1,36 +1,16 @@
 import EditProfileStyle from "./editProfileStyle";
-import profilePic from "../../assets/account.png";
 import Form from "../../styles/form";
 import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Swal from "sweetalert2";
 
 function EditProfile() {
-  const { editProfile } = useContext(UserContext);
+  const { editProfile, image, setImage } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
-  const [image, setImage] = useState(profilePic);
-  const [infoC, setInfo] = useState({});
+ 
+  
 
-  function infoChanges(data: iUserProfile) {
-    if (data.userName !== "") {
-      setInfo({ ...infoC, userName: data.userName });
-    }
-    if (data.name !== "") {
-      setInfo({ ...infoC, name: data.name });
-    }
-    if (data.bio !== "") {
-      setInfo({ ...infoC, bio: data.bio });
-    }
-    if (data.contact !== "") {
-      setInfo({ ...infoC, contact: data.contact });
-    }
-    if (data.level !== "") {
-      setInfo({ ...infoC, level: data.level });
-    }
-
-    editProfile(infoC);
-  }
 
   async function setProfilePic() {
     const { value: file } = await Swal.fire({
@@ -64,7 +44,7 @@ function EditProfile() {
           alt="Change user icon"
         />
         <p>Trocar foto</p>
-        <Form onSubmit={handleSubmit(infoChanges)}>
+        <Form onSubmit={handleSubmit(editProfile)}>
           <label htmlFor="userName">Editar nome de usuário: </label>
           <input
             id="userName"
@@ -72,13 +52,7 @@ function EditProfile() {
             placeholder="Digite um novo apelido"
             {...register("userName")}
           />
-          {/* <label htmlFor="name">Editar nome completo: </label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Digite um novo nome"
-            {...register("name")}
-          /> */}
+      
           <label htmlFor="bio">Editar bio: </label>
           <input
             id="bio"
@@ -107,13 +81,7 @@ function EditProfile() {
             <option value={"pleno"}>Pleno</option>
             <option value={"senior"}>Sênior</option>
           </select>
-          {/* <label htmlFor="password">Editar senha: </label>
-          <input
-            id="password"
-            type="text"
-            placeholder="Digite suas nova senha"
-            {...register("password")}
-          /> */}
+        
           <button type="submit">Editar</button>
         </Form>
       </section>
