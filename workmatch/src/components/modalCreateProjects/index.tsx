@@ -1,12 +1,16 @@
 import * as C from "./modalCreateCardStyle";
-import Select from "react-select";
+import Select, { MultiValue } from "react-select";
 import makeAnimated from "react-select/animated";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { iProject, ProjectContext } from "../../context/ProjectContext";
+import { iProject, iTechs, ProjectContext } from "../../context/ProjectContext";
 import Swal from "sweetalert2";
+
+interface iSelect {
+  selectValues: iTechs;
+}
 
 function ModalCreateProjects() {
   const { setShowCreateModal, createProject, setSelectTechs, image, setImage } =
@@ -87,7 +91,7 @@ function ModalCreateProjects() {
 
           <Select
             id="SelectStyle"
-            onChange={(selectValues: {}) => {
+            onChange={(selectValues: any) => {
               setSelectTechs(selectValues);
             }}
             closeMenuOnSelect={false}

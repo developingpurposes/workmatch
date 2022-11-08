@@ -14,17 +14,15 @@ const Form = styled.form`
     color: beige;
   }
 
-  &:focus-within{
+  &:focus-within {
     color: beige;
   }
-
 
   label {
     color: var(--color-6);
     align-self: baseline;
     font: var(--label);
-
-    margin-left: 10px;
+    margin-left: 3%;
   }
 
   label:focus-within {
@@ -33,28 +31,19 @@ const Form = styled.form`
 
   input {
     width: 90%;
-    padding: 12px;
-  }
-
-
-  input {
-    width: 95%;
-    padding: 12px;
-    
+    padding: 8px;
     color: var(--color-6);
     background-color: var(--color-bg-input);
-
     border: 2.5px solid var(--color-6);
-
     border-radius: 8px;
-    
   }
 
-  input::placeholder{
+  input::placeholder {
     color: aliceblue;
+    opacity: 0.7;
   }
 
-  input:focus{
+  input:focus {
     border: 2.5px solid var(--color-4);
     background-color: var(--color-bg-focus-input);
     font-weight: var(--font-weigth-1);
@@ -83,24 +72,18 @@ const Form = styled.form`
 
     font: var(--text-button);
 
-
     margin-top: 30px;
     margin-bottom: 20px;
   }
 
-
-  button:hover
-  button:active {
+  button:hover button:active {
     filter: brightness(0.9);
     color: var(--color-6);
   }
 
-  .selectForm{
+  .selectForm {
     width: 100%;
   }
-
-
 `;
 
 export default Form;
-
