@@ -14,7 +14,6 @@ const HeaderDashboard = styled.header`
   height: 100px;
   background-color: var(--color-headerDashboard);
   box-shadow: -1px -2px 9px 0px var(--color-6);
-  z-index: 101;
 
   .containerHeader {
     display: flex;

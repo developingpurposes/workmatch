@@ -4,37 +4,16 @@ import {
   CgBell as BellNotificatin,
 } from "react-icons/cg";
 import Logo from "../../assets/logo.png";
-
 import imgUserDf from "../../assets/account.png";
 import { UserContext } from "../../context/UserContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import api from "../../services";
 import Menu from "../../components/menuDropDashboard";
 import Post from "../../components/post";
 import ModalCards from "../../components/modalCards";
 import ModalCreateProjects from "../../components/modalCreateProjects";
-
-
-import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
 import EditProfile from "../../components/modalEditProfile";
-import ModalCards from "../../components/modalCards";
-import { useNavigate } from "react-router-dom";
-
-export interface iProject {
-  description: string;
-  techs: [];
-  amount: string;
-  date: string;
-  avatar_url: string | null;
-  id: number;
-  admin: {
-    adminId: string;
-    adminName: string;
-    adminLevel: string;
-    adminAvatar: string | null;
-  };
-}
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
@@ -45,23 +24,32 @@ function Dashboard() {
     menuOpen,
     setMenuOpen,
     myProjectsModal,
+    projects,
+    myProjects,
+    setMyProjects,
+    setProjects,
   } = useContext(ProjectContext);
-  const [projects, setProjects] = useState<iProject[]>([] as iProject[]);
   const token = localStorage.getItem("WorkMatch:token");
-  const navigate = useNavigate();
+
   useEffect(() => {
     async function getProjects() {
+      const id = localStorage.getItem("WorkMatch:userId");
       try {
         api.defaults.headers.authorization = `Bearer ${token}`;
         const { data } = await api.get("/projects");
-        setProjects(data);
-      } catch (error) {
-        localStorage.clear();
-        navigate("/");
-      }
+        const myProjectsfilter = data.filter(
+          (project: any) => project.admin.adminId === id
+        );
+        const otherFilter = data.filter(
+          (project: any) => project.admin.adminId !== id
+        );
+        setMyProjects(myProjectsfilter);
+
+        setProjects(otherFilter);
+      } catch (error) {}
     }
     getProjects();
-  }, [navigate]);
+  }, [token, setMyProjects, setProjects]);
 
   function openOrClose() {
     if (menuOpen) {
@@ -70,16 +58,12 @@ function Dashboard() {
       setMenuOpen(true);
     }
   }
-  function teste() {
-    console.log(profile);
-  }
 
   return (
-    <ModalCreateProjects/>
     <DashboardStyle>
       {showEditModal ? <EditProfile /> : null}
-      {showCreateModal ? <ModalCreateProjects handleModal techs /> : null}
-      {myProjectsModal ? <ModalCards /> : null}
+      {showCreateModal ? <ModalCreateProjects /> : null}
+      {myProjectsModal ? <ModalCards myProjects={myProjects} /> : null}
       <HeaderDashboard>
         <div className="container containerHeader">
           <img src={Logo} alt="logo da workMatch" />
@@ -88,7 +72,7 @@ function Dashboard() {
             <button onClick={() => setShowCreateModal(true)}>
               <AddPost className="svgHover" />
             </button>
-            <button onClick={teste}>
+            <button>
               <BellNotificatin className="svgHover" />
             </button>
           </div>

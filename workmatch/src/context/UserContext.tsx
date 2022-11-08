@@ -38,7 +38,6 @@ interface iUserContext {
   userRegister: (info: iRegisterUser) => void;
   profile: iUserProfile;
   setProfile: React.Dispatch<React.SetStateAction<iUserProfile>>;
-  logout: () => void;
   image: string;
   setImage: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -65,16 +64,12 @@ function UserProvider({ children }: iUserProviderChildren) {
             iconColor: "#EC8697",
             title: `Seu token expirou logue novamente`,
           });
+          navigate("/");
         }
       }
     }
     loadUser();
   }, [navigate]);
-
-  function logout() {
-    localStorage.clear();
-    navigate("/");
-  }
 
   async function userLogin(info: iUserLogin) {
     try {
@@ -134,7 +129,6 @@ function UserProvider({ children }: iUserProviderChildren) {
         profile,
         userLogin,
         userRegister,
-        logout,
         setProfile,
         image,
         setImage,

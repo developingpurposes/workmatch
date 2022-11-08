@@ -6,7 +6,7 @@ import {
   SiReact as React,
 } from "react-icons/si";
 import { FaJava as Java, FaHandsHelping as Like } from "react-icons/fa";
-import { ProjectContext } from "../../context/ProjectContext";
+import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 
 function Post({ projects }: any) {
@@ -15,7 +15,7 @@ function Post({ projects }: any) {
   return (
     <PostStyle className="container">
       <ul>
-        {projects.map((project: any) => (
+        {projects.map((project: iProject) => (
           <li key={project.id}>
             <div className="containerImgPostAndTechs">
               <img src={imgPostDf} alt="imagem padrão" />
@@ -29,8 +29,8 @@ function Post({ projects }: any) {
             <div className="containerInfoPost">
               <div className="containerUserPost">
                 <div className="infoUser">
-                  <h2>Nickname</h2>
-                  <p>FrontEnd-Pleno</p>
+                  <h2>{project.admin.adminName}</h2>
+                  <p>{project.admin.adminLevel}</p>
                 </div>
                 <div className="containerDate">
                   <p>{project.date}</p>
