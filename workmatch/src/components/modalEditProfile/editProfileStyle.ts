@@ -25,8 +25,9 @@ const EditProfileStyle = styled.div`
     z-index: 2;
     top: 1px;
     margin: 10px 0;
-    padding: 20px;
+    padding: 18px;
     border-radius: 5px;
+    width: 60%;
 
     display: flex;
     flex-direction: column;
@@ -74,12 +75,31 @@ const EditProfileStyle = styled.div`
   }
 
   input {
-    margin-bottom: 10px;
+    width: 90%;
+    padding: 8px;
+    color: var(--color-6);
+    background-color: var(--color-bg-input);
+    border: 2.5px solid var(--color-6);
+    border-radius: 8px;
+  }
+
+  input::placeholder {
+    color: aliceblue;
+    opacity: 0.7;
+  }
+
+  select {
+    width: 95%;
+    padding: 8px;
+    color: var(--color-6);
+    background-color: var(--color-bg-input);
+    border: 2.5px solid var(--color-6);
+    border-radius: 8px;
   }
 
   @media (min-width: 767px) {
     section {
-      width: 40%;
+      width: 500px;
     }
   }
 `;

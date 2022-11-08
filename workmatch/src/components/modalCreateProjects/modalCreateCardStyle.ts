@@ -49,19 +49,31 @@ export const Form = styled.form`
     font-size: var(--font-size-5);
     color: white;
     align-self: baseline;
+    margin-left: 3%;
   }
 
   input {
-    width: 95%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px splid var(--color-6);
+    width: 90%;
+    padding: 8px;
+    color: var(--color-6);
+    background-color: var(--color-bg-input);
+    border: 2.5px solid var(--color-6);
+    border-radius: 8px;
   }
+
+  input::placeholder {
+    color: aliceblue;
+    opacity: 0.7;
+  }
+
   #SelectStyle {
-    width: 100%;
-    border-radius: 5px;
-    border: 1px splid var(--color-6);
+    width: 95%;
     max-width: 394px;
+    padding: 5px;
+    color: var(--color-1);
+    background-color: var(--color-bg-input);
+    border: 2.5px solid var(--color-6);
+    border-radius: 8px;
   }
 `;
 
