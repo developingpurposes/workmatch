@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import profilePic from "../assets/account.png";
 import { ToastError, ToastSuccess } from "../services/toast";
 
+
 export interface iUserProfile {
   userName?: string;
   password?: string;
