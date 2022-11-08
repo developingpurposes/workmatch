@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 
 function ModalCards({ myProjects }: any) {
-  const teste = true;
+  const teste = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
   return (
     <C.ContainerModal>
