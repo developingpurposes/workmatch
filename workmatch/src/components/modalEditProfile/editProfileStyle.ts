@@ -92,9 +92,15 @@ const EditProfileStyle = styled.div`
     width: 95%;
     padding: 8px;
     color: var(--color-6);
+    opacity: 0.7;
     background-color: var(--color-bg-input);
     border: 2.5px solid var(--color-6);
     border-radius: 8px;
+
+    option {
+      color: var(--color-1);
+      background-color: var(--color-6);
+    }
   }
 
   @media (min-width: 767px) {

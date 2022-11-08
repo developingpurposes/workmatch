@@ -4,7 +4,11 @@ import Card from "../cards";
 import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 
-function ModalCards({ myProjects }: any) {
+interface iMyProjects {
+  myProjects: iProject[];
+}
+
+function ModalCards({ myProjects }: iMyProjects) {
   const teste = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
   return (
