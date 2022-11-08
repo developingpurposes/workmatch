@@ -77,7 +77,7 @@ function Footer() {
               <a href="https://github.com/zRafael012">
                 <AiFillGithub color="#F8F8F8" size="20px" />
               </a>
-              <a href="s">
+              <a href="https://www.linkedin.com/in/rafael-soares-0aba8323b/">
                 <AiFillLinkedin color="#F8F8F8" size="20px" />
               </a>
             </div>

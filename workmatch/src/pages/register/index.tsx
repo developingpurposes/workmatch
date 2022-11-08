@@ -9,7 +9,6 @@ import schemaRegister from "./registerSchema";
 import { RiLoginBoxFill as IconLogin } from "react-icons/ri";
 import Form from "../../styles/form";
 
-
 function Register() {
   const { userRegister } = useContext(UserContext);
   const {
@@ -28,7 +27,6 @@ function Register() {
           <Link className="btnBackLogin" to={"/login"}>
             Ir ao login <IconLogin />
           </Link>
-
         </div>
 
         <Form onSubmit={handleSubmit(userRegister)}>
@@ -61,7 +59,7 @@ function Register() {
           <label htmlFor="password">Senha: </label>
           <input
             id="password"
-            type="text"
+            type="password"
             placeholder="Digite sua senha"
             {...register("password")}
           />
@@ -71,7 +69,7 @@ function Register() {
 
           <input
             id="verification"
-            type="text"
+            type="password"
             placeholder="Confirme sua senha"
             {...register("verification")}
           />
@@ -81,7 +79,6 @@ function Register() {
           <button type="submit">Cadastrar</button>
         </Form>
       </section>
-
     </RegisterStyle>
   );
 }

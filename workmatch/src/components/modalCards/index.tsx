@@ -1,47 +1,25 @@
 import * as C from "./modalCardOnStyle";
 import * as D from "./modalCardOffStyle";
 import Card from "../cards";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 
-function ModalCards() {
-  const { deleteProject, projects, setShowCreateModal, setMyProjectsModal } =
-    useContext(ProjectContext);
-  const [myProjects, setMyProjects] = useState<iProject[]>([]);
-  const myId = localStorage.getItem("WorkMatch:userId");
-  const techs = false;
-
-  // useEffect(() => {
-  //   getProjects();
-  //   console.log(projects);
-  // }, [getProjects, projects]);
-
-  function getMyProjects() {
-    const myProjectsfilter = projects.filter(
-      (acceptedParticipant) => acceptedParticipant.admin.adminId === myId
-    );
-
-    setMyProjects(myProjectsfilter);
-  }
-
+function ModalCards({ myProjects }: any) {
+  const teste = true;
+  const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
   return (
     <C.ContainerModal>
-      {techs ? (
+      {teste ? (
         <C.DivModal>
           <C.TitleModal>
             <h2>Meus Projetos</h2>
-            <button type="button">X</button>
+            <button type="button" onClick={() => setMyProjectsModal(false)}>
+              X
+            </button>
           </C.TitleModal>
           <ul>
-            {myProjects.map((myProject) => {
-              return (
-                <Card
-                  key={myProject.id}
-                  tech={myProject}
-                  onDelete={deleteProject}
-                  onEdit={techs}
-                />
-              );
+            {myProjects.map((myProject: iProject) => {
+              return <Card key={myProject.id} project={myProject} />;
             })}
           </ul>
         </C.DivModal>

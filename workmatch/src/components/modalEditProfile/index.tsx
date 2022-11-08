@@ -33,6 +33,7 @@ function EditProfile() {
     if (info.level === "") {
       info.level = profile.level;
     }
+    
     const dataEditProfile = { ...info, avatar_url: image };
 
     try {
@@ -53,7 +54,6 @@ function EditProfile() {
       });
     }
   }
-
   async function setProfilePic() {
     const { value: file } = await Swal.fire({
       title: "Select image",

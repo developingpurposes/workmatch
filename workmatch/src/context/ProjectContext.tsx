@@ -1,17 +1,21 @@
 import { createContext, useState, ReactNode, useContext } from "react";
 import api from "../services";
+import imgLand from "../assets/default.png";
 import { ToastError, ToastSuccess } from "../services/toast";
-import { UserContext } from "./UserContext";
+import { iUserProfile, UserContext } from "./UserContext";
 
 export interface iProject {
+  name: string;
   description: string;
   techs: [];
   amount: string;
   date: string;
-  avatar_url: string;
+  projectImg: string;
   id: number;
+  queueParticipants: iUserProfile;
+  listsParticipants: iUserProfile;
   admin: {
-    adminId: string;
+    adminId: number;
     adminName: string;
     adminLevel: string;
     adminAvatar: string;
@@ -22,9 +26,8 @@ interface iProjectContext {
   projects: iProject[];
   setProjects: React.Dispatch<React.SetStateAction<iProject[]>>;
   createProject: (info: iProject) => void;
-  joinProject: (info: string) => void;
-  getProjects: () => void;
-  deleteProject: (info: string) => void;
+  joinProject: (info: number) => void;
+  deleteProject: (info: number) => void;
   acceptParticipant: (projectId: string, participantId: string) => void;
   showCreateModal: boolean;
   setShowCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,6 +37,11 @@ interface iProjectContext {
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   myProjectsModal: boolean;
   setMyProjectsModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectTechs: React.Dispatch<React.SetStateAction<{}>>;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+  image: string;
+  myProjects: iProject[];
+  setMyProjects: React.Dispatch<React.SetStateAction<iProject[]>>;
 }
 
 interface iProjectProviderChildren {
@@ -51,22 +59,18 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [myProjectsModal, setMyProjectsModal] = useState(false);
+  const [selectTechs, setSelectTechs] = useState({});
+  const [image, setImage] = useState(imgLand);
+  const [myProjects, setMyProjects] = useState<iProject[]>([]);
 
   const token = localStorage.getItem("WorkMatch:token");
   const userId = localStorage.getItem("WorkMatch:userId");
 
-  async function getProjects() {
-    try {
-      api.defaults.headers.authorization = `Bearer ${token}`;
-      const { data } = await api.get("/projects");
-
-      setProjects(data);
-    } catch (error) {}
-  }
-
   async function createProject(info: iProject) {
     const newInfo = {
       ...info,
+      projectImg: image,
+      techs: selectTechs,
       admin: {
         adminId: userId,
         adminName: profile.name,
@@ -79,7 +83,13 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       const response = await api.post("/projects", newInfo);
-      setProjects([...projects, response.data]);
+      setMyProjects([...myProjects, response.data]);
+      setShowCreateModal(false);
+      ToastSuccess.fire({
+        icon: "success",
+        iconColor: "#168821",
+        title: `Projeto criado com sucesso`,
+      });
     } catch (error) {
       ToastError.fire({
         icon: "error",
@@ -89,7 +99,7 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
     }
   }
 
-  async function joinProject(projectId: string) {
+  async function joinProject(projectId: number) {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       const { data } = await api.get(`/projects/${projectId}`);
@@ -127,7 +137,7 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
     } catch (error) {}
   }
 
-  async function deleteProject(projectId: string) {
+  async function deleteProject(projectId: number) {
     try {
       await api.delete(`/projects/${projectId}`);
       ToastSuccess.fire({
@@ -135,6 +145,10 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
         iconColor: "#168821",
         title: `Projeto deletado com sucesso`,
       });
+      const notDeleted = myProjects.filter(
+        (notDeletedProjects) => notDeletedProjects.id !== projectId
+      );
+      setMyProjects(notDeleted);
     } catch (error) {
       ToastError.fire({
         icon: "error",
@@ -143,22 +157,6 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
       });
     }
   }
-  //  async function editProject(projectId: string,info:iProject) {
-  //   try {
-  //     await api.patch(`/projects/${projectId}`,info);
-  //     ToastSuccess.fire({
-  //       icon: "success",
-  //       iconColor: "#168821",
-  //       title: `Projeto deletado com sucesso`,
-  //     });
-  //   } catch (error) {
-  //     ToastError.fire({
-  //       icon: "error",
-  //       iconColor: "#EC8697",
-  //       title: `Não foi possivel deletar o projeto`,
-  //     });
-  //   }
-  // }
 
   return (
     <ProjectContext.Provider
@@ -168,7 +166,6 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
         acceptParticipant,
         createProject,
         joinProject,
-        getProjects,
         deleteProject,
         showCreateModal,
         setShowCreateModal,
@@ -178,6 +175,11 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
         setMenuOpen,
         myProjectsModal,
         setMyProjectsModal,
+        setSelectTechs,
+        setImage,
+        image,
+        myProjects,
+        setMyProjects,
       }}
     >
       {children}
