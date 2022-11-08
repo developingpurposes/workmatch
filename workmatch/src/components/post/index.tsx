@@ -9,7 +9,11 @@ import { FaJava as Java, FaHandsHelping as Like } from "react-icons/fa";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 
-function Post({ projects }: any) {
+interface iPosts {
+  projects: iProject[];
+}
+
+function Post({ projects }: iPosts) {
   const { joinProject } = useContext(ProjectContext);
 
   return (

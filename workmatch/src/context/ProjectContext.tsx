@@ -4,16 +4,21 @@ import imgLand from "../assets/default.png";
 import { ToastError, ToastSuccess } from "../services/toast";
 import { iUserProfile, UserContext } from "./UserContext";
 
+export interface iTechs {
+  value: string;
+  label: string;
+}
+
 export interface iProject {
   name: string;
   description: string;
-  techs: [];
+  techs: iTechs[];
   amount: string;
   date: string;
   projectImg: string;
   id: number;
-  queueParticipants: iUserProfile;
-  listsParticipants: iUserProfile;
+  queueParticipants: iUserProfile[];
+  listParticipants: iUserProfile[];
   admin: {
     adminId: number;
     adminName: string;
