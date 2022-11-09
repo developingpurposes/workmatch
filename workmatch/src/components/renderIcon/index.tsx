@@ -18,7 +18,7 @@ function RenderIcon({ arrTechs }: iRenderIcon) {
   return (
     <>
       {newArr.map((elt, i) => (
-        <div key={i}>{elt}</div>
+        <div className="divIcons" key={i}>{elt}</div>
       ))}
     </>
   );

@@ -21,8 +21,8 @@ function LandpageSecond() {
       <section>
         <img src={groupImg} alt="Imagem de um grupo trabalhando" />
         <h2>
-          Proporcionamos o acesso a pessoas que estejam alinhadas com as
-          tecnologias do seu projeto. Devs que tenham o potencial e que
+          Proporcionamos o acesso à pessoas com os interesses alinhados e que possuam as
+          tecnologias que o seu projeto necessita. Devs que tenham o potencial que você almeja e que
           acreditem na sua causa!
         </h2>
       </section>
