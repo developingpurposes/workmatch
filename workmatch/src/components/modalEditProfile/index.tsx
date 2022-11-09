@@ -2,16 +2,22 @@ import EditProfileStyle from "./editProfileStyle";
 import Form from "../../styles/form";
 import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Swal from "sweetalert2";
 import { ProjectContext } from "../../context/ProjectContext";
 import api from "../../services";
 import { ToastError, ToastSuccess } from "../../services/toast";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import { DataBaseTechs } from "../../services/dataBaseTechs";
 
 function EditProfile() {
   const { image, setImage, setProfile, profile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
   const { setShowEditModal } = useContext(ProjectContext);
+
+  const { setSelectTechs } = useContext(ProjectContext);
+  const animatedComponents = makeAnimated();
 
   async function editProfile(info: iUserProfile) {
     const token = localStorage.getItem("WorkMatch:token");
@@ -33,7 +39,7 @@ function EditProfile() {
     if (info.level === "") {
       info.level = profile.level;
     }
-    
+
     const dataEditProfile = { ...info, avatar_url: image };
 
     try {
@@ -109,20 +115,23 @@ function EditProfile() {
             placeholder="Digite um novo contato"
             {...register("contact")}
           />
-          <label htmlFor="techs">Editar tecnologias: </label>
-          <input
-            id="techs"
-            type="text"
-            placeholder="Digite suas tecnologias"
-            {...register("techs")}
+
+          <Select
+            defaultValue={[DataBaseTechs[2], DataBaseTechs[3]]}
+            isMulti
+            name="colors"
+            options={DataBaseTechs}
+            className="basic-multi-select"
+            classNamePrefix="select"
           />
-          <label htmlFor="level">Editar nível: </label>
-          <select {...register("level")}>
+
+          {/*<label htmlFor="level">Editar nível: </label>
+                     <select {...register("level")}>
             <option value={""}>Selecione um novo nível</option>
             <option value={"Júnior"}>Júnior</option>
             <option value={"Pleno"}>Pleno</option>
             <option value={"Sênior"}>Sênior</option>
-          </select>
+          </select> */}
 
           <button type="submit">Editar</button>
         </Form>

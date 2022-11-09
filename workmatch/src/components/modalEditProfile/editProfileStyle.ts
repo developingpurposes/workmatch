@@ -28,6 +28,7 @@ const EditProfileStyle = styled.div`
     padding: 18px;
     border-radius: 5px;
     width: 60%;
+    height: 90%;
 
     display: flex;
     flex-direction: column;
@@ -86,6 +87,10 @@ const EditProfileStyle = styled.div`
   input::placeholder {
     color: aliceblue;
     opacity: 0.7;
+  }
+
+  form {
+    gap: 20px;
   }
 
   select {

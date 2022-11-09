@@ -46,6 +46,17 @@ function ModalCreateProjects() {
     resolver: yupResolver(schemaLogin),
   });
 
+  const options = [
+    { value: "React", label: "React" },
+    { value: "Typescript", label: "Typescript" },
+    { value: "JSvanilla", label: "JSVanilla" },
+    { value: "Phyton", label: "Phyton" },
+    { value: "Node", label: "Node" },
+    { value: "Css", label: "Css" },
+    { value: "Html", label: "Html" },
+    { value: "Next", label: "Next" },
+  ];
+
   return (
     <C.ContainerModal>
       <C.DivModal>
