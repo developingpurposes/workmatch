@@ -15,7 +15,6 @@ function ModalCards({ myProjects }: iMyProjects) {
   const teste = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
 
-
   return (
     <C.ContainerModal>
       {teste ? (
@@ -26,16 +25,17 @@ function ModalCards({ myProjects }: iMyProjects) {
               X
             </button>
           </C.TitleModal>
-            <ul>
+          <ul>
             <Swiper>
-            {myProjects.map((myProject: iProject) => {
-              return (
-              <SwiperSlide>
-              <Card key={myProject.id} project={myProject} />;
-              </SwiperSlide>)
+              {myProjects.map((myProject: iProject) => {
+                return (
+                  <SwiperSlide>
+                    <Card key={myProject.id} project={myProject} />;
+                  </SwiperSlide>
+                );
               })}
             </Swiper>
-            </ul>
+          </ul>
         </C.DivModal>
       ) : (
         <D.DivModal>
