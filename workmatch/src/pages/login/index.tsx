@@ -46,11 +46,11 @@ function Login() {
             ""
           )}
           <button type="submit">Login</button>
+          <h4>Ainda não é cadastrado?</h4>
+          <Link className="otherButton" to={"/register"}>
+            Registre-se
+          </Link>
         </Form>
-        <h4>Ainda não é cadastrado?</h4>
-        <Link className="otherButton" to={"/register"}>
-          Registre-se
-        </Link>
       </section>
     </LoginStyle>
   );

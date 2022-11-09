@@ -1,7 +1,7 @@
 import styled from "styled-components";
 const EditProfileStyle = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  height: 108%;
   position: absolute;
   top: 0;
 
@@ -28,7 +28,6 @@ const EditProfileStyle = styled.div`
     padding: 0px 18px;
     border-radius: 5px;
     width: 60%;
-    height: 90%;
 
     display: flex;
     flex-direction: column;
@@ -116,6 +115,10 @@ const EditProfileStyle = styled.div`
       color: var(--color-1);
       background-color: var(--color-6);
     }
+  }
+
+  .btnEdit {
+    width: 95%;
   }
 
   @media (min-width: 767px) {
