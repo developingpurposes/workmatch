@@ -34,11 +34,18 @@ function ModalCreateProjects() {
 
   const schemaLogin = yup.object().shape({
     description: yup.string().required("Campo obrigatório"),
-    amount: yup.string().required("Campo obrigatório"),
+    amount: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(/^[1-8]$/, "Apenas números max: 8"),
     name: yup.string().required("Campo obrigatório"),
   });
 
-  const { register, handleSubmit } = useForm<iProject>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iProject>({
     resolver: yupResolver(schemaLogin),
   });
 
@@ -56,14 +63,18 @@ function ModalCreateProjects() {
         </C.TitleModal>
         <C.Form onSubmit={handleSubmit(createProject)}>
           <img onClick={setProfilePic} src={image} alt="texto alternativo" />
-          <label htmlFor="urlImg">Nome do Projeto:</label>
+          <label htmlFor="urlImg">
+            Nome do Projeto: <span>{errors.name?.message}</span>
+          </label>
           <input
             id="name"
             type="text"
             placeholder="Digite nome do seu projeto"
             {...register("name")}
           />
-          <label htmlFor="description">Descrição do projeto:</label>
+          <label htmlFor="description">
+            Descrição do projeto: <span>{errors.description?.message}</span>
+          </label>
           <input
             id="description"
             type="text"
@@ -71,7 +82,9 @@ function ModalCreateProjects() {
             {...register("description")}
           />
 
-          <label htmlFor="membersLength">Número de membros:</label>
+          <label htmlFor="membersLength">
+            Número de membros: <span>{errors.amount?.message}</span>
+          </label>
           <input
             id="membersLength"
             type="text"
