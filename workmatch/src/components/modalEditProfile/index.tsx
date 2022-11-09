@@ -14,7 +14,8 @@ import { DataBaseTechs } from "../../services/dataBaseTechs";
 function EditProfile() {
   const { image, setImage, setProfile, profile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
-  const { setShowEditModal, setSelectTechs } = useContext(ProjectContext);
+  const { setShowEditModal, setSelectTechs, selectTechs } =
+    useContext(ProjectContext);
   const animatedComponents = makeAnimated();
 
   async function editProfile(info: iUserProfile) {
@@ -31,6 +32,12 @@ function EditProfile() {
       info.contact = profile.contact;
     }
 
+    let newTechs = selectTechs;
+
+    if (!Array.isArray(selectTechs)) {
+      newTechs = [];
+    }
+
     if (info.userName === "") {
       info.userName = profile.userName;
     }
@@ -38,7 +45,7 @@ function EditProfile() {
       info.level = profile.level;
     }
 
-    const dataEditProfile = { ...info, avatar_url: image };
+    const dataEditProfile = { ...info, avatar_url: image, techs: newTechs };
 
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
