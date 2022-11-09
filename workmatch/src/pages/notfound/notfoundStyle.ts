@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import ImgBackground from "../../assets/404Error.gif";
 import "animate.css";
 
-const LoginStyle = styled.div`
+const NotFoundStyle = styled.div`
   background-color: var(--color-bg-dashboard);
   width: 100vw;
   min-height: 100vh;
@@ -13,16 +12,22 @@ const LoginStyle = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
 
   img {
-    width: 60%;
-    heigth: 60%;
+    width: 80%;
+    max-width: 650px;
+  }
+  p {
+    color: var(--color-6);
+    font-size: var(--font-size-3);
+    text-align: center;
+    font-family: var(--font-df);
+    font-weigth: var(--font-weigth-1);
   }
 
   h1 {
-    color: var(--color-6);
-    font-size: var(--font-size-1);
+    color: var(--color-4);
+    font-size: 4.5rem;
     text-align: center;
     font-family: var(--font);
     font-weigth: var(--font-weigth-1);
@@ -31,7 +36,8 @@ const LoginStyle = styled.div`
   a {
     background-color: var(--color-4);
     color: var(--color-6);
-    width: 60%;
+    width: 100%;
+    max-width: 400px;
     height: 40px;
     text-decoration: none;
     border-bottom-left-radius: 20px;
@@ -49,4 +55,4 @@ const LoginStyle = styled.div`
   }
 `;
 
-export default LoginStyle;
+export default NotFoundStyle;
