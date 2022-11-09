@@ -3,6 +3,7 @@ import api from "../services";
 import { useNavigate } from "react-router-dom";
 import profilePic from "../assets/account.png";
 import { ToastError, ToastSuccess } from "../services/toast";
+import { iTechs } from "./ProjectContext";
 
 export interface iUserProfile {
   userName: string;
@@ -12,7 +13,7 @@ export interface iUserProfile {
   bio: string;
   level: string;
   contact: string;
-  techs: [];
+  techs: iTechs[];
   id: number;
 }
 
@@ -64,6 +65,7 @@ function UserProvider({ children }: iUserProviderChildren) {
             iconColor: "#EC8697",
             title: `Seu token expirou logue novamente`,
           });
+          localStorage.clear();
           navigate("/");
         }
       }

@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import LoginStyle from "./loginStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "../../styles/form";
 import logo from "../../assets/logo.png";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,14 @@ import schemaLogin from "./loginSchema";
 
 function Login() {
   const { userLogin } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("WorkMatch:token");
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   const {
     register,
@@ -46,11 +54,11 @@ function Login() {
             ""
           )}
           <button type="submit">Login</button>
+          <h4>Ainda não é cadastrado?</h4>
+          <Link className="otherButton" to={"/register"}>
+            Registre-se
+          </Link>
         </Form>
-        <h4>Ainda não é cadastrado?</h4>
-        <Link className="otherButton" to={"/register"}>
-          Registre-se
-        </Link>
       </section>
     </LoginStyle>
   );

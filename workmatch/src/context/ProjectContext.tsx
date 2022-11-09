@@ -12,7 +12,7 @@ export interface iTechs {
 export interface iProject {
   name: string;
   description: string;
-  techs: iTechs[];
+  techs: iTechs[] | [];
   amount: string;
   date: string;
   projectImg: string;
@@ -44,7 +44,8 @@ interface iProjectContext {
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   myProjectsModal: boolean;
   setMyProjectsModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setSelectTechs: React.Dispatch<React.SetStateAction<{}>>;
+  setSelectTechs: React.Dispatch<React.SetStateAction<iTechs[]>>;
+  selectTechs: iTechs[];
   setImage: React.Dispatch<React.SetStateAction<string>>;
   image: string;
   myProjects: iProject[];
@@ -68,7 +69,7 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [myProjectsModal, setMyProjectsModal] = useState(false);
-  const [selectTechs, setSelectTechs] = useState({});
+  const [selectTechs, setSelectTechs] = useState<iTechs[]>([]);
   const [image, setImage] = useState(imgLand);
   const [myProjects, setMyProjects] = useState<iProject[]>([]);
 
@@ -157,7 +158,6 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
 
       setShowQueueModal(false);
       const { data } = await api.get("/projects");
-      console.log(data);
     } catch (error) {
       ToastError.fire({
         icon: "error",
@@ -186,7 +186,6 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
 
       setShowQueueModal(false);
       const { data } = await api.get("/projects");
-      console.log(data);
     } catch (error) {
       ToastError.fire({
         icon: "error",
@@ -238,6 +237,7 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
         myProjectsModal,
         setMyProjectsModal,
         setSelectTechs,
+        selectTechs,
         setImage,
         image,
         myProjects,
