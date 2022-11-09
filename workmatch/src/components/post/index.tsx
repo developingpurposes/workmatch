@@ -1,5 +1,4 @@
 import PostStyle from "./postStyle";
-import imgPostDf from "../../assets/default.png";
 import {
   SiJavascript as JS,
   SiCss3 as CSS,
@@ -22,7 +21,7 @@ function Post({ projects }: iPosts) {
         {projects.map((project: iProject) => (
           <li key={project.id}>
             <div className="containerImgPostAndTechs">
-              <img src={imgPostDf} alt="imagem padrão" />
+              <img src={project.projectImg} alt="imagem padrão" />
               <div className="containerTechs">
                 <JS />
                 <Java />

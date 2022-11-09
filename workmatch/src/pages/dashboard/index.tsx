@@ -14,6 +14,7 @@ import ModalCards from "../../components/modalCards";
 import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
 import EditProfile from "../../components/modalEditProfile";
+import QueueNotification from "../../components/queueNotification";
 
 interface iDash {
   admin: {
@@ -26,6 +27,8 @@ function Dashboard() {
   const {
     showCreateModal,
     setShowCreateModal,
+    showQueueModal,
+    setShowQueueModal,
     showEditModal,
     menuOpen,
     setMenuOpen,
@@ -55,7 +58,7 @@ function Dashboard() {
       } catch (error) {}
     }
     getProjects();
-  }, [token, setMyProjects, setProjects]);
+  }, [token, setMyProjects, setProjects, showQueueModal]);
 
   function openOrClose() {
     if (menuOpen) {
@@ -69,6 +72,7 @@ function Dashboard() {
     <DashboardStyle>
       {showEditModal ? <EditProfile /> : null}
       {showCreateModal ? <ModalCreateProjects /> : null}
+      {showQueueModal ? <QueueNotification /> : null}
       {myProjectsModal ? <ModalCards myProjects={myProjects} /> : null}
       <HeaderDashboard>
         <div className="container containerHeader">
@@ -78,7 +82,7 @@ function Dashboard() {
             <button onClick={() => setShowCreateModal(true)}>
               <AddPost className="svgHover" />
             </button>
-            <button>
+            <button onClick={() => setShowQueueModal(true)}>
               <BellNotificatin className="svgHover" />
             </button>
           </div>

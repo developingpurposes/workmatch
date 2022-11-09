@@ -13,6 +13,7 @@ export interface iUserProfile {
   level: string;
   contact: string;
   techs: [];
+  id: number;
 }
 
 export interface iUserLogin {
