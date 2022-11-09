@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ContainerModal = styled.div`
   width: 100%;
-
   height: 100%;
   position: fixed;
   display: flex;
@@ -43,6 +42,12 @@ export const Form = styled.form`
   img {
     width: 150px;
     border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      transition: 0.5s;
+      transform: scale(1.1);
+    }
   }
 
   label {
@@ -59,6 +64,11 @@ export const Form = styled.form`
     background-color: var(--color-bg-input);
     border: 2.5px solid var(--color-6);
     border-radius: 8px;
+    &:focus {
+      border: 2.5px solid var(--color-4);
+      background-color: var(--color-bg-focus-input);
+      font-weight: var(--font-weigth-1);
+    }
   }
 
   input::placeholder {
@@ -69,11 +79,17 @@ export const Form = styled.form`
   #SelectStyle {
     width: 95%;
     max-width: 394px;
-    padding: 5px;
-    color: var(--color-1);
-    background-color: var(--color-bg-input);
+
     border: 2.5px solid var(--color-6);
     border-radius: 8px;
+    div {
+      font-size: 14px;
+      font-family: var(--font-df);
+      color: var(--color-6);
+      background-color: #24163e40;
+      border: none;
+      border-radius: 8px;
+    }
   }
 `;
 
@@ -86,7 +102,17 @@ export const TitleModal = styled.div`
   padding: 5px;
   height: min-content;
   color: var(--color-6);
-
+  h2 {
+    font-weight: 700;
+    font-size: var(--font-size-4);
+    font-family: var(--font-df);
+  }
+  .button__close {
+    color: var(--color-4);
+    font-size: var(--font-size-4);
+    font-family: var(--font-df);
+    cursor: pointer;
+  }
   button {
     background-color: var(--color-1);
     color: var(--color-6);

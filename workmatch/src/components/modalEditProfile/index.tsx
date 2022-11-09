@@ -3,6 +3,8 @@ import Form from "../../styles/form";
 import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import Swal from "sweetalert2";
 import { ProjectContext } from "../../context/ProjectContext";
 import api from "../../services";
@@ -14,10 +16,18 @@ import { DataBaseTechs } from "../../services/dataBaseTechs";
 function EditProfile() {
   const { image, setImage, setProfile, profile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
-  const { setShowEditModal } = useContext(ProjectContext);
-
-  const { setSelectTechs } = useContext(ProjectContext);
+  const { setShowEditModal, setSelectTechs } = useContext(ProjectContext);
   const animatedComponents = makeAnimated();
+  const options = [
+    { value: "React", label: "React" },
+    { value: "Typescript", label: "Typescript" },
+    { value: "JSvanilla", label: "JSVanilla" },
+    { value: "Phyton", label: "Phyton" },
+    { value: "Node", label: "Node" },
+    { value: "Css", label: "Css" },
+    { value: "Html", label: "Html" },
+    { value: "Next", label: "Next" },
+  ];
 
   async function editProfile(info: iUserProfile) {
     const token = localStorage.getItem("WorkMatch:token");
@@ -72,7 +82,6 @@ function EditProfile() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        console.log(e.target.result);
         setImage(e.target.result);
       };
       reader.readAsDataURL(file);
@@ -82,7 +91,7 @@ function EditProfile() {
   return (
     <EditProfileStyle>
       <section>
-        <div>
+        <div className="section__container">
           <h3>Editar Perfil</h3>
           <span onClick={() => setShowEditModal(false)}>X</span>
         </div>
@@ -115,23 +124,25 @@ function EditProfile() {
             placeholder="Digite um novo contato"
             {...register("contact")}
           />
-
+          <label htmlFor="techs">Editar tecnologias: </label>
           <Select
-            defaultValue={[DataBaseTechs[2], DataBaseTechs[3]]}
+            id="SelectStyle"
+            onChange={(selectValues: any) => {
+              setSelectTechs(selectValues);
+            }}
+            placeholder="Tecnologias..."
+            closeMenuOnSelect={false}
+            components={animatedComponents}
             isMulti
-            name="colors"
-            options={DataBaseTechs}
-            className="basic-multi-select"
-            classNamePrefix="select"
+            options={options}
           />
-
-          {/*<label htmlFor="level">Editar nível: </label>
-                     <select {...register("level")}>
+          <label htmlFor="level">Editar nível: </label>
+          <select {...register("level")}>
             <option value={""}>Selecione um novo nível</option>
             <option value={"Júnior"}>Júnior</option>
             <option value={"Pleno"}>Pleno</option>
             <option value={"Sênior"}>Sênior</option>
-          </select> */}
+          </select>
 
           <button type="submit">Editar</button>
         </Form>
