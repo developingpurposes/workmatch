@@ -24,10 +24,10 @@ function Post({ projects }: iPosts) {
             <div className="containerImgPostAndTechs">
               <img src={imgPostDf} alt="imagem padrão" />
               <div className="containerTechs">
-                <JS />
-                <Java />
-                <CSS />
-                <React />
+                <JS/>
+                <Java/>
+                <CSS/>
+                <React/>
               </div>
             </div>
             <div className="containerInfoPost">

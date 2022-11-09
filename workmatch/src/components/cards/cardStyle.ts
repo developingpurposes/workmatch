@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const Card = styled.li`
-  width: 250px;
-  min-width: 250px;
+  width: 100%;
   background-color: var(--color-6);
-  margin-bottom: 50px;
+  height: 100%;
   min-height: 350px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   img {
     width: 100%;
@@ -14,11 +16,15 @@ export const Card = styled.li`
     object-fit: cover;
   }
 
+  .containerTitle{
+    margin-left: 10px;
+  }
+
   .containerText {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 
     h2 {
       font-size: 18px;
@@ -58,7 +64,6 @@ export const Card = styled.li`
 export const ContainerButton = styled.div`
   display: flex;
   width: 80%;
-  justify-content: flex-end;
   align-self: center;
 
   button {
@@ -70,6 +75,7 @@ export const ContainerButton = styled.div`
     color: white;
     border: none;
     cursor: pointer;
+    align-self: flex-end;
   }
 `;
 export const ContainerImgTeam = styled.ul`

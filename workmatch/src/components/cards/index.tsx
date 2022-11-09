@@ -14,9 +14,11 @@ function Card({ project }: iCard) {
   return (
     <C.Card>
       <img src={imgLand} alt="teste" />
-      <div className="containerText">
+      <div className="containerTitle">
         <h2>{project.name}</h2>
         <h3>{project.description}</h3>
+      </div>
+      <div className="containerText">
 
         <C.ContainerImgTeam>
           {project.listParticipants.map((participant: iUserProfile) => (
