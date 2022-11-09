@@ -6,7 +6,7 @@ const PostStyle = styled.div`
 
   ul {
     width: 100%;
-    height: 78vh;
+    height: 87vh;
     display: flex;
     flex-direction: column;
     background-color: var(--color-bg-post);
@@ -43,7 +43,8 @@ const PostStyle = styled.div`
       background-color: #496f95;
       border-radius: 12px;
       width: 100%;
-
+      padding: 2px;
+      
       .containerImgPostAndTechs {
         display: flex;
         flex-direction: column;
@@ -61,8 +62,13 @@ const PostStyle = styled.div`
         }
         .containerTechs {
           display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 60px;
+          overflow-x: auto;
           gap: 8px;
-          padding-top: 16px;
+          
           svg {
             color: var(--color-6);
             width: 30px;
