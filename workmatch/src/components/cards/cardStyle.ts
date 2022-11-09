@@ -16,7 +16,7 @@ export const Card = styled.li`
     border-radius: 5px 5px 0px 0px;
   }
 
-  .containerTitle{
+  .containerTitle {
     margin-left: 10px;
     margin-top: 10px;
   }
@@ -37,47 +37,35 @@ export const Card = styled.li`
       max-height: 20px;
     }
 
-    ul{
-      display: flex;
-      align-self: baseline;
-      width: 100%;
-      flex-wrap: wrap;
-      gap: 3px;
-      align-self: center;
-    }
-
     .containerTechs {
       display: flex;
       align-items: center;
       gap: 5px;
       flex-wrap: wrap;
 
-      .divIcons{
-        
+      .divIcons {
         svg {
-              width: 30px;
-              height: 30px;
-            } 
-          }
+          width: 30px;
+          height: 30px;
+        }
+      }
     }
-    
+
     .divTechs {
       display: flex;
       justify-content: flex-start;
-      
+
       p {
         font-size: var(--font-size-3);
         margin-right: 10px;
       }
-      }
     }
-  
-
-  @media(min-width: 700px){
-
-    .imgProject {
-    height: 200px;
   }
+
+  @media (min-width: 700px) {
+    .imgProject {
+      height: 200px;
+    }
   }
 `;
 
@@ -109,14 +97,18 @@ export const ContainerButton = styled.div`
 
 export const ContainerImgTeam = styled.ul`
   display: flex;
-  gap: 3px;
   height: min-content;
   padding: 5px;
   margin: 0;
   width: 100%;
+  align-self: baseline;
+  gap: 5px;
+  align-self: center;
+  flex-wrap: wrap;
 
   .imgTeam {
     width: 50px;
+    min-width: 50px;
     height: 50px;
     border-radius: 5px;
 
