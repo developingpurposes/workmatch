@@ -9,11 +9,11 @@ interface iMyProjects {
 }
 
 function ModalCards({ myProjects }: iMyProjects) {
-  const teste = myProjects.length;
+  const projectVerification = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
   return (
     <C.ContainerModal>
-      {teste ? (
+      {projectVerification ? (
         <C.DivModal>
           <C.TitleModal>
             <h2>Meus Projetos</h2>
