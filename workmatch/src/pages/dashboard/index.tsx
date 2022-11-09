@@ -15,6 +15,7 @@ import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
 import EditProfile from "../../components/modalEditProfile";
 import QueueNotification from "../../components/queueNotification";
+import { useNavigate } from "react-router-dom";
 
 interface iDash {
   admin: {
@@ -39,6 +40,7 @@ function Dashboard() {
     setProjects,
   } = useContext(ProjectContext);
   const token = localStorage.getItem("WorkMatch:token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getProjects() {
@@ -55,10 +57,12 @@ function Dashboard() {
         setMyProjects(myProjectsfilter);
 
         setProjects(otherFilter);
-      } catch (error) {}
+      } catch (error) {
+        navigate("/");
+      }
     }
     getProjects();
-  }, [token, setMyProjects, setProjects, showQueueModal]);
+  }, [token, setMyProjects, setProjects, showQueueModal, navigate]);
 
   function openOrClose() {
     if (menuOpen) {
