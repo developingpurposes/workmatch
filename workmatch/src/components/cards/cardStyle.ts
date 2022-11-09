@@ -26,7 +26,6 @@ export const Card = styled.li`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    justify-content: center;
     height: 100%;
 
     h2 {
@@ -38,6 +37,15 @@ export const Card = styled.li`
       max-height: 20px;
     }
 
+    ul{
+      display: flex;
+      align-self: baseline;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 3px;
+      align-self: center;
+    }
+
     .containerTechs {
       display: flex;
       align-items: center;
@@ -45,6 +53,7 @@ export const Card = styled.li`
       flex-wrap: wrap;
 
       .divIcons{
+        
         svg {
               width: 30px;
               height: 30px;
@@ -90,8 +99,14 @@ export const ContainerButton = styled.div`
     border: none;
     cursor: pointer;
     align-self: flex-end;
+
+    &:hover,
+    &:active {
+      filter: brightness(1.5);
+    }
   }
 `;
+
 export const ContainerImgTeam = styled.ul`
   display: flex;
   gap: 3px;

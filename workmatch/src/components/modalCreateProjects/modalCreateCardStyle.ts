@@ -108,14 +108,18 @@ export const TitleModal = styled.div`
     font-family: var(--font-df);
   }
   .button__close {
-    color: var(--color-4);
+    color: var(--color-6);
+    background-color: var(--color-1);
     font-size: var(--font-size-4);
     font-family: var(--font-df);
+    padding: 5px;
+    border-radius: 3px;
     cursor: pointer;
-  }
-  button {
-    background-color: var(--color-1);
-    color: var(--color-6);
+
+    &:hover {
+      background-color: #392d54;
+      transition: 0.2s ease-in;
+    }
   }
 `;
 
@@ -138,4 +142,9 @@ export const ButtonCreate = styled.button`
 
   margin-top: 30px;
   margin-bottom: 20px;
+
+  &:hover,
+  &:active {
+    filter: brightness(1.5);
+  }
 `;

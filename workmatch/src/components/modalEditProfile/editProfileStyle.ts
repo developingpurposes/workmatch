@@ -52,11 +52,18 @@ const EditProfileStyle = styled.div`
         font-family: var(--font-df);
       }
       span {
-        color: var(--color-4);
-        font-size: var(--font-size-4);
-        margin-right: 5px;
-        font-family: var(--font-df);
+        border: none;
+        background-color: var(--color-1);
+        color: var(--color-6);
+        border-radius: 3px;
+        font-size: 22px;
+        padding: 5px;
         cursor: pointer;
+
+        &:hover {
+          background-color: #392d54;
+          transition: 0.2s ease-in;
+        }
       }
     }
 
@@ -119,6 +126,10 @@ const EditProfileStyle = styled.div`
 
   .btnEdit {
     width: 95%;
+    &:hover,
+    &:active {
+      filter: brightness(1.5);
+    }
   }
 
   @media (min-width: 767px) {
