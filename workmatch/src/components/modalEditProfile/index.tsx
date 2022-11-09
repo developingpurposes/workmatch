@@ -2,7 +2,9 @@ import EditProfileStyle from "./editProfileStyle";
 import Form from "../../styles/form";
 import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import Swal from "sweetalert2";
 import { ProjectContext } from "../../context/ProjectContext";
 import api from "../../services";
@@ -11,7 +13,18 @@ import { ToastError, ToastSuccess } from "../../services/toast";
 function EditProfile() {
   const { image, setImage, setProfile, profile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
-  const { setShowEditModal } = useContext(ProjectContext);
+  const { setShowEditModal, setSelectTechs } = useContext(ProjectContext);
+  const animatedComponents = makeAnimated();
+  const options = [
+    { value: "React", label: "React" },
+    { value: "Typescript", label: "Typescript" },
+    { value: "JSvanilla", label: "JSVanilla" },
+    { value: "Phyton", label: "Phyton" },
+    { value: "Node", label: "Node" },
+    { value: "Css", label: "Css" },
+    { value: "Html", label: "Html" },
+    { value: "Next", label: "Next" },
+  ];
 
   async function editProfile(info: iUserProfile) {
     const token = localStorage.getItem("WorkMatch:token");
@@ -33,7 +46,7 @@ function EditProfile() {
     if (info.level === "") {
       info.level = profile.level;
     }
-    
+
     const dataEditProfile = { ...info, avatar_url: image };
 
     try {
@@ -66,7 +79,6 @@ function EditProfile() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        console.log(e.target.result);
         setImage(e.target.result);
       };
       reader.readAsDataURL(file);
@@ -76,7 +88,7 @@ function EditProfile() {
   return (
     <EditProfileStyle>
       <section>
-        <div>
+        <div className="section__container">
           <h3>Editar Perfil</h3>
           <span onClick={() => setShowEditModal(false)}>X</span>
         </div>
@@ -110,11 +122,16 @@ function EditProfile() {
             {...register("contact")}
           />
           <label htmlFor="techs">Editar tecnologias: </label>
-          <input
-            id="techs"
-            type="text"
-            placeholder="Digite suas tecnologias"
-            {...register("techs")}
+          <Select
+            id="SelectStyle"
+            onChange={(selectValues: any) => {
+              setSelectTechs(selectValues);
+            }}
+            placeholder="Tecnologias..."
+            closeMenuOnSelect={false}
+            components={animatedComponents}
+            isMulti
+            options={options}
           />
           <label htmlFor="level">Editar nível: </label>
           <select {...register("level")}>
