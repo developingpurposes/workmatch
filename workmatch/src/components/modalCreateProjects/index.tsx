@@ -1,17 +1,13 @@
 import * as C from "./modalCreateCardStyle";
-import Select, { MultiValue } from "react-select";
-import makeAnimated, { Placeholder } from "react-select/animated";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { iProject, iTechs, ProjectContext } from "../../context/ProjectContext";
+import { iProject, ProjectContext } from "../../context/ProjectContext";
 import Swal from "sweetalert2";
 import { DataBaseTechs } from "../../services/dataBaseTechs";
-
-interface iSelect {
-  selectValues: iTechs;
-}
 
 function ModalCreateProjects() {
   const { setShowCreateModal, createProject, setSelectTechs, image, setImage } =

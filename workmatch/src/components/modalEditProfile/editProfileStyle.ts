@@ -28,6 +28,7 @@ const EditProfileStyle = styled.div`
     padding: 0px 18px;
     border-radius: 5px;
     width: 60%;
+    height: 90%;
 
     display: flex;
     flex-direction: column;

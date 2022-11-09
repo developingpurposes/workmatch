@@ -3,28 +3,19 @@ import Form from "../../styles/form";
 import { iUserProfile, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
 import Swal from "sweetalert2";
 import { ProjectContext } from "../../context/ProjectContext";
 import api from "../../services";
 import { ToastError, ToastSuccess } from "../../services/toast";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import { DataBaseTechs } from "../../services/dataBaseTechs";
 
 function EditProfile() {
   const { image, setImage, setProfile, profile } = useContext(UserContext);
   const { register, handleSubmit } = useForm<iUserProfile>();
   const { setShowEditModal, setSelectTechs } = useContext(ProjectContext);
   const animatedComponents = makeAnimated();
-  const options = [
-    { value: "React", label: "React" },
-    { value: "Typescript", label: "Typescript" },
-    { value: "JSvanilla", label: "JSVanilla" },
-    { value: "Phyton", label: "Phyton" },
-    { value: "Node", label: "Node" },
-    { value: "Css", label: "Css" },
-    { value: "Html", label: "Html" },
-    { value: "Next", label: "Next" },
-  ];
 
   async function editProfile(info: iUserProfile) {
     const token = localStorage.getItem("WorkMatch:token");
@@ -131,7 +122,7 @@ function EditProfile() {
             closeMenuOnSelect={false}
             components={animatedComponents}
             isMulti
-            options={options}
+            options={DataBaseTechs}
           />
           <label htmlFor="level">Editar nível: </label>
           <select {...register("level")}>

@@ -1,5 +1,4 @@
 import * as C from "./cardStyle";
-import imgLand from "../../assets/backgroundLandPage1.png";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 import { iUserProfile } from "../../context/UserContext";
@@ -10,10 +9,9 @@ interface iCard {
 
 function Card({ project }: iCard) {
   const { deleteProject } = useContext(ProjectContext);
-  console.log(project);
   return (
     <C.Card>
-      <img src={imgLand} alt="teste" />
+      <img src={project.projectImg} alt="teste" />
       <div className="containerText">
         <h2>{project.name}</h2>
         <h3>{project.description}</h3>
