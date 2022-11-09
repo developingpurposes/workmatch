@@ -2,6 +2,7 @@ import * as C from "./cardStyle";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 import { iUserProfile } from "../../context/UserContext";
+import RenderIcon from "../renderIcon";
 
 interface iCard {
   project: iProject;
@@ -9,32 +10,35 @@ interface iCard {
 
 function Card({ project }: iCard) {
   const { deleteProject } = useContext(ProjectContext);
+
+ console.log(project)
+ 
   return (
     <C.Card>
-      <img src={project.projectImg} alt="teste" />
+      <img className="imgProject" src={project.projectImg} alt="teste" />
       <div className="containerTitle">
         <h2>{project.name}</h2>
         <h3>{project.description}</h3>
       </div>
       <div className="containerText">
-
+          {project.listParticipants.length > 0 ?
         <C.ContainerImgTeam>
-          {project.listParticipants.map((participant: iUserProfile) => (
-            <li key={project.listParticipants.length}>
-              <img src={participant.avatar_url} alt="" />
+          {(project.listParticipants.map((participant: iUserProfile, index) => (
+            <li className="imgTeam" key={index}>
+              <img src={participant.avatar_url} alt="imgProfile" />
             </li>
-          ))}
+          )))} 
         </C.ContainerImgTeam>
+          : ""
+          }
         <div className="containerTechs">
           <p>Tecnologias: </p>
-          {project.techs.map((tech) => (
-            <p key={tech.label}>{tech.value}</p>
-          ))}
+          <RenderIcon arrTechs={project.techs}/>
         </div>
+      </div>
         <C.ContainerButton>
           <button onClick={() => deleteProject(project.id)}>Deletar</button>
         </C.ContainerButton>
-      </div>
     </C.Card>
   );
 }

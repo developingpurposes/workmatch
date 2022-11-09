@@ -37,8 +37,7 @@ function Post({ projects }: iPosts) {
                 <p>{project.description}</p>
 
                 <button onClick={() => joinProject(project.id)}>
-                  {" "}
-                  Quero Ajudar <Like />{" "}
+                  Quero Ajudar <Like />
                 </button>
               </div>
             </div>

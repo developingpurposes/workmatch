@@ -40,7 +40,7 @@ export const DivModal = styled.div`
   align-self: center;
   padding: 20px;
   margin-left: 20px;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 5px;
 
   ul {
     align-self: center;
@@ -48,5 +48,9 @@ export const DivModal = styled.div`
     flex-wrap: nowrap;
     width: 90%;
     gap: 10px;
+  }
+
+  @media(min-width: 700px){
+    width: 550px;
   }
 `;

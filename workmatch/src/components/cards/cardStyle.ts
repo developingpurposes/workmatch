@@ -4,20 +4,21 @@ export const Card = styled.li`
   width: 100%;
   background-color: var(--color-6);
   height: 100%;
-  min-height: 350px;
+  min-height: 400px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  img {
+  .imgProject {
     width: 100%;
     height: 150px;
     object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
   }
 
   .containerTitle{
     margin-left: 10px;
+    margin-top: 10px;
   }
 
   .containerText {
@@ -25,6 +26,8 @@ export const Card = styled.li`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    justify-content: center;
+    height: 100%;
 
     h2 {
       font-size: 18px;
@@ -37,27 +40,35 @@ export const Card = styled.li`
 
     .containerTechs {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
       gap: 5px;
-      min-height: 100px;
-    }
+      flex-wrap: wrap;
 
+      .divIcons{
+        svg {
+              width: 30px;
+              height: 30px;
+            } 
+          }
+    }
+    
     .divTechs {
       display: flex;
       justify-content: flex-start;
-
+      
       p {
         font-size: var(--font-size-3);
         margin-right: 10px;
       }
-
-      img {
-        width: 20px;
-        height: 20px;
       }
     }
+  
+
+  @media(min-width: 700px){
+
+    .imgProject {
+    height: 200px;
+  }
   }
 `;
 
@@ -65,6 +76,9 @@ export const ContainerButton = styled.div`
   display: flex;
   width: 80%;
   align-self: center;
+  height: 100%;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 
   button {
     background-color: var(--color-4);
@@ -84,13 +98,18 @@ export const ContainerImgTeam = styled.ul`
   height: min-content;
   padding: 5px;
   margin: 0;
+  width: 100%;
+
   .imgTeam {
     width: 50px;
     height: 50px;
+    border-radius: 5px;
 
     img {
       width: 100%;
       height: 100%;
+      border-radius: 5px;
+      object-fit: cover;
     }
   }
 `;
