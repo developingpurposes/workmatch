@@ -36,6 +36,7 @@ function QueueNotification() {
                         <h4>{participant.userName}</h4>
                         <p>{participant.level}</p>
                       </div>
+                      git
                     </div>
 
                     <div className="buttonsDiv">
