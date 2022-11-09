@@ -49,14 +49,24 @@ export const Form = styled.form`
       transform: scale(1.1);
     }
   }
-
+  .red__label {
+    color: #e75c73;
+  }
   label {
     font-size: var(--font-size-5);
-    color: white;
+    color: var(--color-6);
     align-self: baseline;
     margin-left: 3%;
   }
-
+  .red__input {
+    background-color: #e75c73;
+    border: 2.5px solid #d32c48;
+    &:focus {
+      border: 2.5px solid #e75c73;
+      background-color: #d32c48;
+      font-weight: var(--font-weigth-1);
+    }
+  }
   input {
     width: 90%;
     padding: 8px;
