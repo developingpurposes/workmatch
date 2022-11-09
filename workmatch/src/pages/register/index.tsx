@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegisterStyle from "./registerStyle";
 import logo from "../../assets/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { iRegisterUser, UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import schemaRegister from "./registerSchema";
@@ -11,6 +11,15 @@ import Form from "../../styles/form";
 
 function Register() {
   const { userRegister } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("WorkMatch:token");
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate]);
+
   const {
     register,
     handleSubmit,

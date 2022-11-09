@@ -6,7 +6,6 @@ interface iRenderIcon {
 }
 
 function RenderIcon({ arrTechs }: iRenderIcon) {
-  console.log(arrTechs);
   const newArr = [] as any[];
   arrTechs.map((elt) => {
     DataBaseIcons.map((eltIcons) => {
@@ -19,7 +18,7 @@ function RenderIcon({ arrTechs }: iRenderIcon) {
   return (
     <>
       {newArr.map((elt, i) => (
-        <div key={i}>{elt}</div>
+        <div className="divIcons" key={i}>{elt}</div>
       ))}
     </>
   );

@@ -1,10 +1,5 @@
 import PostStyle from "./postStyle";
-import {
-  SiJavascript as JS,
-  SiCss3 as CSS,
-  SiReact as React,
-} from "react-icons/si";
-import { FaJava as Java, FaHandsHelping as Like } from "react-icons/fa";
+import { FaHandsHelping as Like } from "react-icons/fa";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 import RenderIcon from "../renderIcon";
@@ -19,17 +14,12 @@ function Post({ projects }: iPosts) {
   return (
     <PostStyle className="container">
       <ul>
-        
-
         {projects.map((project: iProject) => (
-
           <li key={project.id}>
             <div className="containerImgPostAndTechs">
               <img src={project.projectImg} alt="imagem padrão" />
               <div className="containerTechs">
-   
                 <RenderIcon arrTechs={project.techs} />
-                              
               </div>
             </div>
             <div className="containerInfoPost">
@@ -47,16 +37,13 @@ function Post({ projects }: iPosts) {
                 <p>{project.description}</p>
 
                 <button onClick={() => joinProject(project.id)}>
-                  {" "}
-                  Quero Ajudar <Like />{" "}
+                  Quero Ajudar <Like />
                 </button>
               </div>
             </div>
           </li>
         ))}
-      
       </ul>
-
     </PostStyle>
   );
 }
