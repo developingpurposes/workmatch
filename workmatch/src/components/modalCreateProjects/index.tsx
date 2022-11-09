@@ -44,15 +44,11 @@ function ModalCreateProjects() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<iProject>({
     resolver: yupResolver(schemaLogin),
   });
-  const description = watch("description");
-  const amount = watch("amount");
-  const name = watch("name");
-  const isValid = name && amount && description;
+
   return (
     <C.ContainerModal>
       <C.DivModal>
@@ -67,37 +63,31 @@ function ModalCreateProjects() {
         </C.TitleModal>
         <C.Form onSubmit={handleSubmit(createProject)}>
           <img onClick={setProfilePic} src={image} alt="texto alternativo" />
-          <label className={isValid ? "" : "red__label"} htmlFor="urlImg">
-            Nome do Projeto: {errors.name?.message}
+          <label htmlFor="urlImg">
+            Nome do Projeto: <span>{errors.name?.message}</span>
           </label>
           <input
             id="name"
-            className={isValid ? "" : "red__input"}
             type="text"
             placeholder="Digite nome do seu projeto"
             {...register("name")}
           />
-          <label htmlFor="description" className={isValid ? "" : "red__label"}>
-            Descrição do projeto: {errors.description?.message}
+          <label htmlFor="description">
+            Descrição do projeto: <span>{errors.description?.message}</span>
           </label>
           <input
             id="description"
             type="text"
-            className={isValid ? "" : "red__input"}
             placeholder="Digite a desrição do projeto"
             {...register("description")}
           />
 
-          <label
-            htmlFor="membersLength"
-            className={isValid ? "" : "red__label"}
-          >
-            Número de membros: {errors.amount?.message}
+          <label htmlFor="membersLength">
+            Número de membros: <span>{errors.amount?.message}</span>
           </label>
           <input
             id="membersLength"
             type="text"
-            className={isValid ? "" : "red__input"}
             placeholder="Digite o número de membros"
             {...register("amount")}
           />
