@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import profilePic from "../assets/account.png";
 import { ToastError, ToastSuccess } from "../services/toast";
 
-
 export interface iUserProfile {
   userName?: string;
   password?: string;
@@ -64,6 +63,7 @@ function UserProvider({ children }: iUserProviderChildren) {
             iconColor: "#EC8697",
             title: `Seu token expirou logue novamente`,
           });
+          localStorage.clear();
           navigate("/");
         }
       }
