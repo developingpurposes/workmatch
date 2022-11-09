@@ -138,8 +138,7 @@ export const DivInputCheckbox = styled.div`
 export const ButtonCreate = styled.button`
   background-color: var(--color-4);
   color: var(--color-6);
-
-  width: 100%;
+  width: 95%;
   height: 40px;
 
   border-bottom-left-radius: 20px;
