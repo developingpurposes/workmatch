@@ -3,7 +3,6 @@ import api from "../services";
 import imgLand from "../assets/default.png";
 import { ToastError, ToastSuccess } from "../services/toast";
 import { iUserProfile, UserContext } from "./UserContext";
-import { object } from "yup";
 
 export interface iTechs {
   value: string;
