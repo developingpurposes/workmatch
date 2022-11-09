@@ -72,6 +72,7 @@ const GlobalStyles = createGlobalStyle`
 
 
 
+
 /* Reset CSS */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -135,6 +136,21 @@ button, input {
 	border-style: none;
 	outline: none;
 }
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+}
+*::-webkit-scrollbar-track {
+    background: #24242473;
+    border-radius:0 1px 1px 0;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #496f9550;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
 
 `;
 

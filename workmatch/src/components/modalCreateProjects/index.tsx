@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { iProject, iTechs, ProjectContext } from "../../context/ProjectContext";
 import Swal from "sweetalert2";
+import { DataBaseTechs } from "../../services/dataBaseTechs";
 
 interface iSelect {
   selectValues: iTechs;
@@ -44,17 +45,6 @@ function ModalCreateProjects() {
   const { register, handleSubmit } = useForm<iProject>({
     resolver: yupResolver(schemaLogin),
   });
-
-  const options = [
-    { value: "React", label: "React" },
-    { value: "Typescript", label: "Typescript" },
-    { value: "JSvanilla", label: "JSVanilla" },
-    { value: "Phyton", label: "Phyton" },
-    { value: "Node", label: "Node" },
-    { value: "Css", label: "Css" },
-    { value: "Html", label: "Html" },
-    { value: "Next", label: "Next" },
-  ];
 
   return (
     <C.ContainerModal>
@@ -103,7 +93,7 @@ function ModalCreateProjects() {
             closeMenuOnSelect={false}
             components={animatedComponents}
             isMulti
-            options={options}
+            options={DataBaseTechs}
           />
           <C.ButtonCreate type="submit">Criar</C.ButtonCreate>
         </C.Form>

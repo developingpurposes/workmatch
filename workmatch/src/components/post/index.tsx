@@ -8,8 +8,9 @@ import {
 import { FaJava as Java, FaHandsHelping as Like } from "react-icons/fa";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
+import RenderIcon from "../renderIcon";
 
-interface iPosts {
+export interface iPosts {
   projects: iProject[];
 }
 
@@ -19,15 +20,17 @@ function Post({ projects }: iPosts) {
   return (
     <PostStyle className="container">
       <ul>
+        
+
         {projects.map((project: iProject) => (
+
           <li key={project.id}>
             <div className="containerImgPostAndTechs">
               <img src={imgPostDf} alt="imagem padrão" />
               <div className="containerTechs">
-                <JS />
-                <Java />
-                <CSS />
-                <React />
+   
+                <RenderIcon arrTechs={project.techs} />
+                              
               </div>
             </div>
             <div className="containerInfoPost">
@@ -52,7 +55,9 @@ function Post({ projects }: iPosts) {
             </div>
           </li>
         ))}
+      
       </ul>
+
     </PostStyle>
   );
 }
