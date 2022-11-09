@@ -14,7 +14,7 @@ function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("Workmatch:token");
+    const token = localStorage.getItem("WorkMatch:token");
     if (token) {
       navigate("/home");
     }
