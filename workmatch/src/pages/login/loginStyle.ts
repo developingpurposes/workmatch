@@ -68,11 +68,11 @@ const LoginStyle = styled.div`
       animation-delay: 1.5s;
       animation-fill-mode: both;
     }
-
     .otherButton:hover,
     .otherButton:active {
       filter: brightness(1.5);
     }
+
 
     h4 {
       color: var(--color-6);
