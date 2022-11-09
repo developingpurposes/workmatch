@@ -52,9 +52,13 @@ export const Form = styled.form`
 
   label {
     font-size: var(--font-size-5);
-    color: white;
+    color: var(--color-6);
     align-self: baseline;
     margin-left: 3%;
+    span {
+      font-size: 12px;
+      color: var(--color-error);
+    }
   }
 
   input {
