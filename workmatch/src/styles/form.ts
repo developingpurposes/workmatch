@@ -74,6 +74,11 @@ const Form = styled.form`
 
     margin-top: 30px;
     margin-bottom: 20px;
+
+    &:hover,
+    &:active {
+    filter: brightness(1.5);
+    }
   }
 
   button:hover button:active {

@@ -47,14 +47,21 @@ const QueueNotificationStyle = styled.div`
         width: 90%;
       }
 
-      span {
-        color: var(--color-4);
-        font-size: var(--font-size-4);
-        margin-right: 5px;
-        font-family: var(--font-df);
-        cursor: pointer;
-      }
+    span {
+    border: none;
+    background-color: var(--color-1);
+    color: var(--color-6);
+    border-radius: 3px;
+    font-size: 22px;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #392d54;
+      transition: 0.2s ease-in;
     }
+    }
+  }
 
     .projectList {
       height: 100%;
@@ -213,4 +220,5 @@ const QueueNotificationStyle = styled.div`
     }
   }
 `;
+
 export default QueueNotificationStyle;

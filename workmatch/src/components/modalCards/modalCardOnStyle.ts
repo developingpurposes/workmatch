@@ -26,9 +26,15 @@ export const TitleModal = styled.div`
   button {
     border: none;
     background-color: var(--color-1);
-    color: var(--color-4);
+    color: var(--color-6);
     border-radius: 3px;
     font-size: 22px;
+    padding: 5px;
+
+    &:hover{
+      background-color: #392d54;
+      transition: 0.2s ease-in;
+    }
   }
 `;
 
@@ -42,12 +48,13 @@ export const DivModal = styled.div`
   margin-left: 20px;
   border-radius: 5px;
 
-  ul {
+  .swiperUl {
     align-self: center;
     display: flex;
     flex-wrap: nowrap;
     width: 90%;
     gap: 10px;
+    cursor: grab;
   }
 
   @media(min-width: 700px){
