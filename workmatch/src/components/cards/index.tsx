@@ -11,8 +11,8 @@ interface iCard {
 function Card({ project }: iCard) {
   const { deleteProject } = useContext(ProjectContext);
 
-  console.log(project.techs)
-
+ console.log(project)
+ 
   return (
     <C.Card>
       <img className="imgProject" src={project.projectImg} alt="teste" />
@@ -23,9 +23,9 @@ function Card({ project }: iCard) {
       <div className="containerText">
           {project.listParticipants.length > 0 ?
         <C.ContainerImgTeam>
-          {(project.listParticipants.map((participant: iUserProfile) => (
-            <li className="imgTeam" key={project.listParticipants.length}>
-              <img src={participant.avatar_url} alt="" />
+          {(project.listParticipants.map((participant: iUserProfile, index) => (
+            <li className="imgTeam" key={index}>
+              <img src={participant.avatar_url} alt="imgProfile" />
             </li>
           )))} 
         </C.ContainerImgTeam>

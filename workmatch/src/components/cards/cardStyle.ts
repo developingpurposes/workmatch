@@ -42,28 +42,27 @@ export const Card = styled.li`
       display: flex;
       align-items: center;
       gap: 5px;
+      flex-wrap: wrap;
 
+      .divIcons{
+        svg {
+              width: 30px;
+              height: 30px;
+            } 
+          }
     }
     
     .divTechs {
       display: flex;
       justify-content: flex-start;
-      flex-wrap: wrap;
       
       p {
         font-size: var(--font-size-3);
         margin-right: 10px;
       }
-      
-      .divIcons{
-        svg {
-              color: var(--color-6);
-              width: 100px;
-              height: 100px;
-            } 
       }
     }
-  }
+  
 
   @media(min-width: 700px){
 
