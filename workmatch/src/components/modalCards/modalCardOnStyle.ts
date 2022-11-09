@@ -48,7 +48,7 @@ export const DivModal = styled.div`
   margin-left: 20px;
   border-radius: 5px;
 
-  ul {
+  .swiperUl {
     align-self: center;
     display: flex;
     flex-wrap: nowrap;
