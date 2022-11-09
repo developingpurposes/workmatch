@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ImgBackground from "../../assets/login.png";
-import 'animate.css';
+import "animate.css";
 
 const LoginStyle = styled.div`
   background-image: url(${ImgBackground});
@@ -12,7 +12,6 @@ const LoginStyle = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  
 
   section {
     display: flex;
@@ -21,7 +20,7 @@ const LoginStyle = styled.div`
     margin-top: 50px;
     padding: 20px;
     border-radius: 3px;
-    animation:fadeIn 1.3s ease-in;
+    animation: fadeIn 1.3s ease-in;
 
     div {
       display: flex;
@@ -45,40 +44,35 @@ const LoginStyle = styled.div`
       }
     }
 
-    form{
-
-      button{
-            animation: flipInX 1s linear;
-            animation-delay: 1s;
-            animation-fill-mode: backwards;
-          }
+    form {
+      button {
+        animation: flipInX 1s linear;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+      }
     }
 
     .otherButton {
-      width: 100%;
-      max-width:500px;
-      background-color:var(--gray-1);
+      width: 94%;
+      max-width: 500px;
+      background-color: var(--gray-1);
       border-radius: 5px;
-      text-decoration:none;
+      text-decoration: none;
       text-align: center;
       padding: 8px 0px 8px 0px;
       margin-top: 15px;
-      font:var(--text-button);
+      font: var(--text-button);
       color: var(--color-6);
 
-
-     
       animation: zoomIn 1.2s ease-out;
       animation-delay: 1.5s;
-      animation-fill-mode: both; 
+      animation-fill-mode: both;
     }
 
-    .otherButton:hover, .otherButton:active {
+    .otherButton:hover,
+    .otherButton:active {
       filter: brightness(1.5);
-     
     }
-
-   
 
     h4 {
       color: var(--color-6);

@@ -64,7 +64,7 @@ const Form = styled.form`
   button {
     background-color: var(--color-4);
     color: var(--color-6);
-    width: 90%;
+    width: 94%;
     height: 40px;
 
     border-bottom-left-radius: 20px;
