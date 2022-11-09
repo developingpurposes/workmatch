@@ -2,6 +2,7 @@ import { iTechs } from "../../context/ProjectContext";
 import {DataBaseIcons} from "../../services/dataBaseTechs";
 
 
+
 interface iRenderIcon{
      arrTechs: iTechs[],
 }
@@ -20,10 +21,15 @@ function RenderIcon({arrTechs}:iRenderIcon) {
          })
      
      })
-     
+   
      return (
           <>
-               {newArr.map((elt) => elt)}
+               {newArr.map((elt, i) => (
+                 
+                <div key={i}>
+                    {elt}
+               </div>
+               ))}
           </>
   
      )
