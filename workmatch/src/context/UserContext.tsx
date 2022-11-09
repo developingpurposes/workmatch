@@ -65,6 +65,7 @@ function UserProvider({ children }: iUserProviderChildren) {
             iconColor: "#EC8697",
             title: `Seu token expirou logue novamente`,
           });
+          localStorage.clear();
           navigate("/");
         }
       }

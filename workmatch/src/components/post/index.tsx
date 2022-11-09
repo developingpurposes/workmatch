@@ -1,10 +1,5 @@
 import PostStyle from "./postStyle";
-import {
-  SiJavascript as JS,
-  SiCss3 as CSS,
-  SiReact as React,
-} from "react-icons/si";
-import { FaJava as Java, FaHandsHelping as Like } from "react-icons/fa";
+import { FaHandsHelping as Like } from "react-icons/fa";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 import RenderIcon from "../renderIcon";

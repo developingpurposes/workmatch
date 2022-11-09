@@ -4,16 +4,12 @@ import Card from "../cards";
 import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 
-interface iMyProjects {
-  myProjects: iProject[];
-}
-
-function ModalCards({ myProjects }: iMyProjects) {
-  const projectVerification = myProjects.length;
+function ModalCards({ myProjects }: any) {
+  const haveProject = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
   return (
     <C.ContainerModal>
-      {projectVerification ? (
+      {haveProject ? (
         <C.DivModal>
           <C.TitleModal>
             <h2>Meus Projetos</h2>

@@ -33,12 +33,12 @@ export const TitleModal = styled.div`
 `;
 
 export const DivModal = styled.div`
-  min-width: 300px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   background-color: var(--color-1);
   align-self: center;
-  padding: 10px;
+  padding: 20px;
   margin-left: 20px;
   border-radius: 0px 0px 5px 5px;
 
@@ -46,12 +46,7 @@ export const DivModal = styled.div`
     align-self: center;
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
     width: 90%;
     gap: 10px;
-    //deixa o scroll invisivel. Tem que clicar na lista e usar o teclado pra rolar.
-    ::-webkit-scrollbar {
-      display: none;
-    }
   }
 `;

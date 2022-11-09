@@ -139,7 +139,9 @@ function EditProfile() {
             <option value={"Sênior"}>Sênior</option>
           </select>
 
-          <button type="submit">Editar</button>
+          <button className="btnEdit" type="submit">
+            Editar
+          </button>
         </Form>
       </section>
     </EditProfileStyle>
