@@ -14,12 +14,21 @@ import ModalCards from "../../components/modalCards";
 import ModalCreateProjects from "../../components/modalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
 import EditProfile from "../../components/modalEditProfile";
+import QueueNotification from "../../components/queueNotification";
+
+interface iDash {
+  admin: {
+    adminId: string;
+  };
+}
 
 function Dashboard() {
   const { profile } = useContext(UserContext);
   const {
     showCreateModal,
     setShowCreateModal,
+    showQueueModal,
+    setShowQueueModal,
     showEditModal,
     menuOpen,
     setMenuOpen,
@@ -38,10 +47,10 @@ function Dashboard() {
         api.defaults.headers.authorization = `Bearer ${token}`;
         const { data } = await api.get("/projects");
         const myProjectsfilter = data.filter(
-          (project: any) => project.admin.adminId === id
+          (project: iDash) => project.admin.adminId === id
         );
         const otherFilter = data.filter(
-          (project: any) => project.admin.adminId !== id
+          (project: iDash) => project.admin.adminId !== id
         );
         setMyProjects(myProjectsfilter);
 
@@ -49,7 +58,7 @@ function Dashboard() {
       } catch (error) {}
     }
     getProjects();
-  }, [token, setMyProjects, setProjects]);
+  }, [token, setMyProjects, setProjects, showQueueModal]);
 
   function openOrClose() {
     if (menuOpen) {
@@ -63,6 +72,7 @@ function Dashboard() {
     <DashboardStyle>
       {showEditModal ? <EditProfile /> : null}
       {showCreateModal ? <ModalCreateProjects /> : null}
+      {showQueueModal ? <QueueNotification /> : null}
       {myProjectsModal ? <ModalCards myProjects={myProjects} /> : null}
       <HeaderDashboard>
         <div className="container containerHeader">
@@ -72,7 +82,7 @@ function Dashboard() {
             <button onClick={() => setShowCreateModal(true)}>
               <AddPost className="svgHover" />
             </button>
-            <button>
+            <button onClick={() => setShowQueueModal(true)}>
               <BellNotificatin className="svgHover" />
             </button>
           </div>

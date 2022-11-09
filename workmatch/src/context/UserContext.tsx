@@ -5,14 +5,15 @@ import profilePic from "../assets/account.png";
 import { ToastError, ToastSuccess } from "../services/toast";
 
 export interface iUserProfile {
-  userName?: string;
-  password?: string;
-  name?: string;
+  userName: string;
+  password: string;
+  name: string;
   avatar_url?: string;
-  bio?: string;
-  level?: string;
-  contact?: string;
-  techs?: [];
+  bio: string;
+  level: string;
+  contact: string;
+  techs: [];
+  id: number;
 }
 
 export interface iUserLogin {

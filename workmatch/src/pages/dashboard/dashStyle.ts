@@ -20,6 +20,7 @@ const HeaderDashboard = styled.header`
     justify-content: space-between;
     align-items: center;
     max-width: 1400px;
+    width: 90%;
     padding: 16px;
 
     img {

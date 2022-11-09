@@ -4,16 +4,21 @@ import imgLand from "../assets/default.png";
 import { ToastError, ToastSuccess } from "../services/toast";
 import { iUserProfile, UserContext } from "./UserContext";
 
+export interface iTechs {
+  value: string;
+  label: string;
+}
+
 export interface iProject {
   name: string;
   description: string;
-  techs: [];
+  techs: iTechs[];
   amount: string;
   date: string;
   projectImg: string;
   id: number;
-  queueParticipants: iUserProfile;
-  listsParticipants: iUserProfile;
+  queueParticipants: iUserProfile[];
+  listParticipants: iUserProfile[];
   admin: {
     adminId: number;
     adminName: string;
@@ -28,9 +33,11 @@ interface iProjectContext {
   createProject: (info: iProject) => void;
   joinProject: (info: number) => void;
   deleteProject: (info: number) => void;
-  acceptParticipant: (projectId: string, participantId: string) => void;
+  acceptParticipant: (projectId: number, participantId: number) => void;
   showCreateModal: boolean;
   setShowCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
+  showQueueModal: boolean;
+  setShowQueueModal: React.Dispatch<React.SetStateAction<boolean>>;
   showEditModal: boolean;
   setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
   menuOpen: boolean;
@@ -42,6 +49,7 @@ interface iProjectContext {
   image: string;
   myProjects: iProject[];
   setMyProjects: React.Dispatch<React.SetStateAction<iProject[]>>;
+  rejectParticipant: (projectId: number, participantId: number) => void;
 }
 
 interface iProjectProviderChildren {
@@ -56,6 +64,7 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   const { profile } = useContext(UserContext);
   const [projects, setProjects] = useState<iProject[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showQueueModal, setShowQueueModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [myProjectsModal, setMyProjectsModal] = useState(false);
@@ -67,10 +76,16 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
   const userId = localStorage.getItem("WorkMatch:userId");
 
   async function createProject(info: iProject) {
+    let newTechs = selectTechs;
+
+    if (!Array.isArray(selectTechs)) {
+      newTechs = [];
+    }
+
     const newInfo = {
       ...info,
       projectImg: image,
-      techs: selectTechs,
+      techs: newTechs,
       admin: {
         adminId: userId,
         adminName: profile.name,
@@ -108,33 +123,77 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
-        title: `você esta na lista de espera para aprovação`,
+        title: `Você esta na lista de espera para aprovação`,
       });
     } catch (error) {
       ToastError.fire({
         icon: "error",
         iconColor: "#EC8697",
-        title: `Não foi possivel criar o projeto`,
+        title: `Não foi possivel entrar para a lista de espera`,
       });
     }
   }
 
-  async function acceptParticipant(projectId: string, participantId: string) {
+  async function acceptParticipant(projectId: number, participantId: number) {
     const { data } = await api.get(`/projects/${projectId}`);
     const queue: [] = data.queueParticipants;
     const participants = data.listParticipants;
     const participantAccepted = queue.find(({ id }) => id === participantId);
     const notAcceptedParticipants = queue.filter(
-      (acceptedParticipant) => !participantAccepted
+      ({ id }) => id !== participantId
     );
 
     try {
       const info = {
         listParticipants: [...participants, participantAccepted],
-        queueParticipants: [notAcceptedParticipants],
+        queueParticipants: [...notAcceptedParticipants],
       };
       await api.patch(`/projects/${projectId}`, info);
-    } catch (error) {}
+      ToastSuccess.fire({
+        icon: "success",
+        iconColor: "#168821",
+        title: `Você aceitou o participante`,
+      });
+
+      setShowQueueModal(false);
+      const { data } = await api.get("/projects");
+      console.log(data);
+    } catch (error) {
+      ToastError.fire({
+        icon: "error",
+        iconColor: "#EC8697",
+        title: `Não foi possível aceitar o participante`,
+      });
+    }
+  }
+
+  async function rejectParticipant(projectId: number, participantId: number) {
+    const { data } = await api.get(`/projects/${projectId}`);
+    const queue: [] = data.queueParticipants;
+    const notAcceptedParticipants = queue.filter(
+      ({ id }) => id !== participantId
+    );
+    try {
+      const info = {
+        queueParticipants: [...notAcceptedParticipants],
+      };
+      await api.patch(`/projects/${projectId}`, info);
+      ToastSuccess.fire({
+        icon: "success",
+        iconColor: "#168821",
+        title: `Você rejeitou o participante`,
+      });
+
+      setShowQueueModal(false);
+      const { data } = await api.get("/projects");
+      console.log(data);
+    } catch (error) {
+      ToastError.fire({
+        icon: "error",
+        iconColor: "#EC8697",
+        title: `Não foi possível rejeitar o participante`,
+      });
+    }
   }
 
   async function deleteProject(projectId: number) {
@@ -164,11 +223,14 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
         projects,
         setProjects,
         acceptParticipant,
+        rejectParticipant,
         createProject,
         joinProject,
         deleteProject,
         showCreateModal,
         setShowCreateModal,
+        showQueueModal,
+        setShowQueueModal,
         showEditModal,
         setShowEditModal,
         menuOpen,

@@ -3,10 +3,19 @@ import * as D from "./modalCardOffStyle";
 import Card from "../cards";
 import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
 
-function ModalCards({ myProjects }: any) {
+interface iMyProjects {
+  myProjects: iProject[];
+}
+
+function ModalCards({ myProjects }: iMyProjects) {
   const teste = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
+
+
   return (
     <C.ContainerModal>
       {teste ? (
@@ -17,11 +26,16 @@ function ModalCards({ myProjects }: any) {
               X
             </button>
           </C.TitleModal>
-          <ul>
+            <ul>
+            <Swiper>
             {myProjects.map((myProject: iProject) => {
-              return <Card key={myProject.id} project={myProject} />;
-            })}
-          </ul>
+              return (
+              <SwiperSlide>
+              <Card key={myProject.id} project={myProject} />;
+              </SwiperSlide>)
+              })}
+            </Swiper>
+            </ul>
         </C.DivModal>
       ) : (
         <D.DivModal>
