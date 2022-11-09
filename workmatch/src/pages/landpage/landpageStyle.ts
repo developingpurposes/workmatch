@@ -49,7 +49,7 @@ const LandpageStyle = styled.div`
       align-items: center;
     }
   }
-  @media (min-width: 630px) {
+  @media (min-width: 730px) {
     & {
       main {
         animation: fadeIn 0.5s ease-in;

@@ -25,7 +25,7 @@ const EditProfileStyle = styled.div`
     z-index: 2;
     top: 1px;
     margin: 10px 0;
-    padding: 18px;
+    padding: 0px 18px;
     border-radius: 5px;
     width: 60%;
 
@@ -33,8 +33,8 @@ const EditProfileStyle = styled.div`
     flex-direction: column;
     align-items: center;
 
-    div {
-      width: 100%;
+    .section__container {
+      width: 95%;
       height: 50px;
       padding: 0 10px;
 
@@ -64,6 +64,7 @@ const EditProfileStyle = styled.div`
       width: 60px;
       height: 60px;
       border-radius: 50%;
+      cursor: pointer;
     }
 
     p {
@@ -87,7 +88,20 @@ const EditProfileStyle = styled.div`
     color: aliceblue;
     opacity: 0.7;
   }
-
+  #SelectStyle {
+    width: 95%;
+    max-width: 394px;
+    border: 2.5px solid var(--color-6);
+    border-radius: 8px;
+    div {
+      font-size: 14px;
+      font-family: var(--font-df);
+      color: var(--color-6);
+      background-color: #24163e40;
+      border: none;
+      border-radius: 8px;
+    }
+  }
   select {
     width: 95%;
     padding: 8px;
@@ -105,7 +119,7 @@ const EditProfileStyle = styled.div`
 
   @media (min-width: 767px) {
     section {
-      width: 500px;
+      width: 430px;
     }
   }
 `;
