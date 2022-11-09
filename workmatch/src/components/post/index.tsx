@@ -24,15 +24,14 @@ function Post({ projects }: iPosts) {
             </div>
             <div className="containerInfoPost">
               <div className="containerUserPost">
+                <div className="projectNameStyle">
+                  <h2>{project.name}</h2>
+                </div>
                 <div className="infoUser">
                   <h2>{project.admin.adminName}</h2>
                   <p>{project.admin.adminLevel}</p>
                 </div>
-                <div className="containerDate">
-                  <p>{project.date}</p>
-                </div>
               </div>
-
               <div className="containerDescription">
                 <p>{project.description}</p>
 
