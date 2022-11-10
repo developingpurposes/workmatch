@@ -47,6 +47,7 @@ export const DivModal = styled.div`
   padding: 20px;
   margin-left: 20px;
   border-radius: 5px;
+  border: 2px solid var(--gray-1);
 
   .swiperUl {
     align-self: center;
@@ -55,6 +56,7 @@ export const DivModal = styled.div`
     width: 90%;
     gap: 10px;
     cursor: grab;
+    height: 100%;
   }
 
   @media(min-width: 700px){

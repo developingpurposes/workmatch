@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerModal = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -21,13 +21,15 @@ export const DivModal = styled.div`
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 20px;
-  height: min-content;
   flex-direction: column;
   align-self: center;
   border-radius: 5px;
+  border: 2px solid var(--gray-1);
 
-  @media (min-width: 900px) {
-    width: 50%;
+
+
+  @media (width: 900px) {
+    width: 60%;
   }
 `;
 
@@ -41,7 +43,11 @@ export const Form = styled.form`
 
   img {
     width: 150px;
+    height: 100px;
+    max-width: 150px;
+    object-fit: cover;
     border-radius: 8px;
+    border: 2px solid var(--color-6);
     cursor: pointer;
     transition: 0.5s;
     &:hover {

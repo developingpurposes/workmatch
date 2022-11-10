@@ -65,7 +65,7 @@ const LoginStyle = styled.div`
       color: var(--color-6);
 
       animation: zoomIn 1.2s ease-out;
-      animation-delay: 1.5s;
+      animation-delay: 0.8s;
       animation-fill-mode: both;
     }
     .otherButton:hover,

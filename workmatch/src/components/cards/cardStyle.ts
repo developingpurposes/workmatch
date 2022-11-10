@@ -97,7 +97,7 @@ export const ContainerButton = styled.div`
 
 export const ContainerImgTeam = styled.ul`
   display: flex;
-  height: min-content;
+  height: 100%;
   padding: 5px;
   margin: 0;
   width: 100%;

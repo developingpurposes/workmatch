@@ -19,7 +19,8 @@ const EditProfileStyle = styled.div`
   align-items: center;
   justify-content: center;
 
-  section {
+    section {
+    border: 2px solid var(--gray-1);
     background-color: #100325;
     position: absolute;
     z-index: 2;

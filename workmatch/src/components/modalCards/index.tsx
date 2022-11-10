@@ -21,7 +21,7 @@ function ModalCards({ myProjects }: any) {
               X
             </button>
           </C.TitleModal>
-          <ul>
+          <ul className="swiperUl">
           <Swiper>
             {myProjects.map((myProject: iProject) => {
               return (
