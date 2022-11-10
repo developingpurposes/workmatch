@@ -121,6 +121,12 @@ function ProjectProvider({ children }: iProjectProviderChildren) {
       const { data } = await api.get(`/projects/${projectId}`);
       const info = { queueParticipants: [...data.queueParticipants, profile] };
       await api.patch(`/projects/${projectId}`, info);
+      const NotParticipatedProjects = projects.filter(
+        (project: iProject) => project.id !== projectId
+      );
+
+      setProjects(NotParticipatedProjects);
+
       ToastSuccess.fire({
         icon: "success",
         iconColor: "#168821",
