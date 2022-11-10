@@ -2,7 +2,7 @@ import PostStyle from "./postStyle";
 import { FaHandsHelping as Like } from "react-icons/fa";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
-import RenderIcon from "../renderIcon";
+import RenderIcon from "../RenderIcon";
 
 export interface iPosts {
   projects: iProject[];

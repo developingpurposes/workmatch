@@ -8,13 +8,13 @@ import imgUserDf from "../../assets/account.png";
 import { UserContext } from "../../context/UserContext";
 import { useContext, useEffect } from "react";
 import api from "../../services";
-import Menu from "../../components/menuDropDashboard";
-import Post from "../../components/post";
-import ModalCards from "../../components/modalCards";
-import ModalCreateProjects from "../../components/modalCreateProjects";
+import Menu from "../../components/MenuDropDashboard";
+import Post from "../../components/Post";
+import ModalCards from "../../components/ModalCards";
+import ModalCreateProjects from "../../components/ModalCreateProjects";
 import { ProjectContext } from "../../context/ProjectContext";
-import EditProfile from "../../components/modalEditProfile";
-import QueueNotification from "../../components/queueNotification";
+import EditProfile from "../../components/ModalEditProfile";
+import QueueNotification from "../../components/QueueNotification";
 import { useNavigate } from "react-router-dom";
 
 interface iDash {
@@ -54,6 +54,7 @@ function Dashboard() {
         const otherFilter = data.filter(
           (project: iDash) => project.admin.adminId !== id
         );
+
         setMyProjects(myProjectsfilter);
 
         setProjects(otherFilter);

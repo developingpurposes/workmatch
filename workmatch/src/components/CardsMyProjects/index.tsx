@@ -2,7 +2,7 @@ import * as C from "./cardStyle";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { useContext } from "react";
 import { iUserProfile } from "../../context/UserContext";
-import RenderIcon from "../renderIcon";
+import RenderIcon from "../RenderIcon/index";
 
 interface iCard {
   project: iProject;
