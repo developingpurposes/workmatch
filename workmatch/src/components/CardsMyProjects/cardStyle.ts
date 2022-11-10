@@ -81,7 +81,7 @@ export const ContainerButton = styled.div`
   button {
     background-color: var(--color-4);
     width: 90%;
-    
+
     margin: 0 auto;
     padding: 5px 10px;
     border-radius: 7px;
@@ -102,7 +102,7 @@ export const ContainerImgTeam = styled.ul`
   margin: 0;
   width: 100%;
   align-self: baseline;
-  gap: 5px;
+  gap: 6px;
   align-self: center;
   flex-wrap: wrap;
 
