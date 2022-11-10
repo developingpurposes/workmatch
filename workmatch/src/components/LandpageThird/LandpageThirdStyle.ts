@@ -4,7 +4,7 @@ import "animate.css";
 const LandpageThirdStyle = styled.div`
   position: relative;
   width: 100vw;
-  height: 280vh;
+  height: 300vh;
   background-color: var(--color-2);
   background-image: url(${backgroundImage});
   background-size: cover;

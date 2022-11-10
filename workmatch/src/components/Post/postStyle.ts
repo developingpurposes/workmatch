@@ -89,14 +89,14 @@ const PostStyle = styled.div`
           height: 70px;
           justify-content: space-around;
           align-items: center;
-          padding: 20px;
+          padding: 10px;
           color: var(--color-6);
           font-size: var(--font-size-5);
           border-bottom: 2px solid var(--color-6);
 
           .projectNameStyle {
             h2 {
-              font-size: 20px;
+              font-size: var(--font-size-3);
               font-weight: 800;
             }
           }
