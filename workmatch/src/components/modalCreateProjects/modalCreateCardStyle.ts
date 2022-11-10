@@ -26,8 +26,6 @@ export const DivModal = styled.div`
   border-radius: 5px;
   border: 2px solid var(--gray-1);
 
-
-
   @media (width: 900px) {
     width: 60%;
   }
@@ -83,20 +81,19 @@ export const Form = styled.form`
 
   input::placeholder {
     color: aliceblue;
-    opacity: 0.7;
+    opacity: 0.5;
   }
 
   #SelectStyle {
     width: 95%;
     max-width: 394px;
-
     border: 2.5px solid var(--color-6);
     border-radius: 8px;
     div {
       font-size: 14px;
       font-family: var(--font-df);
       color: var(--color-6);
-      background-color: #24163e40;
+      background-color: #24163e99;
       border: none;
       border-radius: 8px;
     }
