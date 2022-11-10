@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 
-
 function ModalCards({ myProjects }: any) {
   const haveProject = myProjects.length;
   const { setShowCreateModal, setMyProjectsModal } = useContext(ProjectContext);
@@ -21,16 +20,16 @@ function ModalCards({ myProjects }: any) {
               X
             </button>
           </C.TitleModal>
-          <ul className="swiperUl">
-          <Swiper>
-            {myProjects.map((myProject: iProject) => {
-              return (
-                <SwiperSlide key={myProject.id}>
-                  <Card project={myProject} />;
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
+          <ul>
+            <Swiper>
+              {myProjects.map((myProject: iProject) => {
+                return (
+                  <SwiperSlide key={myProject.id}>
+                    <Card project={myProject} />;
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </ul>
         </C.DivModal>
       ) : (
