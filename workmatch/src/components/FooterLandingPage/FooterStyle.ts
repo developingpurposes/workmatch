@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const FooterStyle = styled.footer`
-  margin-top: 20px;
   background-color: #060012;
   position: sticky;
   top: 4000px;
