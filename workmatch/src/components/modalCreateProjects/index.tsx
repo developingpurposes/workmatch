@@ -81,7 +81,7 @@ function ModalCreateProjects() {
             placeholder="Digite a desrição do projeto"
             {...register("description")}
           />
-            <label htmlFor="date">Adicione Tecnologia:</label>
+          <label htmlFor="date">Adicione Tecnologia:</label>
           <Select
             id="SelectStyle"
             onChange={(selectValues: any) => {

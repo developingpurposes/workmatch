@@ -1,6 +1,6 @@
 import * as C from "./modalCardOnStyle";
 import * as D from "./modalCardOffStyle";
-import Card from "../cards";
+import Card from "../CardsMyProjects";
 import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { Swiper, SwiperSlide } from "swiper/react";

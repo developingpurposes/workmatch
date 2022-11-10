@@ -8,6 +8,7 @@ import { iTechs } from "./ProjectContext";
 export interface iUserProfile {
   userName: string;
   password: string;
+  email: string;
   name: string;
   avatar_url?: string;
   bio: string;

@@ -17,8 +17,8 @@ const schemaRegister = yup.object({
     .required("Senha obrigatório"),
   verification: yup
     .string()
-    .required("As senhas não são identicas")
-    .oneOf([yup.ref("password")]),
+    .required("Confirma senha obrigatório")
+    .oneOf([yup.ref("password")], "Confirma senha está diferente"),
 });
 
 export default schemaRegister;

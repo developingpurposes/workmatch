@@ -2,7 +2,7 @@ import QueueNotificationStyle from "./QueueNotificationStyle";
 import { useContext } from "react";
 import { iProject, ProjectContext } from "../../context/ProjectContext";
 import { iUserProfile } from "../../context/UserContext";
-import RenderIcon from "../renderIcon";
+import RenderIcon from "../RenderIcon/index";
 
 function QueueNotification() {
   const {
