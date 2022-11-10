@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerModal = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -21,13 +21,13 @@ export const DivModal = styled.div`
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 20px;
-  height: min-content;
   flex-direction: column;
   align-self: center;
   border-radius: 5px;
+  border: 2px solid var(--gray-1);
 
-  @media (min-width: 900px) {
-    width: 50%;
+  @media (width: 900px) {
+    width: 60%;
   }
 `;
 
@@ -41,7 +41,11 @@ export const Form = styled.form`
 
   img {
     width: 150px;
+    height: 100px;
+    max-width: 150px;
+    object-fit: cover;
     border-radius: 8px;
+    border: 2px solid var(--color-6);
     cursor: pointer;
     transition: 0.5s;
     &:hover {
@@ -77,20 +81,19 @@ export const Form = styled.form`
 
   input::placeholder {
     color: aliceblue;
-    opacity: 0.7;
+    opacity: 0.5;
   }
 
   #SelectStyle {
     width: 95%;
     max-width: 394px;
-
     border: 2.5px solid var(--color-6);
     border-radius: 8px;
     div {
       font-size: 14px;
       font-family: var(--font-df);
       color: var(--color-6);
-      background-color: #24163e40;
+      background-color: #24163e99;
       border: none;
       border-radius: 8px;
     }

@@ -14,6 +14,7 @@ const QueueNotificationStyle = styled.div`
   z-index: 110;
 
   section {
+    border: 2px solid var(--gray-1);
     background-color: #100325;
     position: absolute;
     z-index: 2;
@@ -67,17 +68,21 @@ const QueueNotificationStyle = styled.div`
       height: 100%;
       width: 80%;
       overflow-y: auto;
-
+      border-radius: 3px;
+      padding: 10px;
       margin-bottom: 5px;
+
       .projectHeader {
-        background-color: var(--color-3);
+        background-color: var(--color-5);
         height: 45px;
         display: flex;
         align-items: center;
-        border-bottom: var(--color-4) 2px solid;
+        border-bottom: var(--color-1) 2px solid;
+        border-radius: 3px;
+        justify-content: center;
 
         h2 {
-          color: var(--color-6);
+          color: var(--color-1);
           font-weight: 800;
           font-size: var(--font-size-4);
           margin-left: 7px;
@@ -87,22 +92,26 @@ const QueueNotificationStyle = styled.div`
       li {
         display: flex;
         flex-direction: column;
+        gap: 5px;
+        width: 100%;
       }
     }
 
     .participantList {
-      background-color: var(--color-3);
-      padding: 0 5px;
+      background-color: var(--color-5);
+      padding: 5px;
       margin-bottom: 10px;
+      border-radius: 3px;
       h5 {
-        color: var(--color-6);
+        color: var(--color-1);
         font-family: var(--font-df);
         margin: 5px 0;
         font-size: var(--font-size-4);
+        
       }
       li {
         display: flex;
-
+        padding: 10px;
         margin-bottom: 5px;
 
         background-color: var(--color-2);
@@ -114,6 +123,7 @@ const QueueNotificationStyle = styled.div`
           display: flex;
           margin-left: 5px;
           margin: 5px 0 5px 10px;
+          flex-wrap: wrap;
           img {
             width: 45px;
             height: 45px;
@@ -152,6 +162,7 @@ const QueueNotificationStyle = styled.div`
       margin-left: 10px;
       color: var(--color-6);
       overflow-x: auto;
+      flex-wrap: wrap;
 
       p {
         font-size: var(--font-size-5);
@@ -212,11 +223,11 @@ const QueueNotificationStyle = styled.div`
 
   @media (min-width: 767px) {
     section {
-      width: 50%;
+      width: 40%;
     }
 
     .projectList {
-      max-width: 52%;
+      max-width: 70%;
     }
   }
 `;

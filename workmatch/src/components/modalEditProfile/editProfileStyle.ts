@@ -20,6 +20,7 @@ const EditProfileStyle = styled.div`
   justify-content: center;
 
   section {
+    border: 2px solid var(--gray-1);
     background-color: #100325;
     position: absolute;
     z-index: 2;
@@ -93,7 +94,7 @@ const EditProfileStyle = styled.div`
 
   input::placeholder {
     color: aliceblue;
-    opacity: 0.7;
+    opacity: 0.5;
   }
   #SelectStyle {
     width: 95%;
@@ -104,7 +105,7 @@ const EditProfileStyle = styled.div`
       font-size: 14px;
       font-family: var(--font-df);
       color: var(--color-6);
-      background-color: #24163e40;
+      background-color: #24163e99;
       border: none;
       border-radius: 8px;
     }

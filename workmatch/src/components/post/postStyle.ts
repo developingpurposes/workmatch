@@ -44,7 +44,7 @@ const PostStyle = styled.div`
       border-radius: 12px;
       width: 100%;
       padding: 2px;
-      
+
       .containerImgPostAndTechs {
         display: flex;
         flex-direction: column;
@@ -68,7 +68,7 @@ const PostStyle = styled.div`
           height: 60px;
           overflow-x: auto;
           gap: 8px;
-          
+
           svg {
             color: var(--color-6);
             width: 30px;
@@ -87,16 +87,30 @@ const PostStyle = styled.div`
           display: flex;
           width: 100%;
           height: 70px;
-          justify-content: space-between;
+          justify-content: space-around;
           align-items: center;
-          padding: 16px;
+          padding: 10px;
           color: var(--color-6);
           font-size: var(--font-size-5);
           border-bottom: 2px solid var(--color-6);
 
+          .projectNameStyle {
+            h2 {
+              font-size: var(--font-size-3);
+              font-weight: 800;
+            }
+          }
           .infoUser {
             display: flex;
             flex-direction: column;
+            text-align: right;
+
+            h2 {
+              font-size: var(--font-size-5);
+            }
+            p {
+              font-size: var(--font-size-5);
+            }
           }
         }
       }

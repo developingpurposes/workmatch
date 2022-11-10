@@ -11,8 +11,6 @@ interface iCard {
 function Card({ project }: iCard) {
   const { deleteProject } = useContext(ProjectContext);
 
- console.log(project)
- 
   return (
     <C.Card>
       <img className="imgProject" src={project.projectImg} alt="teste" />
@@ -21,24 +19,27 @@ function Card({ project }: iCard) {
         <h3>{project.description}</h3>
       </div>
       <div className="containerText">
-          {project.listParticipants.length > 0 ?
-        <C.ContainerImgTeam>
-          {(project.listParticipants.map((participant: iUserProfile, index) => (
-            <li className="imgTeam" key={index}>
-              <img src={participant.avatar_url} alt="imgProfile" />
-            </li>
-          )))} 
-        </C.ContainerImgTeam>
-          : ""
-          }
+        {project.listParticipants.length > 0 ? (
+          <C.ContainerImgTeam>
+            {project.listParticipants.map(
+              (participant: iUserProfile, index) => (
+                <li className="imgTeam" key={index}>
+                  <img src={participant.avatar_url} alt="imgProfile" />
+                </li>
+              )
+            )}
+          </C.ContainerImgTeam>
+        ) : (
+          ""
+        )}
         <div className="containerTechs">
           <p>Tecnologias: </p>
-          <RenderIcon arrTechs={project.techs}/>
+          <RenderIcon arrTechs={project.techs} />
         </div>
       </div>
-        <C.ContainerButton>
-          <button onClick={() => deleteProject(project.id)}>Deletar</button>
-        </C.ContainerButton>
+      <C.ContainerButton>
+        <button onClick={() => deleteProject(project.id)}>Deletar</button>
+      </C.ContainerButton>
     </C.Card>
   );
 }

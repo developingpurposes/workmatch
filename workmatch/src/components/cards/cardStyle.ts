@@ -8,6 +8,7 @@ export const Card = styled.li`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   .imgProject {
     width: 100%;
@@ -80,13 +81,13 @@ export const ContainerButton = styled.div`
   button {
     background-color: var(--color-4);
     width: 90%;
+    
     margin: 0 auto;
     padding: 5px 10px;
     border-radius: 7px;
     color: white;
     border: none;
     cursor: pointer;
-    align-self: flex-end;
 
     &:hover,
     &:active {
@@ -97,7 +98,6 @@ export const ContainerButton = styled.div`
 
 export const ContainerImgTeam = styled.ul`
   display: flex;
-  height: min-content;
   padding: 5px;
   margin: 0;
   width: 100%;

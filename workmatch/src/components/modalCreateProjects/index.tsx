@@ -81,18 +81,7 @@ function ModalCreateProjects() {
             placeholder="Digite a desrição do projeto"
             {...register("description")}
           />
-
-          <label htmlFor="membersLength">
-            Número de membros: <span>{errors.amount?.message}</span>
-          </label>
-          <input
-            id="membersLength"
-            type="text"
-            placeholder="Digite o número de membros"
-            {...register("amount")}
-          />
-          <label htmlFor="date">Adicione Tecnologia:</label>
-
+            <label htmlFor="date">Adicione Tecnologia:</label>
           <Select
             id="SelectStyle"
             onChange={(selectValues: any) => {
@@ -104,6 +93,16 @@ function ModalCreateProjects() {
             isMulti
             options={DataBaseTechs}
           />
+          <label htmlFor="membersLength">
+            Número de membros: <span>{errors.amount?.message}</span>
+          </label>
+          <input
+            id="membersLength"
+            type="text"
+            placeholder="Digite o número de membros"
+            {...register("amount")}
+          />
+
           <C.ButtonCreate type="submit">Criar</C.ButtonCreate>
         </C.Form>
       </C.DivModal>

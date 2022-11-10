@@ -32,7 +32,6 @@ function QueueNotification() {
                   {project.queueParticipants.map(
                     (participant: iUserProfile) => (
                       <>
-                        <h5>Colaborador:</h5>
                         <li key={participant.id}>
                           <div className="participantInfo">
                             <img
